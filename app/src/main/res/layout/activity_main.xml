@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.MainActivity">
+
+    <com.example.yuzishun.clearservice.Custom.MyViewPager
+        android:id="@+id/myviewpager"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.example.yuzishun.clearservice.Custom.MyViewPager>
+
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_weight="11"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/id_tab_01"
+            android:button="@null"
+            android:textColor="@drawable/color_homepager"
+            android:gravity="center"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/home_button_selector"
+            android:text="@string/HomePager_id"
+            android:textSize="@dimen/f10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/id_tab_02"
+            android:textSize="@dimen/f10"
+            android:textColor="@drawable/color_homepager"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/home_button_selector"
+            android:button="@null"
+            android:text="@string/HomePager_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/id_tab_03"
+            android:textSize="@dimen/f10"
+            android:textColor="@drawable/color_homepager"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/home_button_selector"
+            android:button="@null"
+            android:text="@string/HomePager_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </RadioGroup>
+
+
+</LinearLayout>
