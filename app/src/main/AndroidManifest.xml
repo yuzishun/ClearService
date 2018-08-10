@@ -2,21 +2,58 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.yuzishun.clearservice">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.personal.PersonalActivity" />
+        <activity android:name=".activity.splach.SplachActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.register.RegisterActivity" />
+        <activity android:name=".activity.register.CodeActivity" />
+        <activity android:name=".activity.register.PassWordActivity" />
+        <activity android:name=".activity.forget.PhotoActivity" />
+        <activity android:name=".activity.forget.CodeeActivity" />
+        <activity android:name=".activity.forget.RepeatPwActivity" />
+        <activity android:name=".activity.information.InformationActivity" />
+        <activity android:name=".activity.changename.changeActivity" />
+        <activity android:name=".activity.myframnet_Activity.telActivity" />
+        <activity android:name=".activity.myframnet_Activity.SettingActivity" />
+        <activity android:name=".activity.myframnet_Activity.PersonalActivity" />
+        <activity android:name=".activity.myframnet_Activity.changnameActivity" />
+        <activity android:name=".tools.CountryActivity" />
+        <activity android:name=".activity.myframnet_Activity.langerActivity" />
+        <activity android:name=".activity.mainfragment_activity.AddtelActivity" />
+        <activity android:name=".activity.mainfragment_activity.SubmissionActivity" />
+        <activity android:name=".activity.mainfragment_activity.searchActivity" />
+        <activity android:name=".activity.mainfragment_activity.DetailsActivity" />
+        <activity android:name=".activity.mainfragment_activity.ChoosetelActivity" />
+        <activity android:name=".activity.mainfragment_activity.listActivity" />
+        <activity android:name=".activity.mainfragment_activity.PayActivity" />
+        <activity android:name=".activity.mainfragment_activity.PaySucessActivity" />
+        <activity android:name=".activity.myframnet_Activity.ReleaseserviceActivity" />
+        <activity android:name=".activity.myframnet_Activity.ReleaseActivity" />
+        <activity android:name=".activity.myframnet_Activity.ServiceDeileActivity" />
+        <activity android:name=".activity.changename.changepswActivity" />
+        <activity android:name=".activity.register.AgreementActivity" />
+        <activity android:name=".activity.myframnet_Activity.RewardonActivity" />
+        <activity android:name=".activity.mainfragment_activity.MessageActivity" />
+        <activity android:name=".activity.myframnet_Activity.OrtherActivity" />
+        <activity android:name=".activity.myframnet_Activity.OrderdetailsActivity"></activity>
     </application>
 
 </manifest>

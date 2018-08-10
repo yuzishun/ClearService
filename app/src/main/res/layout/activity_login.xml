@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.yuzishun.clearservice.activity.login.LoginActivity">
+
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="bottom"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="@string/Wecome_id"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f24"
+
+                android:layout_marginBottom="@dimen/d30"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_weight="1"
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="4"
+                    android:id="@+id/layout_country"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="@string/id_86"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/f13"
+                        android:id="@+id/country_number"
+                        android:textColor="@color/black_shou"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:src="@mipmap/select"
+                        android:layout_marginRight="@dimen/d5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20px" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_marginTop="@dimen/d20"
+                    android:layout_marginBottom="@dimen/d10"
+                    android:background="@color/gray"
+
+                    android:layout_marginRight="@dimen/d10"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.example.yuzishun.clearservice.Custom.ClearEditText
+                        android:background="@null"
+                        android:hint="@string/tel_id"
+                        android:id="@+id/photo"
+                        android:textSize="@dimen/f16"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_marginLeft="@dimen/d30"
+                android:background="@color/gray"
+                android:layout_height="1dp" />
+
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <com.example.yuzishun.clearservice.Custom.CEditText
+                android:layout_width="match_parent"
+                android:id="@+id/etPassword"
+                android:textSize="@dimen/f16"
+                android:background="@null"
+                android:drawableBottom="@drawable/line"
+                android:hint="@string/password_id"
+                android:inputType="textPassword"
+
+                android:layout_height="match_parent" />
+
+
+                <CheckBox
+                    android:checked="false"
+                    android:id="@+id/cbDisplayPassword"
+                    android:layout_width="@dimen/d18"
+                    android:layout_height="@dimen/d18"
+                    android:background="@drawable/selector_password"
+                    android:button="@null"
+                    android:layout_marginRight="@dimen/d22"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                   />
+            </RelativeLayout>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginLeft="@dimen/d20"-->
+                <!--android:background="@color/gray"-->
+                <!--android:layout_height="1dp" />-->
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/d30"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_weight="1"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:text="@string/login_id"
+                    android:id="@+id/button_login"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginRight="@dimen/d30"
+                    android:textColor="@drawable/button_color_login_rigsg"
+                    android:background="@drawable/login_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginRight="@dimen/d30"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/newUSer_id"
+                        android:id="@+id/NewUser"
+                        android:textSize="@dimen/f14"
+                        android:textColor="@color/blue2"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="@string/wpasw_id"
+                        android:id="@+id/Forget_id"
+                        android:textSize="@dimen/f14"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/blue2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

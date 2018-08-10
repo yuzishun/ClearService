@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="130dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:src="@mipmap/cehsi"
+            android:padding="@dimen/d10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/framily_time"
+                android:text="家庭保洁一小时"
+                android:textSize="@dimen/f16"
+                android:layout_marginTop="@dimen/d10"
+                android:textColor="@color/black_shou"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="参加人员8人还差2人拼成"
+                android:layout_below="@+id/framily_time"
+                android:textSize="@dimen/f12"
+
+                android:textColor="@color/gray_text"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+                <TextView
+                    android:id="@+id/yuan_price"
+                    android:text="¥35"
+                    android:textSize="@dimen/f12"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_marginLeft="@dimen/d10"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="¥28"
+                    android:textSize="@dimen/f14"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/d15"
+                    android:textColor="@color/red_one"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="0.4"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:textColor="@drawable/button_color_login_rigsg"
+                        android:background="@drawable/deile_button"
+                        android:text="立即拼团"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/d25" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="剩余时间"
+                        android:layout_toLeftOf="@+id/time"
+                        android:layout_marginRight="@dimen/d5"
+                        android:textColor="@color/black_shou"
+                        android:textSize="@dimen/f12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="23:45:03"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/time"
+                        android:textColor="@color/blue2"
+                        android:textSize="@dimen/f14"
+                        android:layout_marginRight="@dimen/d25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/everoneActivity"
+            android:layout_height="@dimen/d10" />
+    </LinearLayout>
+
+</LinearLayout>

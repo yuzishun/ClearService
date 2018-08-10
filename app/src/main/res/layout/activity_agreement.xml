@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.register.AgreementActivity">
+
+    <include layout="@layout/title_text"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁
+阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁
+阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁
+阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁
+阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁阿拉丁"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/f14"
+            android:textColor="@color/black_shou"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginLeft="@dimen/d25"
+            android:layout_marginRight="@dimen/d25"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+</LinearLayout>

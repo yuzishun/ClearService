@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="@dimen/d130">
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/d25"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/tel_tel"
+                android:textSize="@dimen/f14"
+                android:textColor="@color/black_shou"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/name_ids"
+                android:id="@+id/tel_name"
+                android:textSize="@dimen/f14"
+                android:textColor="@color/black_shou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/telphone_id"
+                android:layout_marginLeft="@dimen/d70"
+                android:textSize="@dimen/f14"
+                android:textColor="@color/black_shou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/gray_line"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_weight="1.5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/d25"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CheckBox
+                android:id="@+id/check_tel"
+                android:background="@drawable/check_state"
+                android:button="@null"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15" />
+            <TextView
+                android:text="@string/moren_tel"
+                android:id="@+id/text_tel"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_shou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="1.8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/layout_change"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:src="@mipmap/change"
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15" />
+
+                    <TextView
+                        android:text="@string/change_id"
+                        android:textColor="@color/black_shou"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layout_remove"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/d10"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:src="@mipmap/delete"
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15" />
+
+                    <TextView
+                        android:text="@string/del_tel"
+                        android:textColor="@color/black_shou"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

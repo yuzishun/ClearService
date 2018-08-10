@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="@dimen/d250">
+
+    <RelativeLayout
+        android:layout_weight="0.8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <cn.jzvd.JZVideoPlayerStandard
+            android:id="@+id/vide_view_home"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+
+        <!--<ImageView-->
+            <!--android:src="@mipmap/start"-->
+            <!--android:id="@+id/statr"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_xx"
+        android:layout_weight="1.5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/d25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="家庭保洁一小时还是和什"
+                    android:layout_alignParentBottom="true"
+                    android:maxEms="6"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/black_shou"
+                    android:textSize="@dimen/f14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text_money"
+                    android:text="¥28"
+                    android:textSize="@dimen/f18"
+                    android:textColor="@color/red_one"
+                    android:layout_centerVertical="true"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_toRightOf="@+id/text_money"
+                    android:textColor="@color/gray"
+                    android:id="@+id/Originalprice"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/f12"
+                    android:layout_marginLeft="@dimen/d2"
+                    android:text="原价¥35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="已经参加人员8人，还差2人拼成"
+
+                    android:textColor="@color/minute_black"
+                    android:textSize="@dimen/f10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/d25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:textColor="@drawable/button_color_login_rigsg"
+                    android:background="@drawable/login_select"
+                    android:text="立即拼团"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/d25" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_toLeftOf="@+id/time_"
+                    android:layout_centerVertical="true"
+                    android:text="剩余时间"
+                    android:layout_marginRight="@dimen/d5"
+                    android:textColor="@color/minute_black"
+                    android:textSize="@dimen/f10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/time_"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="23:45:03"
+                    android:textColor="@color/blue2"
+                    android:textSize="@dimen/f14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+
+    tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.ChoosetelActivity">
+    <include layout="@layout/title_three"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+    <ScrollView
+        android:fillViewport="true"
+        android:background="@color/everoneActivity"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/nobeyondRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="以下地址超出范围"
+                android:textColor="@color/black_shou"
+                android:paddingLeft="@dimen/d25"
+                android:paddingTop="@dimen/d15"
+                android:background="@color/white"
+                android:layout_height="@dimen/d40" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/beyondRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

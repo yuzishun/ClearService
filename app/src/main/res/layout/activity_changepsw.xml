@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.yuzishun.clearservice.activity.changename.changepswActivity">
+
+    <include layout="@layout/title_text"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/yuan_psw"
+                    android:text="原密码"
+                    android:textSize="@dimen/f14"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.example.yuzishun.clearservice.Custom.CEditText
+                    android:id="@+id/yuan_psw_ed"
+                    android:layout_width="match_parent"
+                    android:textSize="@dimen/f16"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/yuan_psw"
+
+                    android:layout_marginLeft="@dimen/d25"
+                    android:hint="请输入原密码"
+                    android:inputType="textPassword"
+
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/gray_line"
+                android:layout_height="1dp" />
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/new_psw"
+                    android:text="新密码"
+                    android:textSize="@dimen/f14"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.example.yuzishun.clearservice.Custom.CEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/new_psd_ed"
+                    android:textSize="@dimen/f16"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/new_psw"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:hint="请输入新密码"
+                    android:inputType="textPassword"
+
+                    android:layout_height="match_parent" />
+                <CheckBox
+                    android:checked="false"
+
+                    android:id="@+id/cbDisplayPassword"
+                    android:layout_width="@dimen/d18"
+                    android:layout_height="@dimen/d18"
+                    android:background="@drawable/selector_password"
+                    android:button="@null"
+                    android:layout_marginRight="@dimen/d22"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@color/everoneActivity"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:text="确定"
+                android:id="@+id/sure_button"
+                android:layout_marginTop="@dimen/d30"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:textColor="@drawable/button_color_login_rigsg"
+                android:background="@drawable/login_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

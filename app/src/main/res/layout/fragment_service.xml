@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.fragment.service.ServiceFragment">
+    <View
+        android:id="@+id/fillStatusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:fitsSystemWindows="true"
+
+        android:background="@color/blue2" />
+
+
+
+    <RelativeLayout
+        android:background="@color/blue2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d40">
+        <ImageView
+            android:id="@+id/image_message"
+            android:src="@mipmap/message"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/d25"
+            android:layout_width="@dimen/d18"
+            android:layout_height="@dimen/d18" />
+
+        <TextView
+            android:id="@+id/teitle_text"
+            android:text="惠服务"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/f14"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:focusable="true"
+            android:descendantFocusability="blocksDescendants"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d180">
+                <android.support.v4.view.ViewPager
+                    android:layout_marginTop="@dimen/d20"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_marginRight="@dimen/d15"
+
+                    android:id="@+id/homePager_VirePager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </android.support.v4.view.ViewPager>
+                <com.example.yuzishun.clearservice.utils.indicator.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+
+                    android:layout_gravity="bottom"
+                    app:fillColor="#00acff"
+                    app:pageColor="#32000000"
+                    app:strokeWidth="0dp" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/home_pager_RecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

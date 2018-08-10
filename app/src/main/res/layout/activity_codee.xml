@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:layout_height="match_parent"
+    tools:context="com.example.yuzishun.clearservice.activity.forget.CodeeActivity">
+    <include layout="@layout/tooal_title"></include>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_weight="2.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/Verification_id"
+                android:id="@+id/Text_code"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f24"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_number"
+                android:text="@string/send_success"
+                android:layout_width="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/f16"
+                android:layout_below="@+id/Text_code"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginTop="@dimen/d1"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="2.8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.yuzishun.clearservice.Custom.VerifyCodeView
+                android:id="@+id/Verify_Code"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/d60"
+                android:layout_marginRight="@dimen/d60"
+                android:layout_height="match_parent">
+
+
+            </com.example.yuzishun.clearservice.Custom.VerifyCodeView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/Verification_Ru"
+                android:id="@+id/button_getResule"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_marginTop="@dimen/d30"
+                android:textColor="@color/gray"
+                android:background="@drawable/login_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

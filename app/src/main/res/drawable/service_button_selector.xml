@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/huiservicetrue" android:state_checked="true"></item>
+    <item android:drawable="@mipmap/huiservicefalse" android:state_checked="false"></item>
+
+</selector>

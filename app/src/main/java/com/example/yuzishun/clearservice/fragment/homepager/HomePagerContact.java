@@ -17,6 +17,5 @@ public class HomePagerContact {
     }
     public interface IHomePagerPresenter extends MvpPresenterFragment<IHomePagerView> {
 
-        void initView(TextView textView);
     }
 }

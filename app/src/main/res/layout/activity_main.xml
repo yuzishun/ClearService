@@ -7,62 +7,87 @@
     android:orientation="vertical"
     tools:context="com.example.yuzishun.clearservice.MainActivity">
 
-    <com.example.yuzishun.clearservice.Custom.MyViewPager
-        android:id="@+id/myviewpager"
-        android:layout_weight="1"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    </com.example.yuzishun.clearservice.Custom.MyViewPager>
+    </FrameLayout>
 
 
     <RadioGroup
         android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="11"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="horizontal">
 
         <RadioButton
-            android:layout_weight="1"
             android:id="@+id/id_tab_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null"
-            android:textColor="@drawable/color_homepager"
-            android:gravity="center"
             android:drawablePadding="@dimen/d4"
             android:drawableTop="@drawable/home_button_selector"
-            android:text="@string/HomePager_id"
-            android:textSize="@dimen/f10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:layout_weight="1"
             android:gravity="center"
+            android:text="@string/HomePager_id"
+            android:textColor="@drawable/color_homepager"
+            android:textSize="@dimen/f10" />
+
+        <RadioButton
             android:id="@+id/id_tab_02"
-            android:textSize="@dimen/f10"
-            android:textColor="@drawable/color_homepager"
-            android:drawablePadding="@dimen/d4"
-            android:drawableTop="@drawable/home_button_selector"
-            android:button="@null"
-            android:text="@string/HomePager_id"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:id="@+id/id_tab_03"
-            android:textSize="@dimen/f10"
-            android:textColor="@drawable/color_homepager"
-            android:drawablePadding="@dimen/d4"
-            android:drawableTop="@drawable/home_button_selector"
             android:button="@null"
-            android:text="@string/HomePager_id"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/service_button_selector"
+            android:gravity="center"
+            android:text="@string/Service_hui"
+            android:textColor="@drawable/color_homepager"
+            android:textSize="@dimen/f10" />
+
+        <RadioButton
+            android:id="@+id/id_tab_03"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/sodexho_button_selector"
+            android:gravity="center"
+            android:text="@string/sodexho_id"
+            android:textColor="@drawable/color_homepager"
+            android:textSize="@dimen/f10" />
+
+        <RadioButton
+            android:id="@+id/id_tab_04"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="@dimen/d4"
+            android:drawableTop="@drawable/my_button_selector"
+            android:gravity="center"
+            android:text="@string/my_id"
+            android:textColor="@drawable/color_homepager"
+            android:textSize="@dimen/f10" />
 
 
     </RadioGroup>
+
+
+    <!--<com.example.bruce.verifycodeviewdemo.VerifyCodeView-->
+        <!--android:id="@+id/verify_code_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--验证码-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:layout_marginTop="80dp"/>-->
 
 
 </LinearLayout>

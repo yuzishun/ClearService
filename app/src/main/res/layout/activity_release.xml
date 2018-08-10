@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.myframnet_Activity.ReleaseActivity">
+    <include layout="@layout/title_text"></include>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d40">
+        <RelativeLayout
+            android:layout_weight="1.8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="服务分类"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f14"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/right_icon"
+
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_weight="1.7"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_marginRight="@dimen/d25"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.example.yuzishun.clearservice.Custom.CustomEditText
+                    android:layout_width="match_parent"
+                    android:maxLength="15"
+                    android:id="@+id/title_service"
+                    android:hint="服务标题"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/f14"
+                    android:background="@drawable/edit_service"
+                    android:layout_margin="@dimen/d5"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="1.1"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_marginRight="@dimen/d25"
+                android:layout_marginTop="@dimen/d5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.example.yuzishun.clearservice.Custom.CustomEditTexttwo
+                    android:layout_width="match_parent"
+                    android:maxLength="15"
+                    android:hint="填写您需要的服务内容"
+
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/f14"
+                    android:background="@drawable/edit_service"
+                    android:layout_margin="@dimen/d5"
+                    android:layout_height="match_parent" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1.5"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@mipmap/addphoto"
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginTop="@dimen/d15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/everoneActivity"
+            android:layout_height="@dimen/d10" />
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_weight="1.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="服务时长"
+                        android:textColor="@color/black_shou"
+                        android:textSize="@dimen/f14"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="如1小时/1周/1月"
+
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/f12"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@mipmap/right_icon"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/gray"
+                    android:layout_height="1dp" />
+                <LinearLayout
+                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_weight="1.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:text="服务时间"
+                            android:textColor="@color/black_shou"
+                            android:textSize="@dimen/f14"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/d25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:src="@mipmap/right_icon"
+
+                            android:layout_width="@dimen/d15"
+                            android:layout_height="@dimen/d15" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:src="@mipmap/loction"
+                        android:layout_marginLeft="@dimen/d25"
+                        android:id="@+id/iamge_loction"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15" />
+
+
+                    <TextView
+                        android:text="请选择服务地址"
+                        android:layout_toRightOf="@+id/iamge_loction"
+                        android:textColor="@color/black_shou"
+                        android:textSize="@dimen/f14"
+                        android:layout_marginLeft="@dimen/d5"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+            <LinearLayout
+                android:layout_weight="1.7"
+                android:background="@color/everoneActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:text="发布"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginRight="@dimen/d30"
+                    android:textColor="@drawable/button_color_login_rigsg"
+                    android:background="@drawable/login_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

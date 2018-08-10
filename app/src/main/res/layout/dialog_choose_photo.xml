@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cFFFFFFFF"
+    android:fitsSystemWindows="true"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/button_camera"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg_selector"
+        android:gravity="center"
+        android:text="@string/cream_id"
+        android:textColor="@color/c333333"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cF5F5F5" />
+
+    <TextView
+        android:id="@+id/button_photo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg_selector"
+        android:gravity="center"
+        android:text="@string/photo_id"
+        android:textColor="@color/c333333"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/cF5F5F5" />
+
+    <TextView
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/item_bg_selector"
+        android:gravity="center"
+        android:text="@string/cancl_id"
+        android:textColor="@color/c333333"
+        android:textSize="16sp" />
+
+</LinearLayout>

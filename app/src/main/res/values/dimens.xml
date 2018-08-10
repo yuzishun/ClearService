@@ -18,6 +18,12 @@
     <dimen name="f6">6sp</dimen>
     <dimen name="f4">4sp</dimen>
     <dimen name="f2">2sp</dimen>
+    <dimen name="f22">22sp</dimen>
+    <dimen name="f23">23sp</dimen>
+    <dimen name="f24">24sp</dimen>
+    <dimen name="f25">25sp</dimen>
+    <dimen name="f26">26sp</dimen>
+    <dimen name="f27">27sp</dimen>
 
     <!--间距-->
     <dimen name="line">0.5dp</dimen>
@@ -31,7 +37,10 @@
     <dimen name="d15">15dp</dimen>
     <dimen name="d18">18dp</dimen>
     <dimen name="d20">20dp</dimen>
+    <dimen name="d22">22dp</dimen>
     <dimen name="d25">25dp</dimen>
+    <dimen name="d28">28dp</dimen>
+
     <dimen name="d5">5dp</dimen>
     <dimen name="d8">8dp</dimen>
     <dimen name="d50">50dp</dimen>
@@ -44,6 +53,13 @@
     <dimen name="d30">30dp</dimen>
     <dimen name="d10">10dp</dimen>
     <dimen name="d45">45dp</dimen>
+    <dimen name="d120">120dp</dimen>
     <dimen name="d130">130dp</dimen>
+    <dimen name="d180">180dp</dimen>
+
     <dimen name="d200">200dp</dimen>
+    <dimen name="d220">220dp</dimen>
+
+    <dimen name="d250">250dp</dimen>
+
 </resources>

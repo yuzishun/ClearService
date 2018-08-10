@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsActivity">
+   <ScrollView
+       android:layout_marginBottom="@dimen/d40"
+       android:fillViewport="true"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layout_lun"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/roll_view_pager"
+                android:src="@mipmap/icon_woman_false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+        </RelativeLayout>
+        
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d100">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/d25"
+                        android:layout_marginRight="@dimen/d25"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:text="家庭保洁2小时"
+                            android:textColor="@color/black_shou"
+                            android:textSize="@dimen/f18"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="开始时间:2018/10/01 10:00:00"
+                            android:textColor="@color/gray_text"
+                            android:textSize="@dimen/f12"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_weight="1.5"
+                        android:layout_marginLeft="@dimen/d25"
+                        android:layout_marginRight="@dimen/d25"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:text="¥30"
+                            android:textColor="@color/red_one"
+                            android:textSize="@dimen/f16"
+                            android:id="@+id/money"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="¥45"
+                            android:layout_toRightOf="@+id/money"
+                            android:textColor="@color/red_one"
+                            android:textSize="@dimen/f12"
+                            android:layout_marginLeft="@dimen/d10"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="待开团"
+                            android:textColor="@color/gray_text"
+                            android:textSize="@dimen/f12"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_marginRight="@dimen/d25"
+                    android:background="@color/gray_line"
+                    android:layout_height="1dp" />
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="服务地区范围"
+                        android:id="@+id/dqu"
+                        android:textColor="@color/black_shou"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/f14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="上海市松江市"
+                        android:layout_toRightOf="@+id/dqu"
+                        android:layout_marginLeft="@dimen/d15"
+                        android:textColor="@color/minute_black"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/f12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d40">
+                <TextView
+                    android:text="服务内容"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/f14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_marginRight="@dimen/d25"
+                android:background="@color/gray_line"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_marginRight="@dimen/d25"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+                    android:id="@+id/lenge_photo"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/everoneActivity"
+                android:layout_height="@dimen/d10" />
+            
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d150">
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="订购须知"
+                        android:textColor="@color/black_shou"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/f14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_marginRight="@dimen/d25"
+                    android:background="@color/gray_line"
+                    android:layout_height="1dp" />
+
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="1.拼团服务订购后无法取消，若拼团失败，将全额退款到您支付的账户"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/one"
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/f12"
+
+                        android:layout_marginTop="@dimen/d20"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="2.为了保障您的利益，所有费用请通过阿拉丁平台支付"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/one"
+                        android:textSize="@dimen/f12"
+
+                        android:textColor="@color/gray_text"
+
+                        android:layout_marginTop="@dimen/d10"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/everoneActivity"
+                    android:layout_height="@dimen/d10" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+
+
+   </ScrollView>
+
+    <RelativeLayout
+        android:layout_weight="1.8"
+
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/layout_can"
+            android:background="@color/blue2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:text="我要参团"
+            android:textSize="@dimen/f16"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_Alpha"
+        android:background="#00000000"
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d40">
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back_xx"
+            android:layout_marginLeft="@dimen/d25"
+            android:layout_width="@dimen/d25"
+            android:layout_height="@dimen/d25" />
+    </RelativeLayout>
+
+</RelativeLayout>

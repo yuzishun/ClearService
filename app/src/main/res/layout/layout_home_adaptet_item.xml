@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="150dp"
+    android:background="@color/everoneActivity"
+    android:layout_height="210dp">
+
+
+    <LinearLayout
+        android:background="@drawable/home_one"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/d10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@mipmap/fenlei"
+                android:layout_margin="@dimen/d8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="家庭保洁1小时"
+                    android:textSize="@dimen/f12"
+                    android:layout_marginLeft="@dimen/d8"
+                    android:textColor="@color/black_shou"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+           <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+               <TextView
+                   android:text="剩余时间：12:32:24"
+                   android:textSize="@dimen/f10"
+                   android:layout_marginLeft="@dimen/d8"
+                   android:textColor="@color/gray_text"
+                   android:layout_centerVertical="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="¥28"
+                    android:id="@+id/xianjia"
+                    android:textSize="@dimen/f12"
+                    android:layout_marginLeft="@dimen/d8"
+                    android:textColor="@color/red_one"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="原价35"
+                    android:id="@+id/yuanjia"
+                    android:layout_toRightOf="@+id/xianjia"
+                    android:textSize="@dimen/f10"
+                    android:layout_marginLeft="@dimen/d8"
+                    android:textColor="@color/gray_text"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="参加人员8人，还差两人开团"
+                    android:textSize="@dimen/f10"
+                    android:layout_marginLeft="@dimen/d8"
+                    android:textColor="@color/gray_text"
+                    android:layout_marginRight="@dimen/d8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

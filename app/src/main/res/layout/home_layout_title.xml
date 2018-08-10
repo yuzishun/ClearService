@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/blue2"
+    android:orientation="horizontal"
+    android:layout_height="@dimen/d40">
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iamge_loction"
+            android:src="@mipmap/loction_white"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/d18"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_height="@dimen/d18" />
+        <TextView
+            android:text="加州水郡"
+            android:textSize="@dimen/f14"
+            android:id="@+id/text_s"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/d5"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iamge_loction"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_toRightOf="@+id/text_s"
+            android:layout_marginLeft="@dimen/d5"
+            android:src="@mipmap/select_white"
+            android:layout_width="@dimen/d12"
+            android:layout_centerVertical="true"
+
+            android:layout_height="@dimen/d18" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_message"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/d15"
+            android:src="@mipmap/message"
+            android:layout_width="@dimen/d18"
+            android:layout_height="@dimen/d18" />
+    </RelativeLayout>
+
+</LinearLayout>

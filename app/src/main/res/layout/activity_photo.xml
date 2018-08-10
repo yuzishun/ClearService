@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.forget.PhotoActivity">
+
+    <include layout="@layout/tooal_title"></include>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_weight="2.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/w2PassWord_id"
+                android:id="@+id/Text_code"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f24"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="@string/accton_id"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/Text_code"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/f16"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginTop="@dimen/d1"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="2.8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:id="@+id/layout_country"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="@string/id_86"
+                        android:textSize="@dimen/f13"
+                        android:textColor="@color/black_shou"
+                        android:id="@+id/country_number"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:src="@mipmap/select"
+                        android:layout_marginRight="@dimen/d5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20px" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_marginTop="@dimen/d10"
+                    android:layout_marginBottom="@dimen/d10"
+                    android:background="@color/gray"
+                    android:layout_marginRight="@dimen/d10"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.example.yuzishun.clearservice.Custom.ClearEditText
+                        android:background="@null"
+                        android:hint="@string/tel_id"
+                        android:id="@+id/photo_number"
+                        android:textSize="@dimen/f16"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/d30"
+            android:layout_marginRight="@dimen/d30"
+            android:background="@color/gray"
+            android:layout_height="1dp" />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/next_id"
+                android:id="@+id/button_getResule"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:layout_marginTop="@dimen/d30"
+                android:textColor="@drawable/button_color_login_rigsg"
+                android:background="@drawable/login_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

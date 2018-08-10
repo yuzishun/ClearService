@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/d15"
+        android:layout_weight="7"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cancel_"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f18"
+                android:gravity="center"
+
+                android:text="@string/cancl_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textSize="@dimen/f18"
+                android:textColor="@color/black_shou"
+                android:text="@string/chosse"
+
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/sure_"
+                android:textSize="@dimen/f18"
+                android:gravity="center"
+
+                android:text="@string/sure_id"
+                android:textColor="@color/black_shou"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:textColor="@color/gray_line"
+        android:layout_height="@dimen/d1" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/d10"
+        android:layout_marginBottom="@dimen/d20"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridView
+            android:id="@+id/gridview_id"
+            android:horizontalSpacing="15dp"
+            android:verticalSpacing="15dp"
+            android:gravity="center"
+            android:numColumns="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </GridView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,12 +1,16 @@
 package com.example.yuzishun.clearservice.base;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+
+import com.example.yuzishun.clearservice.utils.StatusBarUtil;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -78,5 +82,6 @@ public abstract class Basefragment extends Fragment {
         }
         super.onDestroyView();
     }
+
 }
 
