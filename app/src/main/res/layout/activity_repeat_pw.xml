@@ -71,7 +71,7 @@
             android:layout_marginRight="@dimen/d30"
             android:layout_marginLeft="@dimen/d30"
             android:background="@color/gray"
-            android:layout_height="1dp" />
+            android:layout_height="0.1dp" />
         <RelativeLayout
             android:layout_weight="1"
             android:layout_width="match_parent"

@@ -4,10 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -45,6 +48,7 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        initState();
         setBreoadcast();
         //逻辑实例化
         mainPresenter = new MainPresenterImpl();
@@ -55,8 +59,6 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
     public void initData() {
 //        mainPresenter.Total(mViewPager,mRg_main,fragmentManager);
         initFragment();
-
-
     }
 
     @Override
@@ -104,8 +106,6 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
         }
         FragmentManager    fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft              = fragmentManager.beginTransaction();
-
-
         //隐藏
         ft.hide(mFragments[mIndex]);
         //判断是否添加
@@ -114,11 +114,9 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
         }else {
             ft.show(mFragments[index]);
         }
-
         ft.commit();
         //再次赋值
         mIndex=index;
-
     }
     @OnClick({R.id.id_tab_01, R.id.id_tab_02, R.id.id_tab_03, R.id.id_tab_04})
     public void onClick(View view) {
@@ -137,5 +135,17 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
                 break;
         }
 
+    }
+    private void initState() {
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            //取消设置透明状态栏,使 ContentView 内容不再沉浸到状态栏下
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //设置状态栏颜色
+            window.setStatusBarColor(getResources().getColor(R.color.blue2));
+        }
     }
 }

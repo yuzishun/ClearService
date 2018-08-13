@@ -6,8 +6,391 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.example.yuzishun.clearservice.activity.myframnet_Activity.OrderdetailsActivity">
+
+    <RelativeLayout
+        android:id="@+id/layout_title"
+        android:orientation="vertical"
+        android:background="@color/blue2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d40">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40">
+            <TextView
+                android:text="111"
+                android:id="@+id/title_text"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/f16"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/image_back"
+            android:layout_centerVertical="true"
+            android:layout_width="50dp"
+            android:gravity="center"
+            android:layout_height="@dimen/d40">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:src="@mipmap/back_white"
+                android:layout_width="@dimen/d15"
+                android:layout_height="@dimen/d15" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.example.yuzishun.clearservice.Custom.MyScrollView
+        android:id="@+id/scroll_view"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:background="@color/blue2"
+           android:layout_height="120dp">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_weight="1.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:background="@mipmap/nosucess"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="@dimen/d50"
+                        android:layout_height="@dimen/d50" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="拼团还未成功"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/f14"
+                        android:layout_width="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+           <RelativeLayout
+               android:layout_weight="1.5"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <TextView
+                   android:text="通知邻里伙伴都来拼单吧"
+                   android:textColor="@color/gray___"
+                   android:textSize="@dimen/f12"
+                   android:layout_width="wrap_content"
+                   android:layout_centerHorizontal="true"
+                   android:layout_height="wrap_content" />
+
+
+               <TextView
+                   android:text="拼团订单"
+                   android:textSize="@dimen/f12"
+                   android:textColor="@color/gray___"
+                    android:layout_alignParentRight="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="@dimen/d5"
+                   android:layout_marginRight="@dimen/d15"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+           </RelativeLayout>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/d80">
+
+            <RelativeLayout
+                android:layout_weight="1.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/black_shou"
+                    android:textSize="@dimen/f12"
+                    android:text="待成团"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+           <LinearLayout
+               android:layout_weight="1"
+               android:orientation="horizontal"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <TextView
+                   android:text="已经参团5人，还差4人拼成，剩余时间："
+                   android:textSize="@dimen/f12"
+                   android:textColor="@color/black_shou"
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <TextView
+                   android:text="02:42:23"
+                   android:textSize="@dimen/f12"
+                   android:textColor="@color/blue2"
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+           </LinearLayout>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:background="@color/everoneActivity"
+               android:layout_height="@dimen/d10" />
+
+       </LinearLayout>
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/d120">
+           <LinearLayout
+               android:layout_weight="1"
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <LinearLayout
+                   android:layout_weight="2"
+                   android:layout_marginLeft="@dimen/d25"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <ImageView
+                       android:background="@mipmap/cehsi"
+                       android:layout_marginTop="@dimen/d5"
+                       android:layout_marginRight="@dimen/d5"
+                       android:layout_marginBottom="@dimen/d5"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent" />
+
+
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_weight="1"
+                   android:orientation="vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <LinearLayout
+                       android:gravity="bottom"
+                        android:layout_weight="1"
+                       android:layout_marginLeft="@dimen/d5"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+                       <TextView
+                           android:text="家庭保洁1小时"
+                           android:textSize="@dimen/f14"
+                           android:textColor="@color/black_shou"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_marginLeft="@dimen/d5"
+                       android:layout_weight="1"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+                       <TextView
+                           android:text="服务时间：2018/06/14/08:00——09:00"
+                           android:textSize="@dimen/f12"
+                           android:textColor="@color/gray_text"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+                   </LinearLayout>
+               </LinearLayout>
+
+
+           </LinearLayout>
+           <LinearLayout
+               android:layout_weight="1.5"
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="服务总价"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/black_shou"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="¥30.00"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/black_shou"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/d25"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+               <RelativeLayout
+                   android:layout_weight="1"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <TextView
+                       android:text="实付"
+                       android:textSize="@dimen/f12"
+                       android:textColor="@color/black_shou"
+                       android:layout_centerVertical="true"
+                       android:layout_marginLeft="@dimen/d25"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+                   <TextView
+                       android:text="¥30.00"
+                       android:textSize="@dimen/f12"
+                       android:textColor="@color/blue2"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="@dimen/d25"
+                       android:layout_alignParentRight="true"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+
+               </RelativeLayout>
+           </LinearLayout>
+
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:background="@color/everoneActivity"
+           android:layout_height="@dimen/d10" />
+
+       <LinearLayout
+           android:id="@+id/layout_chosse"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/d60">
+
+           <RelativeLayout
+               android:layout_weight="0.4"
+               android:paddingLeft="@dimen/d25"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <ImageView
+                   android:id="@+id/loction"
+                   android:src="@mipmap/loction_gray"
+                   android:layout_centerVertical="true"
+                   android:layout_width="@dimen/d20"
+                   android:layout_height="@dimen/d20" />
+               <TextView
+                   android:id="@+id/tel_xx"
+                   android:layout_centerVertical="true"
+                   android:layout_width="wrap_content"
+                   android:background="@null"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginBottom="@dimen/d15"
+                   android:gravity="center"
+                   android:text="@string/tel_tel"
+                   android:paddingLeft="@dimen/d10"
+                   android:layout_toRightOf="@+id/loction"
+                   android:layout_height="wrap_content" />
+
+               <TextView
+                   android:id="@+id/name"
+                   android:paddingLeft="@dimen/d10"
+                   android:layout_toRightOf="@+id/loction"
+                   android:text="@string/name_idid"
+                   android:layout_above="@+id/tel_xx"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+               <TextView
+                   android:text="@string/iphone_id"
+                   android:layout_toRightOf="@+id/name"
+                   android:layout_above="@+id/tel_xx"
+                   android:layout_marginLeft="@dimen/d20"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+           </RelativeLayout>
+
+
+           <RelativeLayout
+               android:layout_weight="2"
+               android:gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <ImageView
+                   android:src="@mipmap/right_icon"
+                    android:visibility="gone"
+                   android:layout_width="@dimen/d15"
+                   android:layout_height="@dimen/d15" />
+           </RelativeLayout>
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:background="@color/everoneActivity"
+           android:layout_height="@dimen/d10" />
+
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:background="@color/white"
+           android:layout_marginTop="@dimen/d15"
+           android:layout_marginBottom="@dimen/d15"
+           android:layout_height="350dp">
+           <include layout="@layout/time_zhou_item">
+
+
+           </include>
+
+       </LinearLayout>
+       <TextView
+           android:layout_width="match_parent"
+           android:background="@color/everoneActivity"
+           android:layout_height="@dimen/d10" />
+       <LinearLayout
+           android:orientation="vertical"
+           android:background="@color/white"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+        <include layout="@layout/layout_orther_item"></include>
+
+
+       </LinearLayout>
+
+
+   </LinearLayout>
+
+
+    </com.example.yuzishun.clearservice.Custom.MyScrollView>
+
+
+
+
 
 
 </LinearLayout>

@@ -67,7 +67,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:background="@color/gray_line"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
             <LinearLayout
                 android:layout_weight="2"
                 android:orientation="horizontal"
@@ -109,7 +109,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:background="@color/gray_line"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
             <LinearLayout
                 android:id="@+id/layout_search"
                 android:layout_weight="2"
@@ -168,7 +168,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:background="@color/gray_line"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
             <RelativeLayout
                 android:layout_weight="1.5"
                 android:layout_width="match_parent"

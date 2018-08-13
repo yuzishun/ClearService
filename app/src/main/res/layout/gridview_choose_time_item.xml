@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:text="时间"
+        android:id="@+id/textview"
+        android:checked="false"
+        android:textStyle="normal"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:background="@drawable/home_button_select"
+        android:textColor="@drawable/home_button_color"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/d25" />
+
+
+</LinearLayout>

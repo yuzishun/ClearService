@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yuzishun.clearservice.R;
+import com.example.yuzishun.clearservice.activity.login.LoginActivity;
 import com.example.yuzishun.clearservice.base.BaseMvpActivity;
 import com.example.yuzishun.clearservice.present.MvpPresenter;
+import com.example.yuzishun.clearservice.tools.CountryActivity;
+import com.example.yuzishun.clearservice.utils.SpUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +32,12 @@ public class SplachActivity extends BaseMvpActivity {
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        //使用sp初始化选择城市选项
+        SpUtil spUtil = new SpUtil(SplachActivity.this,"country_number");
+        String country_nbumber="+86";
+        spUtil.putString("countryNumber",country_nbumber);
+        SpUtil spUtil2 = new SpUtil(SplachActivity.this,"postion");
+        spUtil2.remove("postion");
         presenter = new SplachPresenterImpl();
         presenter.initView(text_time,this);
 

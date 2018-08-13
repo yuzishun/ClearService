@@ -117,7 +117,7 @@
                 android:textColor="@color/blue2"
                 android:textSize="@dimen/f14"
 
-                android:background="@drawable/pay_button"
+                android:background="@drawable/home_button"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/d30" />
 

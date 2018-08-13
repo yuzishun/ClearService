@@ -8,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.utils.StatusBarUtil;
 
 import butterknife.ButterKnife;

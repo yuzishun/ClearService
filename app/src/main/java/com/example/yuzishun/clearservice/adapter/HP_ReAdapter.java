@@ -25,6 +25,7 @@ import com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsA
 import java.util.HashMap;
 import java.util.List;
 
+import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -60,73 +61,16 @@ public class HP_ReAdapter extends RecyclerView.Adapter<HP_ReAdapter.ViewHolder> 
                 mContext.startActivities(new Intent[]{new Intent(mContext, DetailsActivity.class)});
             }
         });
-//        holder.videoView.setVisibility(View.GONE);
-//        holder.iv_first_frame.setVisibility(View.VISIBLE);
-//        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-//                RelativeLayout.LayoutParams.FILL_PARENT,
-//                RelativeLayout.LayoutParams.FILL_PARENT);
-//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-//        holder.videoView.setLayoutParams(layoutParams);
-//        holder.videoView.setVideoPath(url);
-//        holder.videoView.setScaleY(PlaybackParams.AUDIO_FALLBACK_MODE_FAIL);
-//        holder.videoView.setScaleX(PlaybackParams.AUDIO_FALLBACK_MODE_FAIL);
-
-//        holder..setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                mp.setOnInfoListener(new MediaPlayer.OnInfoListener() {
-//                    @Override
-//                    public boolean onInfo(MediaPlayer mp, int what, int extra) {
-//                        if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START)
-//                            videoView.setBackgroundColor(Color.TRANSPARENT);
-//                        return true;
-//                    }
-//                });
-
-
-
 
         holder.videoView.setUp(url
                 , JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "饺子闭眼睛");
         holder.videoView.thumbImageView.setImageResource(R.mipmap.ceshitwo);
 
-//        Glide.with(mContext)
-//                .load(holder.videoView.thumbImageView)
-//                .into(R.mipmap.cehsi);
-//        holder.videoView.thumbImageView.setI("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640");
 
 
-//        holder.videoView.setOnCompletionListener(new IMediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(IMediaPlayer iMediaPlayer) {
-//                //                //播放结束后的动作
-//                holder.statr.setVisibility(View.VISIBLE);
-//                holder.videoView.setVisibility(View.GONE);
-//                holder.iv_first_frame.setVisibility(View.VISIBLE);
-//
-//            }
-//        });
-
-        //获取第一桢
-//        holder.iv_first_frame.setVisibility(View.VISIBLE);
-////        String path  = Environment.getExternalStorageDirectory().getPath();
-//        MediaMetadataRetriever media = new MediaMetadataRetriever();
-//        media.setDataSource(url,new HashMap<String, String>());
-//        Bitmap bitmap = media.getFrameAtTime();
-//        holder.iv_first_frame.setImageBitmap(bitmap);
-
-
-//        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-//
-//        mmr.setDataSource(mContext.getApplicationContext(),Uri.parse(url));
-//
-//        Bitmap bitmap = mmr.getFrameAtTime();//获取第一帧图片
-//        holder.iv_first_frame.setImageBitmap(bitmap);
-//        mmr.release();//释放资源
-
+    }
+    public void PauseStopVideo(){
+        JZVideoPlayer.releaseAllVideos();
     }
 
     @Override

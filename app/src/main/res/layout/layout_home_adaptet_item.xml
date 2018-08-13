@@ -6,7 +6,7 @@
 
 
     <LinearLayout
-        android:background="@drawable/home_one"
+        android:background="@drawable/layout_border"
         android:orientation="vertical"
         android:layout_margin="@dimen/d10"
         android:layout_width="match_parent"

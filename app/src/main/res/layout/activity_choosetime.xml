@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.choosetimeActivity">
+    <include layout="@layout/title_text"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_weight="5"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/teablayout"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/color_text_selected"
+                    app:tabSelectedTextColor="@color/color_text_selected"
+                    app:tabMode="fixed"
+                    app:tabTextColor="@color/gray_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+            </android.support.design.widget.TabLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:background="@color/everoneActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v4.view.ViewPager>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="确定"
+                android:id="@+id/suer"
+                android:layout_marginTop="@dimen/d30"
+                android:layout_marginLeft="@dimen/d30"
+                android:layout_marginRight="@dimen/d30"
+                android:textColor="@drawable/button_color_login_rigsg"
+                android:background="@drawable/login_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/suer"
+                android:gravity="center"
+                android:textColor="@color/gray_text"
+                android:textSize="@dimen/f14"
+                android:layout_marginTop="@dimen/d25"
+                android:text="实际到达时间可能会有30分钟的浮动"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

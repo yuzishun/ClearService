@@ -90,11 +90,19 @@
                     android:hint="服务标题"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/f14"
-                    android:background="@drawable/edit_service"
-                    android:layout_margin="@dimen/d5"
+                    android:background="@null"
+                    android:layout_marginRight="@dimen/d5"
+                    android:layout_marginBottom="@dimen/d5"
+                    android:layout_marginTop="@dimen/d5"
                     android:layout_height="match_parent" />
 
             </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/gray"
+                android:layout_marginRight="@dimen/d25"
+                android:layout_marginLeft="@dimen/d25"
+                android:layout_height="0.1dp" />
             <LinearLayout
                 android:layout_weight="1.1"
                 android:layout_marginLeft="@dimen/d25"
@@ -104,13 +112,14 @@
                 android:layout_height="match_parent">
                 <com.example.yuzishun.clearservice.Custom.CustomEditTexttwo
                     android:layout_width="match_parent"
-                    android:maxLength="15"
                     android:hint="填写您需要的服务内容"
-
+                    android:gravity="top"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/f14"
-                    android:background="@drawable/edit_service"
-                    android:layout_margin="@dimen/d5"
+                    android:background="@null"
+                    android:layout_marginRight="@dimen/d5"
+                    android:layout_marginBottom="@dimen/d5"
+                    android:layout_marginTop="@dimen/d5"
                     android:layout_height="match_parent" />
 
 
@@ -122,7 +131,7 @@
                 android:layout_height="match_parent">
                 <ImageView
                     android:src="@mipmap/addphoto"
-                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginLeft="@dimen/d25"
                     android:layout_marginTop="@dimen/d15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -199,7 +208,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:background="@color/gray"
-                    android:layout_height="1dp" />
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_height="0.1dp" />
                 <LinearLayout
                     android:background="@color/white"
                     android:layout_weight="1"

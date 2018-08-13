@@ -107,7 +107,6 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_marginLeft="@dimen/d25"
-                    android:text="请在服务时间前两个小时前选择商家并进行下单，否则发布失效"
                     android:textColor="#da760b"
                     android:textSize="@dimen/f10"
                     android:layout_width="wrap_content"

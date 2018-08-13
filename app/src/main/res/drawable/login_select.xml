@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--所有的大按钮合集-->
 
     <item android:drawable="@drawable/login_change" android:state_enabled="false"></item>
     <item android:drawable="@drawable/login_shapetrue" android:state_pressed="false"/>

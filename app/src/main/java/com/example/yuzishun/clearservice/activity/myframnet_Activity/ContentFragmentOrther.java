@@ -63,8 +63,7 @@ public class ContentFragmentOrther extends Fragment implements listActivityAdapt
     @Override
     public void onItemClick(int position) {
 
-//        startActivity(new Intent(getContext(),DetailsActivity.class));
-        
+        startActivity(new Intent(getContext(),OrderdetailsActivity.class));
 
     }
 }

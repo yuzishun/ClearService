@@ -33,10 +33,7 @@ import java.util.List;
 import java.util.Observable;
 
 import butterknife.BindView;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -167,4 +164,18 @@ public class ServiceFragment extends BaseMvpFragment implements View.OnClickList
         }
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hp_reAdapter.PauseStopVideo();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        hp_reAdapter.PauseStopVideo();
+
+    }
+
 }

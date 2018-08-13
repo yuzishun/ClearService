@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsActivity">
-   <ScrollView
+   <com.example.yuzishun.clearservice.Custom.MyScrollView
+       android:id="@+id/scrollview"
        android:layout_marginBottom="@dimen/d40"
        android:fillViewport="true"
        android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                     android:layout_marginLeft="@dimen/d25"
                     android:layout_marginRight="@dimen/d25"
                     android:background="@color/gray_line"
-                    android:layout_height="1dp" />
+                    android:layout_height="0.1dp" />
 
                 <RelativeLayout
                     android:layout_marginLeft="@dimen/d25"
@@ -164,7 +164,7 @@
                 android:layout_marginLeft="@dimen/d25"
                 android:layout_marginRight="@dimen/d25"
                 android:background="@color/gray_line"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
 
             <LinearLayout
                 android:layout_marginRight="@dimen/d25"
@@ -208,7 +208,7 @@
                     android:layout_marginLeft="@dimen/d25"
                     android:layout_marginRight="@dimen/d25"
                     android:background="@color/gray_line"
-                    android:layout_height="1dp" />
+                    android:layout_height="0.1dp" />
 
                 <RelativeLayout
                     android:layout_marginLeft="@dimen/d25"
@@ -250,7 +250,7 @@
         </LinearLayout>
 
 
-   </ScrollView>
+   </com.example.yuzishun.clearservice.Custom.MyScrollView>
 
     <RelativeLayout
         android:layout_weight="1.8"
@@ -276,8 +276,7 @@
 
     <RelativeLayout
         android:id="@+id/layout_Alpha"
-        android:background="#00000000"
-
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/d40">
 
@@ -290,5 +289,6 @@
             android:layout_width="@dimen/d25"
             android:layout_height="@dimen/d25" />
     </RelativeLayout>
+
 
 </RelativeLayout>

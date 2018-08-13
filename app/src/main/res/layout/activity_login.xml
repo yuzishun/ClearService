@@ -83,7 +83,7 @@
 
                 </LinearLayout>
                 <TextView
-                    android:layout_width="1dp"
+                    android:layout_width="0.1dp"
                     android:layout_marginTop="@dimen/d20"
                     android:layout_marginBottom="@dimen/d10"
                     android:background="@color/gray"
@@ -113,7 +113,7 @@
                 android:layout_marginRight="@dimen/d30"
                 android:layout_marginLeft="@dimen/d30"
                 android:background="@color/gray"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
 
             <RelativeLayout
                 android:layout_marginLeft="@dimen/d30"

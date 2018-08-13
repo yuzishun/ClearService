@@ -23,6 +23,8 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
     LinearLayout layout_chosse;
     @BindView(R.id.paylayout)
     LinearLayout paylayout;
+    @BindView(R.id.choosetime)
+    LinearLayout choosetime;
     @Override
     public int intiLayout() {
         return R.layout.activity_submission;
@@ -35,6 +37,7 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
         image_back.setOnClickListener(this);
         layout_chosse.setOnClickListener(this);
         paylayout.setOnClickListener(this);
+        choosetime.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +59,10 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
             case R.id.paylayout:
 
                 startActivity(new Intent(this,PayActivity.class));
+                break;
+            case R.id.choosetime:
+                
+                startActivity(new Intent(this,choosetimeActivity.class));
                 break;
         }
     }

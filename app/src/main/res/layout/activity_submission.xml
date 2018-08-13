@@ -97,6 +97,7 @@
                 android:background="@color/everoneActivity"
                 android:layout_height="@dimen/d10" />
             <LinearLayout
+                android:id="@+id/choosetime"
                 android:layout_weight="1.3"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

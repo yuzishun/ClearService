@@ -141,7 +141,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:background="@color/gray_line"
-                android:layout_height="1dp" />
+                android:layout_height="0.1dp" />
             <LinearLayout
                 android:background="@color/white"
                 android:layout_weight="0.8"
@@ -384,7 +384,7 @@
 
             </LinearLayout>
             <TextView
-                android:layout_width="1dp"
+                android:layout_width="0.1dp"
                 android:layout_marginBottom="@dimen/d10"
                 android:layout_marginTop="@dimen/d10"
 
@@ -487,7 +487,7 @@
         <TextView
             android:layout_width="match_parent"
             android:background="@color/gray_line"
-            android:layout_height="1dp" />
+            android:layout_height="0.1dp" />
         <LinearLayout
             android:background="@color/white"
             android:id="@+id/tel_layout"

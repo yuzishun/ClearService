@@ -53,7 +53,8 @@
         <activity android:name=".activity.myframnet_Activity.RewardonActivity" />
         <activity android:name=".activity.mainfragment_activity.MessageActivity" />
         <activity android:name=".activity.myframnet_Activity.OrtherActivity" />
-        <activity android:name=".activity.myframnet_Activity.OrderdetailsActivity"></activity>
+        <activity android:name=".activity.myframnet_Activity.OrderdetailsActivity" />
+        <activity android:name=".activity.mainfragment_activity.choosetimeActivity"></activity>
     </application>
 
 </manifest>

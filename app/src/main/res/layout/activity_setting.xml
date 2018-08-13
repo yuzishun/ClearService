@@ -167,7 +167,7 @@
         <TextView
             android:layout_width="match_parent"
             android:background="@color/gray_line"
-            android:layout_height="1dp" />
+            android:layout_height="0.1dp" />
         <LinearLayout
             android:id="@+id/layout_opinion"
             android:orientation="horizontal"
@@ -257,7 +257,7 @@
         <TextView
             android:layout_width="match_parent"
             android:background="@color/gray_line"
-            android:layout_height="1dp" />
+            android:layout_height="0.1dp" />
         <LinearLayout
             android:id="@+id/layout_canth"
             android:layout_weight="1"

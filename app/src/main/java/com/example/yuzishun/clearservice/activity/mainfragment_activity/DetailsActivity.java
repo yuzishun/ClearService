@@ -1,5 +1,7 @@
 package com.example.yuzishun.clearservice.activity.mainfragment_activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,19 +9,24 @@ import android.graphics.BitmapRegionDecoder;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+import com.example.yuzishun.clearservice.Custom.MyScrollView;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.base.BaseActivity;
 import com.jude.rollviewpager.RollPagerView;
@@ -32,7 +39,7 @@ import java.io.InputStream;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsActivity extends BaseActivity implements View.OnClickListener {
+public class DetailsActivity extends BaseActivity implements View.OnClickListener, MyScrollView.OnScrollListener {
     @BindView(R.id.layout_can)
     TextView can;
     @BindView(R.id.back)
@@ -43,6 +50,8 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     RollPagerView roll_view_pager;
     @BindView(R.id.layout_Alpha)
     RelativeLayout layout_Alpha;
+    @BindView(R.id.scrollview)
+    MyScrollView scrollview;
     @Override
     public int intiLayout() {
 
@@ -60,8 +69,9 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
         lenge_photo.setImage(ImageSource.resource(R.mipmap.cop));
         lenge_photo.setMinScale(0.1F);
         lenge_photo.setMaxScale(5.0f);
-        layout_Alpha.getBackground().setAlpha(50);
-
+        layout_Alpha.getBackground().setAlpha(0);
+        scrollview.setScrolListener(this);
+        setWindowImmersiveState(this);
     }
 
 
@@ -103,6 +113,23 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
     }
 
+    @Override
+    public void onScroll(int scrollY) {
+        if(scrollY < 100){
+            layout_Alpha.getBackground().setAlpha(0);
+//            back.getBackground().setAlpha(255);
+//            layout_Alpha.getBackground().setAlpha(255);
+        }else if(scrollY >= 100 && scrollY < 860){
+            layout_Alpha.getBackground().setAlpha((scrollY-100)/3);
+//            back.getBackground().setAlpha(255 - (scrollY-100)/3);
+//            roll_view_pager.getBackground().setAlpha(255 - (scrollY-100)/3);
+        }else{
+            layout_Alpha.getBackground().setAlpha(255);
+//            back.getBackground().setAlpha(0);
+//            roll_view_pager.getBackground().setAlpha(0);
+        }
+    }
+
 
     private class TestNormalAdapter extends LoopPagerAdapter {
         private int[] imgs = { //轮播的图片
@@ -140,4 +167,26 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
 
     }
+
+
+    public static int getWindowStateHeight(Context context) {
+        int statusBarHeight1 = -1;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+
+            statusBarHeight1 = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return statusBarHeight1;
+    }
+
+    public static void setWindowImmersiveState(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = activity.getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    }
+
+
 }

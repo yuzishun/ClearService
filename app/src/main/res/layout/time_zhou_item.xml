@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="350dp">
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_one"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d10"
+                android:layout_height="@dimen/d10" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_below="@+id/iamge_one"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="付款成功"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_two"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_below="@+id/iamge_one"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="拼团成功"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_three"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="服务人员上门"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_four"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="校验服务人员身份"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_toLeftOf="@+id/image4"
+                    android:layout_marginRight="@dimen/d4"
+
+                    android:src="@mipmap/right"
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="@dimen/d15" />
+                <TextView
+                    android:text="已校验成功"
+                    android:id="@+id/image4"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:textColor="@color/black_shou"
+                    android:textSize="@dimen/f12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+    android:layout_weight="1"
+        android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_frie"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="确定服务人员上门"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_toLeftOf="@+id/image3"
+                    android:layout_marginRight="@dimen/d4"
+
+                    android:src="@mipmap/right"
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="@dimen/d15" />
+                <TextView
+                    android:text="已确认上门"
+                    android:id="@+id/image3"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:textColor="@color/black_shou"
+                    android:textSize="@dimen/f12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_six"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="开始服务"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_toLeftOf="@+id/image2"
+                    android:layout_marginRight="@dimen/d4"
+
+                    android:src="@mipmap/right"
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="@dimen/d15" />
+            <TextView
+                android:text="已确认开始服务"
+                android:id="@+id/image2"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/d15"
+                android:textColor="@color/black_shou"
+                android:textSize="@dimen/f12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="@dimen/d4"
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_seven"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d8"
+                android:layout_height="@dimen/d8" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="服务人员已经完成服务,待确认"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_toLeftOf="@+id/image1"
+                    android:layout_marginRight="@dimen/d4"
+
+                    android:src="@mipmap/right"
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="@dimen/d15" />
+                <TextView
+                    android:text="系统已自动确认"
+                    android:id="@+id/image1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:textColor="@color/black_shou"
+                    android:textSize="@dimen/f12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+
+                android:background="@mipmap/big_yuan"
+                android:id="@+id/image_ten"
+                android:layout_centerHorizontal="true"
+
+                android:layout_width="@dimen/d10"
+                android:layout_height="@dimen/d10" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="服务完成"
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2018 6-29 20:29:12"
+
+                android:textSize="@dimen/f12"
+                android:textColor="@color/gray_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
