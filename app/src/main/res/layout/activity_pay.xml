@@ -122,7 +122,7 @@
                     android:layout_height="@dimen/d20" />
                 <TextView
                     android:layout_toRightOf="@+id/image_zhifu"
-                    android:text="微信支付"
+                    android:text="支付宝支付"
                     android:textColor="@color/black_shou"
 
                     android:layout_centerVertical="true"

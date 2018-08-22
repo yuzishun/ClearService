@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -19,9 +20,16 @@ import com.example.yuzishun.clearservice.Custom.VerifyCodeView;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.forget.CodeeActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.model.VerificationBean;
+import com.example.yuzishun.clearservice.model.codeBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class CodeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.Verify_Code)
@@ -45,6 +53,7 @@ public class CodeActivity extends BaseActivity implements View.OnClickListener {
     public void initView() {
         ButterKnife.bind(this);
         mText_back.setOnClickListener(this);
+
         mButton_getResule.setOnClickListener(this);
         final MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
         myCountDownTimer.start();
@@ -63,13 +72,54 @@ public class CodeActivity extends BaseActivity implements View.OnClickListener {
         mVerify_Code.setInputCompleteListener(new VerifyCodeView.InputCompleteListener() {
             @Override
             public void inputComplete() {
-                //上一个页面回传过来的验证码的值，做比较，如果一样的话，就跳转，不一样，清空重新输入
 
-                //输入到最后一位判断验证码是否正确，正确的话跳转到设置密码页面，携带上手机号
-                Intent intent = new Intent(CodeActivity.this, PassWordActivity.class);
-                intent.putExtra("number", number);
-                startActivity(intent);
-                finish();
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("phone",number);
+                hashMap.put("sms_type","1");
+                hashMap.put("sms_code","999999");
+                Observer<VerificationBean> observer = new Observer<VerificationBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(VerificationBean verificationBean) {
+                        if(verificationBean.getCode()==200){
+                            Intent intent = new Intent(CodeActivity.this, PassWordActivity.class);
+                            intent.putExtra("number", number);
+                            startActivity(intent);
+                            finish();
+
+                        }else {
+
+                        }
+
+
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("YZS",e.getMessage());
+                        Toast.makeText(CodeActivity.this, "验证码错误,请重新输入", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                };
+                ApiMethods.getVerification(observer,hashMap);
+
+//                //上一个页面回传过来的验证码的值，做比较，如果一样的话，就跳转，不一样，清空重新输入
+//
+//                //输入到最后一位判断验证码是否正确，正确的话跳转到设置密码页面，携带上手机号
+//                Intent intent = new Intent(CodeActivity.this, PassWordActivity.class);
+//                intent.putExtra("number", number);
+//                startActivity(intent);
+//                finish();
 
             }
 

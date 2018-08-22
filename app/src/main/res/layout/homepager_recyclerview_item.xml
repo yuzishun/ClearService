@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/name"
                     android:text="家庭保洁一小时还是和什"
                     android:layout_alignParentBottom="true"
                     android:maxEms="6"
@@ -85,6 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/tuan"
                     android:text="已经参加人员8人，还差2人拼成"
 
                     android:textColor="@color/minute_black"
@@ -107,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <Button
+                    android:id="@+id/pin_button"
                     android:textColor="@drawable/button_color_login_rigsg"
                     android:background="@drawable/login_select"
                     android:text="立即拼团"
@@ -122,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/shengyu"
                     android:layout_toLeftOf="@+id/time_"
                     android:layout_centerVertical="true"
                     android:text="剩余时间"

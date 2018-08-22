@@ -19,13 +19,24 @@ import com.example.yuzishun.clearservice.Custom.CEditText;
 import com.example.yuzishun.clearservice.Custom.ClearEditText;
 import com.example.yuzishun.clearservice.MainActivity;
 import com.example.yuzishun.clearservice.R;
+import com.example.yuzishun.clearservice.activity.register.CodeActivity;
+import com.example.yuzishun.clearservice.activity.register.RegisterActivity;
+import com.example.yuzishun.clearservice.base.Content;
+import com.example.yuzishun.clearservice.model.LoginBean;
+import com.example.yuzishun.clearservice.model.codeBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
 import com.example.yuzishun.clearservice.present.BaseMvpPresenter;
+import com.example.yuzishun.clearservice.utils.MD5Util;
 import com.example.yuzishun.clearservice.utils.RegexUtils;
 import com.example.yuzishun.clearservice.utils.SpUtil;
 
 import java.net.PasswordAuthentication;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import static android.support.constraint.Constraints.TAG;
 import static com.example.yuzishun.clearservice.utils.CommonHelper.dp2px;
@@ -88,14 +99,59 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginContact.ILoginView
                      } else {
 
                          if(regexUtils.isPassWord(passwordid)==true){
+                             String encrypt = MD5Util.encrypt(passwordid);
                              //接口逻辑,如果已经登录成功存logining为1，没登录存0，判断服务器上面有没有该用户的信息，账号和密码是否正确
+                             SpUtil spUtil = new SpUtil(loginActivity,"country_number");
+                             String country_number = spUtil.getString("countryNumber", "null");
+                             HashMap<String,String> hashMap = new HashMap<>();
+                             hashMap.put("phone",userid);
+                             hashMap.put("password",encrypt);
+                             hashMap.put("area_number",country_number);
 
-                             SpUtil spUtil = new SpUtil(loginActivity, "file");
-                             spUtil.putInt("logining", logining);
+                             Observer<LoginBean> observer = new Observer<LoginBean>() {
+                                 @Override
+                                 public void onSubscribe(Disposable d) {
 
-                             Intent intent = new Intent(loginActivity, MainActivity.class);
-                             loginActivity.startActivity(intent);
-                             loginActivity.finish();
+                                 }
+
+                                 @Override
+                                 public void onNext(LoginBean loginBean) {
+                                     Log.e("YZS",loginBean.toString());
+                                     if(loginBean.getCode()==200){
+                                         Toast.makeText(loginActivity, "登录成功", Toast.LENGTH_SHORT).show();
+                                         logining=1;
+                                         SpUtil spUtil = new SpUtil(loginActivity, "file");
+                                         spUtil.putInt("logining", logining);
+                                         SpUtil spUtil1 = new SpUtil(loginActivity,"Userid");
+                                         spUtil1.putString("User_id",loginBean.getData().get_id());
+                                         Intent intent = new Intent(loginActivity, MainActivity.class);
+                                         loginActivity.startActivity(intent);
+
+                                         loginActivity.finish();
+
+                                     }else {
+
+                                     }
+
+
+
+                                 }
+
+                                 @Override
+                                 public void onError(Throwable e) {
+
+                                     Log.e("YZS",e.getMessage());
+                                     Toast.makeText(loginActivity, "登录失败，请检查您输入的账号和密码", Toast.LENGTH_SHORT).show();
+
+                                 }
+
+                                 @Override
+                                 public void onComplete() {
+
+                                 }
+                             };
+                             ApiMethods.getlogin(observer,hashMap);
+                        Log.e("YZS",hashMap.toString());
 
 
                          }else {

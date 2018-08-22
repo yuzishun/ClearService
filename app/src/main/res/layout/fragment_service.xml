@@ -40,13 +40,21 @@
             android:layout_height="match_parent" />
 
     </RelativeLayout>
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+
+        android:id="@+id/twinkRefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <ScrollView
+        android:id="@+id/MyScrollView"
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/white"
             android:orientation="vertical"
             android:focusable="true"
             android:descendantFocusability="blocksDescendants"
@@ -103,5 +111,6 @@
 
         </LinearLayout>
     </ScrollView>
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
 
 </LinearLayout>

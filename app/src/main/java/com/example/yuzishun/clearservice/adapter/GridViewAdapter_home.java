@@ -16,6 +16,7 @@ import com.example.yuzishun.clearservice.MainActivity;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.listActivity;
 import com.example.yuzishun.clearservice.model.DataBean;
+import com.example.yuzishun.clearservice.model.classificationBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.logging.Handler;
  */
 
 public class GridViewAdapter_home extends BaseAdapter {
-    private List<DataBean> dataList;
+    private List<classificationBean.DataBean.ListBean> dataList;
     private int[] lists = new int[]{R.mipmap.familtwork,R.mipmap.clear,R.mipmap.jiaju,R.mipmap.clearcar
     ,R.mipmap.anmo,R.mipmap.meirong,R.mipmap.baomu,R.mipmap.jiadian,R.mipmap.jiadian
     };
@@ -35,7 +36,7 @@ public class GridViewAdapter_home extends BaseAdapter {
     private Context context;
     public static int item_grid_num = 8;//每一页中GridView中item的数量
     public static int number_columns = 4;//gridview一行展示的数目
-    public GridViewAdapter_home(Context context,List<DataBean> datas, int page) {
+    public GridViewAdapter_home(Context context,List<classificationBean.DataBean.ListBean> datas, int page) {
         dataList = new ArrayList<>();
         this.context = context;
         //start end分别代表要显示的数组在总数据List中的开始和结束位置
@@ -78,14 +79,15 @@ public class GridViewAdapter_home extends BaseAdapter {
         boolean mainThread = isMainThread();
 
         System.out.print(mainThread+"");
-        DataBean bean = dataList.get(i);
+        classificationBean.DataBean.ListBean listBean= dataList.get(i);
 
-        if (bean != null) {
+        if (listBean != null) {
 //            mHolder.iv_img.setImageResource(R.mipmap.icon_woman_false);
 //            mHolder.tv_text.setText(bean.name);
-
             Glide.with(context).load(lists[i]).into(mHolder.iv_img);
-            mHolder.tv_text.setText(listsname[i]);
+
+//            Glide.with(context).load(listBean.getClassify_logo()).into(mHolder.iv_img);
+            mHolder.tv_text.setText(listBean.getClassify_name());
         }
         return itemView;
     }

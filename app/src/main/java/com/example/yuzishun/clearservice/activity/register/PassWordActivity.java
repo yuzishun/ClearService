@@ -21,13 +21,23 @@ import com.example.yuzishun.clearservice.Custom.EditTextChangeListener;
 import com.example.yuzishun.clearservice.MainActivity;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.information.InformationActivity;
+import com.example.yuzishun.clearservice.activity.login.LoginActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
+import com.example.yuzishun.clearservice.model.codeBean;
+import com.example.yuzishun.clearservice.model.regiserBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.MD5Util;
 import com.example.yuzishun.clearservice.utils.RegexUtils;
+import com.example.yuzishun.clearservice.utils.SpUtil;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -40,7 +50,7 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
     Button mButton_getResule;
     @BindView(R.id.text_back)
     ImageView mText_back;
-
+    private String number;
     private RegexUtils regexUtils;
     @Override
     public int intiLayout() {
@@ -58,6 +68,8 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
         clearEditText.setFocusable(true);
         clearEditText.setFocusableInTouchMode(true);
         clearEditText.requestFocus();
+        Intent intent = getIntent();
+        number =intent.getStringExtra("number");
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         CheckEditForButton checkEditForButton = new CheckEditForButton(mButton_getResule);
         checkEditForButton.addEditText(clearEditText);
@@ -110,12 +122,62 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
                 String pw = clearEditText.getText().toString().trim();
                 //true是规范的密码
                 if(regexUtils.isPassWord(pw)==true){
+
+                    SpUtil spUtil = new SpUtil(PassWordActivity.this,"country_number");
+
+
                     //这里把账号和密码一起提交到服务器，返回success，则跳转到补充资料页面，，不成功，提示失败
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put("phone",number);
+                    hashMap.put("password",MD5Util.encrypt(pw));
+                    hashMap.put("area_number",spUtil.getString("countryNumber","null"));
+                    hashMap.put("nickname","用户"+number);
+
+                    Observer<regiserBean> observer = new Observer<regiserBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(regiserBean regiserbean) {
+                            if(regiserbean.getCode()==200){
+
+                                Toast.makeText(PassWordActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                                int logining = 1;
+                                SpUtil spUtil = new SpUtil(PassWordActivity.this, "file");
+                                spUtil.putInt("logining", logining);
+                                Intent intent = new Intent(PassWordActivity.this, MainActivity.class);
+                                SpUtil spUtil1 = new SpUtil(PassWordActivity.this,"Userid");
+                                spUtil1.putString("User_id",regiserbean.getData().get_id());
+                                startActivity(intent);
+                                LoginActivity.instance.finish();
+                                finish();
+                            }else {
 
 
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                            }
+
+
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e("YZS",e.getMessage());
+                            Toast.makeText(PassWordActivity.this, "注册失败，可能是网络原因，或者是手机号不正确，密码不规范", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    };
+                    ApiMethods.getRegister(observer,hashMap);
+
+
+
+
 
                 }else {
 

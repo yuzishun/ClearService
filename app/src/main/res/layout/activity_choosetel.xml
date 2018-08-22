@@ -17,8 +17,9 @@
         android:layout_height="@dimen/d10" />
 
     <ScrollView
+
         android:fillViewport="true"
-        android:background="@color/everoneActivity"
+        android:background="@color/white"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -6,6 +6,7 @@
     android:layout_height="@dimen/d40">
 
     <RelativeLayout
+        android:id="@+id/layout_loction"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +20,9 @@
         <TextView
             android:text="加州水郡"
             android:textSize="@dimen/f14"
+            android:maxEms="7"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:id="@+id/text_s"
             android:textColor="@color/white"
             android:layout_marginLeft="@dimen/d5"

@@ -4,6 +4,7 @@ package com.example.yuzishun.clearservice.fragment.my;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +21,23 @@ import com.example.yuzishun.clearservice.activity.myframnet_Activity.Releaseserv
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.RewardonActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.SettingActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.telActivity;
+import com.example.yuzishun.clearservice.activity.register.PassWordActivity;
 import com.example.yuzishun.clearservice.base.BaseMvpFragment;
+import com.example.yuzishun.clearservice.base.Content;
 import com.example.yuzishun.clearservice.fragment.homepager.HomePagerPresenterImpl;
+import com.example.yuzishun.clearservice.model.UserBean;
+import com.example.yuzishun.clearservice.model.regiserBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
 import com.example.yuzishun.clearservice.present.MvpPresenter;
 import com.example.yuzishun.clearservice.present.MvpPresenterFragment;
+import com.example.yuzishun.clearservice.utils.SpUtil;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.BindViews;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +70,7 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
     @BindView(R.id.layout_everOrder)
     LinearLayout layout_everOrder;
     private int i=0;
+    private String User_id;
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_my;
@@ -68,6 +80,9 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
     protected void setUpView() {
 
         onclik();
+//        regiserBean regiserBean = (com.example.yuzishun.clearservice.model.regiserBean) getArguments().get("regiserBean");
+//        name_id.setText(regiserBean.getData().getNickname());
+
 
     }
 
@@ -85,10 +100,57 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
         icon_mytx.setOnClickListener(this);
         name_id.setOnClickListener(this);
         layout_everOrder.setOnClickListener(this);
+
+
     }
 
     @Override
     protected void setUpData() {
+        SpUtil spUtil1 = new SpUtil(getContext(),"Userid");
+        User_id = spUtil1.getString("User_id","null");
+        Log.e("YZS", User_id);
+
+        HashMap<String,String> hashMap = new HashMap();
+        hashMap.put("user_access_token",Content.Token);
+        hashMap.put("_id",User_id);
+        if(!User_id.equals("")){
+            Observer<UserBean> observer = new Observer<UserBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(UserBean userBean) {
+                    Log.e("YZS",userBean.toString());
+                    if(userBean.getCode()==200){
+                        name_id.setText(userBean.getData().getNickname());
+
+                    }else {
+
+                        Toast.makeText(getMContext(), "请求用户信息错误", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e("YZS",e.getMessage());
+                    Toast.makeText(getMContext(), "请求用户信息错误", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            };
+            ApiMethods.getUser(observer,hashMap);
+
+
+        }else {
+            Toast.makeText(getContext(), "User_id为空", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 

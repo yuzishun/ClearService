@@ -22,7 +22,7 @@ import cn.finalteam.galleryfinal.widget.GFImageView;
 //
 public class MyApplication extends Application {
     private static MyApplication app;
-    private Context context;
+    private static Context context;
     public static MyApplication getInstance() {
         return app;
     }
@@ -34,7 +34,6 @@ public class MyApplication extends Application {
         super.onCreate();
         app = this;
 
-
 //        getInstance();
         context = getApplicationContext();
         int designWidth = 750;
@@ -45,7 +44,7 @@ public class MyApplication extends Application {
 
 
 
-    public Context getContext(){
+    public static Context getContext(){
         return  context;
     }
     //  其他类使用 直接可以点出上下文

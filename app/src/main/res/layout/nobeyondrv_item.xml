@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
 
         android:background="@color/gray"
-        android:layout_height="1dp" />
+        android:layout_height="0.1dp"
+        tools:ignore="Suspicious0dp" />
     <LinearLayout
         android:layout_weight="1"
         android:orientation="vertical"
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/text_tel_"
                 android:text="@string/tel_tel"
                 android:textSize="@dimen/f14"
                 android:textColor="@color/gray___"
@@ -43,6 +45,7 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="@string/telphone_id"
+                android:id="@+id/tel_number"
                 android:layout_marginLeft="@dimen/d70"
                 android:textSize="@dimen/f14"
                 android:textColor="@color/gray___"
@@ -50,6 +53,7 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
+
                 android:layout_toLeftOf="@+id/changer"
                 android:src="@mipmap/chang_gray"
                 android:layout_marginRight="@dimen/d5"

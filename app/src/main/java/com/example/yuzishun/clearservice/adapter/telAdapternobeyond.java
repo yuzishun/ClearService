@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yuzishun.clearservice.R;
+import com.example.yuzishun.clearservice.model.addressBean;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ import java.util.List;
 
 public class telAdapternobeyond extends RecyclerView.Adapter<telAdapternobeyond.ViewHolder> {
     private Context mContext;
-    private List<String> list;
+    private List<addressBean.DataBean.ListBean> list;
 
-    public telAdapternobeyond(Context mContext, List<String> list) {
+    public telAdapternobeyond(Context mContext, List<addressBean.DataBean.ListBean> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -31,8 +32,17 @@ public class telAdapternobeyond extends RecyclerView.Adapter<telAdapternobeyond.
 
     @Override
     public void onBindViewHolder(telAdapternobeyond.ViewHolder holder, int position) {
-        holder.textView.setText(list.get(position));
 
+        try {
+
+
+        holder.name.setText(list.get(position).getUser_name());
+        holder.tel_number.setText(list.get(position).getMobile_phone()+"");
+
+        holder.text_tel_.setText(list.get(position).getAddress_city()+""+list.get(position).getAddress_name()+""+list.get(position).getAddress_info());
+        }catch (Exception e){
+
+        }
     }
 
     @Override
@@ -41,11 +51,14 @@ public class telAdapternobeyond extends RecyclerView.Adapter<telAdapternobeyond.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView name,tel_number,text_tel_;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.tel_name);
+            name = itemView.findViewById(R.id.tel_name);
+            tel_number = itemView.findViewById(R.id.tel_number);
+            text_tel_ = itemView.findViewById(R.id.text_tel_);
 
         }
     }

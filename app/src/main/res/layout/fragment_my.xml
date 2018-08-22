@@ -14,6 +14,7 @@
         android:background="@color/blue2" />
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_weight="1.2"
 
         android:orientation="vertical"
@@ -61,7 +62,8 @@
 
             <ImageView
                 android:id="@+id/icon_mytx"
-                android:src="@mipmap/icon_tx"
+
+                android:src="@mipmap/icon_woman_false"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_width="@dimen/d60"
@@ -326,6 +328,8 @@
         android:background="@color/everoneActivity"
         android:layout_height="@dimen/d10" />
     <LinearLayout
+        android:background="@color/white"
+
         android:layout_weight="1.1"
         android:orientation="vertical"
         android:layout_width="match_parent"

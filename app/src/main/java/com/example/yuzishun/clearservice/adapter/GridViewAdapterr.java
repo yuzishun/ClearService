@@ -8,11 +8,14 @@ import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.yuzishun.clearservice.R;
+import com.example.yuzishun.clearservice.utils.TimeUtils;
 
 import java.util.List;
 
@@ -22,14 +25,15 @@ import java.util.List;
 
 public class GridViewAdapterr extends BaseAdapter {
 
-    private List<String> data;//数据
+    private List<List<Integer>> data;//数据
 
     private Context context;//上下文
-
+    private List<String> datafu;
     private int selectedPosition=0;
-    public GridViewAdapterr(List<String> data, Context context) {
+    public GridViewAdapterr(List<List<Integer>> data, Context context,List<String> datafu) {
         this.data = data;
         this.context = context;
+        this.datafu = datafu;
     }
 
     @Override
@@ -65,7 +69,18 @@ public class GridViewAdapterr extends BaseAdapter {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.textView.setText(data.get(position));
+        for (int i = 0; i <data.size() ; i++) {
+            List<Integer> integers = data.get(i);
+            for (int j = 0; j <integers.size() ; j++) {
+                long len = (int)integers.get(j);
+                viewHolder.textView.setText(TimeUtils.getFeture(len * 1000));
+
+            }
+
+
+        }
+
+
 
 //        if(position==0){
 //            viewHolder.textView.setEnabled(true);

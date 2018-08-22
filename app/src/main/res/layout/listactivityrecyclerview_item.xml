@@ -18,6 +18,7 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/image__"
             android:src="@mipmap/cehsi"
             android:padding="@dimen/d10"
             android:layout_width="match_parent"
@@ -45,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/num_people"
                 android:text="参加人员8人还差2人拼成"
                 android:layout_below="@+id/framily_time"
                 android:textSize="@dimen/f12"
@@ -79,6 +81,7 @@
                 <TextView
                     android:text="¥28"
                     android:textSize="@dimen/f14"
+                    android:id="@+id/xian_price"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/d15"
                     android:textColor="@color/red_one"
@@ -97,9 +100,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <Button
+                        android:id="@+id/button_pin"
                         android:textColor="@drawable/button_color_login_rigsg"
-                        android:background="@drawable/deile_button"
+                        android:background="@drawable/login_select"
                         android:text="立即拼团"
+                        android:layout_marginLeft="@dimen/d20"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/d25" />
                 </LinearLayout>
@@ -122,7 +127,6 @@
                         android:id="@+id/time"
                         android:textColor="@color/blue2"
                         android:textSize="@dimen/f14"
-                        android:layout_marginRight="@dimen/d25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

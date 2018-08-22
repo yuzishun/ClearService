@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.yuzishun.clearservice.MainActivity;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.changename.changepswActivity;
 import com.example.yuzishun.clearservice.activity.login.LoginActivity;
+import com.example.yuzishun.clearservice.activity.register.PassWordActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.utils.SpUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +62,12 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.outlog_id:
+
                 Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+                int logining = 0;
+                SpUtil spUtil = new SpUtil(SettingActivity.this, "file");
+                spUtil.putInt("logining", logining);
+                MainActivity.instance.finish();
                 startActivity(intent);
                 finish();
                 break;

@@ -4,22 +4,31 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
+import com.example.yuzishun.clearservice.model.WeXchatBean;
+import com.example.yuzishun.clearservice.model.paybaoBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class PayActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.title_text)
@@ -41,6 +50,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
     RelativeLayout layout_zhifu;
     @BindView(R.id.weixin_layout)
     RelativeLayout layout_weixin;
+    private String id;
     @Override
     public int intiLayout() {
         return R.layout.activity_pay;
@@ -56,6 +66,8 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
         surepay.setOnClickListener(this);
         zhifu_check.setOnClickListener(this);
         weixin_check.setOnClickListener(this);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("_id");
     }
 
     @Override
@@ -86,7 +98,88 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                 weixin_check.setChecked(false);
                 break;
             case R.id.surepay:
-                startActivity(new Intent(this,PaySucessActivity.class));
+                if(weixin_check.isChecked()){
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put("order_id", id);
+                    hashMap.put("pay_type", "2");
+
+                    Observer<WeXchatBean> observer = new Observer<WeXchatBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(WeXchatBean weXchatBean) {
+
+                            if(weXchatBean.getCode()==200){
+                                startActivity(new Intent(PayActivity.this,PaySucessActivity.class));
+
+                            }else {
+                                Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e("YZS",e.getMessage());
+
+                            Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    };
+
+                    ApiMethods.getWeiChat(observer,hashMap);
+
+                }else {
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put("order_id", id);
+                    hashMap.put("pay_type", "1");
+
+                    Observer<paybaoBean> observer = new Observer<paybaoBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(paybaoBean paybaoBean) {
+
+                            if(paybaoBean.getCode()==200){
+                                startActivity(new Intent(PayActivity.this,PaySucessActivity.class));
+
+                            }else {
+                                Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e("YZS",e.getMessage());
+                            Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    };
+
+                    ApiMethods.getpaybao(observer,hashMap);
+
+                }
+
+
+
                 break;
             case R.id.weixin_check:
                 weixin_check.setChecked(true);

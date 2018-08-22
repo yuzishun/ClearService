@@ -47,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.setContentView(this.intiLayout());
         //设置布局
         setContentView(intiLayout());
+        Content content = new Content();
 
         //初始化控件
         initView();
@@ -119,14 +120,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             toast.show();
         }
     }
-//    private void initState() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            //透明状态栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            //透明导航栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//        }
-//    }
 
 
 

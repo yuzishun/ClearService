@@ -11,6 +11,12 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_img"-->
+            <!--android:layout_width="@dimen/d25"-->
+            <!--android:layout_height="@dimen/d30"-->
+            <!--android:contentDescription="@string/app_name"-->
+            <!--/>-->
         <ImageView
             android:id="@+id/iv_img"
             android:layout_width="@dimen/d25"

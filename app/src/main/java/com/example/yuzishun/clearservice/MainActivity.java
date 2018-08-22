@@ -1,10 +1,12 @@
 package com.example.yuzishun.clearservice;
 
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,7 +25,10 @@ import com.example.yuzishun.clearservice.fragment.homepager.HomePagerFragment;
 import com.example.yuzishun.clearservice.fragment.my.MyFragment;
 import com.example.yuzishun.clearservice.fragment.service.ServiceFragment;
 import com.example.yuzishun.clearservice.fragment.webview.WebViewFragment;
+import com.example.yuzishun.clearservice.model.regiserBean;
 import com.example.yuzishun.clearservice.utils.NetBroadCastReciver;
+
+import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +45,8 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
     private FragmentManager fragmentManager;
     private int mIndex=0;
     private Fragment[] mFragments;
+    public static MainActivity instance;
+    private regiserBean regiserBean;
     @Override
     public int intiLayout() {
         return R.layout.activity_main;
@@ -49,10 +56,12 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
     public void initView() {
         ButterKnife.bind(this);
         initState();
+        instance = this;
         setBreoadcast();
         //逻辑实例化
         mainPresenter = new MainPresenterImpl();
         fragmentManager = getSupportFragmentManager();
+
     }
 
     @Override
@@ -91,11 +100,13 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
         FragmentTransaction ft =
                 getSupportFragmentManager().beginTransaction();
 
+
         //添加首页
         ft.add(R.id.content,mTab_01).commit();
 
         //默认设置为第0个
         setIndexSelected(0);
+
 
 
     }
@@ -114,6 +125,8 @@ public class MainActivity extends BaseMvpActivity<MainContact.IMainPresenter>imp
         }else {
             ft.show(mFragments[index]);
         }
+
+
         ft.commit();
         //再次赋值
         mIndex=index;

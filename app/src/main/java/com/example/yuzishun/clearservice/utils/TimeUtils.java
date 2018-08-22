@@ -536,5 +536,31 @@ public class TimeUtils {
         }
         return 0L;
     }
+    public static String getFetureDate(long expire) {
+        //PHP和Java时间戳存在三位位差，用000补齐
+        if (String.valueOf(expire).length() == 10) {
+            expire = expire * 1000;
+        }
+        Date date = new Date(expire);
+        SimpleDateFormat format = new SimpleDateFormat("MM月dd日");
+        String result = format.format(date);
+        if (result.startsWith("0")) {
+            result = result.substring(1);
+        }
+        return result;
+    }
+    public static String getFeture(long expire) {
+        //PHP和Java时间戳存在三位位差，用000补齐
+        if (String.valueOf(expire).length() == 10) {
+            expire = expire * 1000;
+        }
+        Date date = new Date(expire);
+        SimpleDateFormat format = new SimpleDateFormat("HH:MM");
+        String result = format.format(date);
+        if (result.startsWith("0")) {
+            result = result.substring(1);
+        }
+        return result;
+    }
 }
 

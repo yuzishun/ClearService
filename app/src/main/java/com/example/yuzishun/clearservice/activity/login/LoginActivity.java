@@ -53,6 +53,7 @@ public class LoginActivity extends BaseMvpActivity implements View.OnClickListen
     LinearLayout layout_country;
     @BindView(R.id.country_number)
     TextView country_number;
+    public static LoginActivity instance;
     @Override
     public int intiLayout() {
         return R.layout.activity_login;
@@ -62,7 +63,7 @@ public class LoginActivity extends BaseMvpActivity implements View.OnClickListen
     public void initView() {
         ButterKnife.bind(this);
         presenter = new LoginPresenterImpl();
-
+        instance = this;
 
     }
 

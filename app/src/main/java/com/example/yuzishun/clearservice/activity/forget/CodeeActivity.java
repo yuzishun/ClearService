@@ -4,19 +4,27 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yuzishun.clearservice.Custom.VerifyCodeView;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.register.CodeActivity;
 import com.example.yuzishun.clearservice.activity.register.PassWordActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.model.VerificationBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class CodeeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.Verify_Code)
@@ -54,13 +62,52 @@ public class CodeeActivity extends BaseActivity implements View.OnClickListener 
         mVerify_Code.setInputCompleteListener(new VerifyCodeView.InputCompleteListener() {
             @Override
             public void inputComplete() {
-                //在这里用手机号来发送短信验证码
 
-                //输入到最后一位判断验证码是否正确，正确的话跳转到设置密码页面，携带上手机号
-                Intent intent = new Intent(CodeeActivity.this,RepeatPwActivity.class);
-                intent.putExtra("number", number);
-                startActivity(intent);
-                finish();
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("phone",number);
+                hashMap.put("sms_type","2");
+                hashMap.put("sms_code","999999");
+                Observer<VerificationBean> observer = new Observer<VerificationBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(VerificationBean verificationBean) {
+                        if(verificationBean.getCode()==200){
+                            Intent intent = new Intent(CodeeActivity.this, RepeatPwActivity.class);
+                            intent.putExtra("number", number);
+                            startActivity(intent);
+                            finish();
+
+                        }else {
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("YZS",e.getMessage());
+
+                        Toast.makeText(CodeeActivity.this, "验证码错误,请重新输入", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                };
+                ApiMethods.getVerification(observer,hashMap);
+//                //在这里用手机号来发送短信验证码
+//
+//                //输入到最后一位判断验证码是否正确，正确的话跳转到设置密码页面，携带上手机号
+//                Intent intent = new Intent(CodeeActivity.this,RepeatPwActivity.class);
+//                intent.putExtra("number", number);
+//                startActivity(intent);
+//                finish();
 
             }
 

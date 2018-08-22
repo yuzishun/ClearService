@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp">
+
+        <TextView
+            android:text="你好"
+            android:layout_marginLeft="@dimen/d40"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_shou"
+            android:textSize="@dimen/f14"
+
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginLeft="@dimen/d40"
+
+        android:layout_width="match_parent"
+        android:background="@color/gray_line"
+        android:layout_height="0.1dp" />
+</LinearLayout>
