@@ -1,9 +1,12 @@
 package com.example.yuzishun.clearservice.activity.mainfragment_activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,17 +16,27 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alipay.sdk.app.PayTask;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.base.BaseActivity;
 import com.example.yuzishun.clearservice.base.Content;
 import com.example.yuzishun.clearservice.model.WeXchatBean;
 import com.example.yuzishun.clearservice.model.paybaoBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.CountDownUtils;
+import com.example.yuzishun.clearservice.utils.PayResult;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.modelpay.PayResp;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.transform.Result;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,15 +44,13 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class PayActivity extends BaseActivity implements View.OnClickListener {
+    private int SDK_PAY_FLAG = 0;
     @BindView(R.id.title_text)
     TextView title_text;
     @BindView(R.id.image_back)
     LinearLayout image_back;
     @BindView(R.id.Text_times)
     TextView Text_times;
-    private long countdownTime;//倒计时的总时间(单位:毫秒)
-    private String timefromServer;//从服务器获取的订单生成时间
-    private long chaoshitime;//从服务器获取订单有效时长(单位:毫秒)
     @BindView(R.id.surepay)
     Button surepay;
     @BindView(R.id.zhifu_check)
@@ -50,7 +61,40 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
     RelativeLayout layout_zhifu;
     @BindView(R.id.weixin_layout)
     RelativeLayout layout_weixin;
-    private String id;
+    public static PayActivity intentstan;
+    private int time;
+    @BindView(R.id.money)
+    TextView money;
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+                    @SuppressWarnings("unchecked")
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                    /**
+                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    String resultStatus = payResult.getResultStatus();
+                    // 判断resultStatus 为9000则代表支付成功
+                    Log.e("YZS",resultInfo.toString()+"");
+                    Log.e("YZS",resultInfo.toString()+"");
+
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        startActivity(new Intent(PayActivity.this,PaySucessActivity.class));
+
+                        Toast.makeText(PayActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+                        Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+                    }
+
+        }
+    };
     @Override
     public int intiLayout() {
         return R.layout.activity_pay;
@@ -59,6 +103,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        intentstan = this;
         title_text.setText("确认支付");
         image_back.setOnClickListener(this);
         layout_weixin.setOnClickListener(this);
@@ -67,12 +112,16 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
         zhifu_check.setOnClickListener(this);
         weixin_check.setOnClickListener(this);
         Intent intent = getIntent();
-        id = intent.getStringExtra("_id");
+        time = intent.getIntExtra("_time",0);
+
+        money.setText("¥:"+Content.OrderMoney);
+        long ping_ende1 = (int)time;
+        long current1 = System.currentTimeMillis()/1000;
+        new CountDownUtils(ping_ende1 - current1,Text_times).startCount();
     }
 
     @Override
     public void initData() {
-        getTimeDuring();
         chec();
 
     }
@@ -100,7 +149,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
             case R.id.surepay:
                 if(weixin_check.isChecked()){
                     HashMap<String,String> hashMap = new HashMap<>();
-                    hashMap.put("order_id", id);
+                    hashMap.put("order_id", Content.OrderId);
                     hashMap.put("pay_type", "2");
 
                     Observer<WeXchatBean> observer = new Observer<WeXchatBean>() {
@@ -111,12 +160,24 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
 
                         @Override
                         public void onNext(WeXchatBean weXchatBean) {
-
+                            Log.e("YZS",weXchatBean.getData().toString());
                             if(weXchatBean.getCode()==200){
-                                startActivity(new Intent(PayActivity.this,PaySucessActivity.class));
 
+                                //微信注册APPID
+                                IWXAPI api = WXAPIFactory.createWXAPI(PayActivity.this,null);
+                                api.registerApp(Content.APP_ID);
+                                PayReq request = new PayReq();
+                                request.appId = weXchatBean.getData().getAppid();
+                                request.partnerId = weXchatBean.getData().getPartnerid();
+                                request.prepayId = weXchatBean.getData().getPrepayid();
+                                request.packageValue = weXchatBean.getData().getPackageX();
+                                request.nonceStr= weXchatBean.getData().getNoncestr();
+                                request.timeStamp= weXchatBean.getData().getTimestamp()+"";
+                                request.sign= weXchatBean.getData().getSign();
+                                Log.e("YZS",request.sign.toString()+request.appId+"");
+                                api.sendReq(request);
                             }else {
-                                Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PayActivity.this, weXchatBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -126,7 +187,6 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                         public void onError(Throwable e) {
                             Log.e("YZS",e.getMessage());
 
-                            Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -137,10 +197,11 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                     };
 
                     ApiMethods.getWeiChat(observer,hashMap);
+                    Log.e("YZS",hashMap.toString());
 
                 }else {
                     HashMap<String,String> hashMap = new HashMap<>();
-                    hashMap.put("order_id", id);
+                    hashMap.put("order_id", Content.OrderId);
                     hashMap.put("pay_type", "1");
 
                     Observer<paybaoBean> observer = new Observer<paybaoBean>() {
@@ -151,12 +212,30 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
 
                         @Override
                         public void onNext(paybaoBean paybaoBean) {
-
+                           final String OrderInfo = paybaoBean.getData().toString();
                             if(paybaoBean.getCode()==200){
-                                startActivity(new Intent(PayActivity.this,PaySucessActivity.class));
 
+                                Runnable payRunnable = new Runnable() {
+                                    @Override
+                                    public void run() {
+
+
+                                PayTask alipay = new PayTask(PayActivity.this);
+                                Map<String, String> result = alipay.payV2(OrderInfo,true);
+
+                                Message msg = new Message();
+                                msg.what = SDK_PAY_FLAG;
+                                msg.obj = result;
+                                handler.sendMessage(msg);
+
+                                    }
+                                };
+                                // 必须异步调用
+                                Thread payThread = new Thread(payRunnable);
+                                payThread.start();
+                                
                             }else {
-                                Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PayActivity.this, paybaoBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -165,7 +244,6 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
                         @Override
                         public void onError(Throwable e) {
                             Log.e("YZS",e.getMessage());
-                            Toast.makeText(PayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -194,38 +272,6 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            countdownTime -= 1000;//倒计时总时间减1
 
-            SimpleDateFormat minforamt = new SimpleDateFormat("mm:ss");
-
-            String hms = minforamt.format(countdownTime);//格式化倒计时的总时间
-            Text_times.setText("确认支付剩余时间:" + hms);
-            handler.postDelayed(this, 1000);
-        }
-    };
-
-    private void getTimeDuring() {
-        chaoshitime = 30 * 60 * 1000;//应该从服务器获取
-
-        timefromServer = "2017-01-23 11:40:50";//应该从服务器获取
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            Date serverDate = df.parse(timefromServer);
-
-            long duringTime = new Date().getTime() - serverDate.getTime();//计算当前时间和从服务器获取的订单生成时间的时间差
-            countdownTime = chaoshitime - duringTime;//计算倒计时的总时间
-
-            handler.postDelayed(runnable, 1000);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
 }

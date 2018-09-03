@@ -10,6 +10,7 @@
     tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.listActivity">
 
     <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="@dimen/d40">
         <LinearLayout
@@ -60,6 +61,7 @@
         android:background="@color/everoneActivity"
         android:layout_height="@dimen/d10" />
     <LinearLayout
+        android:background="@color/white"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

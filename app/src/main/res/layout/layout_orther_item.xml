@@ -10,9 +10,11 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/layout_one"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_onetext"
                 android:layout_centerVertical="true"
                 android:text="订单编号:      18062954261012345"
                 android:textColor="@color/gray_text"
@@ -22,11 +24,13 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_two"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_twotext"
                 android:layout_centerVertical="true"
-                android:text="下单时间:      支付宝"
+                android:text="支付方式:      支付宝"
                 android:textColor="@color/gray_text"
                 android:textSize="@dimen/f12"
                 android:layout_width="wrap_content"
@@ -34,9 +38,12 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_three"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_threetext"
+
                 android:layout_centerVertical="true"
                 android:text="下单时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -46,10 +53,12 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_four"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
 
             <TextView
+                android:id="@+id/layout_fourtext"
                 android:layout_centerVertical="true"
                 android:text="支付时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -61,9 +70,11 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_frie"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_frietext"
                 android:layout_centerVertical="true"
                 android:text="成团时间:      18062954261012345"
                 android:textColor="@color/gray_text"
@@ -73,9 +84,12 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_six"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_sixtext"
+
                 android:layout_centerVertical="true"
                 android:text="上门时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -85,9 +99,12 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_seven"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_seventext"
+
                 android:layout_centerVertical="true"
                 android:text="校验时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -97,10 +114,13 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_ant"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
 
             <TextView
+                android:id="@+id/layout_ninetext"
+
                 android:layout_centerVertical="true"
                 android:text="确定上门时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -111,9 +131,12 @@
 
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_nine"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
             <TextView
+                android:id="@+id/layout_anttext"
+
                 android:layout_centerVertical="true"
                 android:text="开始服务时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"
@@ -123,10 +146,13 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/layout_ten"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d30">
 
             <TextView
+                android:id="@+id/layout_tentext"
+
                 android:layout_centerVertical="true"
                 android:text="服务完成时间:      2018-06-29 10:29:12"
                 android:textColor="@color/gray_text"

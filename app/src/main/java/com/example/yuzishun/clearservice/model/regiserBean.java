@@ -159,4 +159,13 @@ public class regiserBean implements Serializable{
             this.user_select_tag = user_select_tag;
         }
     }
+
+    @Override
+    public String toString() {
+        return "regiserBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

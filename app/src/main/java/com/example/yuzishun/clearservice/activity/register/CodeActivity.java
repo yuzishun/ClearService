@@ -92,6 +92,7 @@ public class CodeActivity extends BaseActivity implements View.OnClickListener {
                             finish();
 
                         }else {
+                            Toast.makeText(CodeActivity.this, verificationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -102,7 +103,6 @@ public class CodeActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void onError(Throwable e) {
                         Log.e("YZS",e.getMessage());
-                        Toast.makeText(CodeActivity.this, "验证码错误,请重新输入", Toast.LENGTH_SHORT).show();
 
                     }
 

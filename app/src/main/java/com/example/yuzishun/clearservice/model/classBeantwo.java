@@ -174,4 +174,13 @@ public class classBeantwo {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "classBeantwo{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

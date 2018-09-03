@@ -1,11 +1,20 @@
 package com.example.yuzishun.clearservice.net;
 
+import com.example.yuzishun.clearservice.model.AutomaticBean;
+import com.example.yuzishun.clearservice.model.CancelOrderBean;
+import com.example.yuzishun.clearservice.model.ClasssFitterBean;
+import com.example.yuzishun.clearservice.model.ConfimOrderBean;
 import com.example.yuzishun.clearservice.model.CreatBean;
 import com.example.yuzishun.clearservice.model.DefaultaddressBean;
+import com.example.yuzishun.clearservice.model.DeleteOrderBean;
+import com.example.yuzishun.clearservice.model.HomepagerRecommend;
 import com.example.yuzishun.clearservice.model.LoginBean;
 import com.example.yuzishun.clearservice.model.OrderBean;
+import com.example.yuzishun.clearservice.model.OrderdetailsBean;
+import com.example.yuzishun.clearservice.model.QiNiuBean;
 import com.example.yuzishun.clearservice.model.ServiceinfocationBean;
 import com.example.yuzishun.clearservice.model.UserBean;
+import com.example.yuzishun.clearservice.model.UserUpdataBean;
 import com.example.yuzishun.clearservice.model.VerificationBean;
 import com.example.yuzishun.clearservice.model.WeXchatBean;
 import com.example.yuzishun.clearservice.model.addressBean;
@@ -18,6 +27,7 @@ import com.example.yuzishun.clearservice.model.codeBean;
 import com.example.yuzishun.clearservice.model.forgetBean;
 import com.example.yuzishun.clearservice.model.paybaoBean;
 import com.example.yuzishun.clearservice.model.regiserBean;
+import com.example.yuzishun.clearservice.model.telupdataBean;
 
 import java.util.HashMap;
 
@@ -43,7 +53,7 @@ public class ApiMethods {
     }
 
 //    /**
-//     * 用于获取豆瓣电影Top250的数据
+//     *
 //     *
 //     * @param observer 由调用者传过来的观察者对象
 //     * @param start    起始位置
@@ -124,5 +134,44 @@ public class ApiMethods {
     public static void getOrder(Observer<OrderBean> observer,HashMap<String,String> hashMap){
         ApiSubscribe(ApiStrategy.getApiService().getOrder(hashMap),observer);
     }
+
+    public static void getQiniu(Observer<QiNiuBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getQiniu(hashMap),observer);
+    }
+    public static void  getOrderDeils(Observer<OrderdetailsBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getOrderdeils(hashMap),observer);
+    }
+
+    public static void getupdatatel(Observer<telupdataBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getupdatetel(hashMap),observer);
+    }
+
+    public static void getUserUpdata(Observer<UserUpdataBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getUserUpdataBean(hashMap),observer);
+    }
+
+    public static void getHomePageReco(Observer<HomepagerRecommend> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().gethomePageRec(hashMap),observer);
+    }
+    public static void getClassFitter(Observer<ClasssFitterBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getClassfitter(hashMap),observer);
+
+    }
+
+    public static void getCancelOrder(Observer<CancelOrderBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getCancelOrder(hashMap),observer);
+    }
+
+    public static void getDeltetOrder(Observer<DeleteOrderBean> observer,HashMap<String,String> hashMap){
+
+        ApiSubscribe(ApiStrategy.getApiService().getdeleteOrder(hashMap),observer);
+    }
+    public static void getConfimOrder(Observer<ConfimOrderBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getConfimOrder(hashMap),observer);
+    }
+    public static void getAutomatic(Observer<AutomaticBean> observer,HashMap<String,String> hashMap){
+        ApiSubscribe(ApiStrategy.getApiService().getAutomatic(hashMap),observer);
+    }
+
 
 }

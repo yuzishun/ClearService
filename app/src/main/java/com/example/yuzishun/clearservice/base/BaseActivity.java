@@ -42,8 +42,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         //沉浸式，第一种
                 StatusBarUtil statusBarUtil = new StatusBarUtil();
         statusBarUtil.setStatusBarTranslucent(this,true);
-        //第二种，MainActivity 单独设置,还有订单详情页面
+//        //第二种，MainActivity 单独设置,还有订单详情页面
         initState();
+        //第三种
+
         this.setContentView(this.intiLayout());
         //设置布局
         setContentView(intiLayout());

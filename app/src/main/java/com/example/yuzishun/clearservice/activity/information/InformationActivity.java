@@ -206,8 +206,8 @@ public class InformationActivity extends BaseMvpActivity<InformationContact.info
         //将自定义布局加载到dialog上
         dialog.setContentView(dialogView);
         GridView gridView = dialogView.findViewById(R.id.gridview_id);
-        GridViewAdapter Adapter = new GridViewAdapter(this,list);
-        gridView.setAdapter(Adapter);
+//        GridViewAdapter Adapter = new GridViewAdapter(this,list);
+//        gridView.setAdapter(Adapter);
         TextView cancel_id = dialogView.findViewById(R.id.cancel_);
         TextView sure_id = dialogView.findViewById(R.id.sure_);
         cancel_id.setOnClickListener(new View.OnClickListener() {

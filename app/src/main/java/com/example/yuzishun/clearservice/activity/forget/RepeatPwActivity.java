@@ -23,6 +23,7 @@ import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.login.LoginActivity;
 import com.example.yuzishun.clearservice.activity.register.PassWordActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
 import com.example.yuzishun.clearservice.model.forgetBean;
 import com.example.yuzishun.clearservice.model.regiserBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
@@ -138,9 +139,9 @@ public class RepeatPwActivity extends BaseActivity implements View.OnClickListen
                             if(forgetbean.getCode()==200){
                                 Toast.makeText(RepeatPwActivity.this, "修改密码成功", Toast.LENGTH_SHORT).show();
 
-                                int logining = 1;
                                 SpUtil spUtil = new SpUtil(RepeatPwActivity.this, "file");
-                                spUtil.putInt("logining", logining);
+                                Content.Token = forgetbean.getData().getToken();
+                                spUtil.putString("login", forgetbean.getData().getToken());
                                 Intent intent = new Intent(RepeatPwActivity.this, MainActivity.class);
                                 SpUtil spUtil1 = new SpUtil(RepeatPwActivity.this,"Userid");
                                 spUtil1.putString("User_id",forgetbean.getData().get_id());
@@ -148,6 +149,7 @@ public class RepeatPwActivity extends BaseActivity implements View.OnClickListen
                                 LoginActivity.instance.finish();
                                 finish();
                             }else {
+                                Toast.makeText(RepeatPwActivity.this, forgetbean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -157,7 +159,6 @@ public class RepeatPwActivity extends BaseActivity implements View.OnClickListen
 
                         @Override
                         public void onError(Throwable e) {
-                            Toast.makeText(RepeatPwActivity.this, "修改失败，可能是网络原因，或者是手机号不正确，密码不规范", Toast.LENGTH_SHORT).show();
                             Log.e("YZS",e.getMessage());
                         }
 

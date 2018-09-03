@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.myframnet_Activity.ChooseCrdeActivity">
+
+    <include layout="@layout/title_text"></include>
+
+    <LinearLayout
+        android:background="@color/everoneActivity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+               <RelativeLayout
+                   android:layout_weight="7"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                    <TextView
+                        android:text="请选择你感兴趣标签"
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/f12"
+                        android:layout_marginLeft="@dimen/d15"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/d10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+               </RelativeLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <GridView
+                    android:id="@+id/gv_channel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="3"
+
+                    android:scrollbars="none">
+
+
+                </GridView>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="2"
+            android:orientation="vertical"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="3"
+                android:gravity="center"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textSize="@dimen/f12"
+                    android:textColor="@color/gray_text"
+
+                    android:text="请至少选择一个感兴趣的标签"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/id_ok"
+                    android:text="选好了"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_marginLeft="@dimen/d30"
+                    android:layout_marginRight="@dimen/d30"
+                    android:textColor="@drawable/button_color_login_rigsg"
+                    android:background="@drawable/login_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

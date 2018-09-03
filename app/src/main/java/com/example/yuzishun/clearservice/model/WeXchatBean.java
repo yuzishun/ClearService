@@ -118,5 +118,27 @@ public class WeXchatBean {
         public void setSign(String sign) {
             this.sign = sign;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "appid='" + appid + '\'' +
+                    ", partnerid='" + partnerid + '\'' +
+                    ", prepayid='" + prepayid + '\'' +
+                    ", packageX='" + packageX + '\'' +
+                    ", noncestr='" + noncestr + '\'' +
+                    ", timestamp='" + timestamp + '\'' +
+                    ", sign='" + sign + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "WeXchatBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

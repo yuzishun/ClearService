@@ -22,6 +22,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.yuzishun.clearservice.Custom.MyViewPager;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.ContentFragment;
@@ -36,6 +38,7 @@ import com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsA
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.MessageActivity;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.listActivity;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.searchActivity;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.ChooseCrdeActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.ContentFragmenthome;
 import com.example.yuzishun.clearservice.adapter.GridViewAdapter;
 import com.example.yuzishun.clearservice.adapter.GridViewAdapter_home;
@@ -43,7 +46,10 @@ import com.example.yuzishun.clearservice.adapter.HP_ReAdapter;
 import com.example.yuzishun.clearservice.adapter.ViewPagerAdapter_home;
 import com.example.yuzishun.clearservice.adapter.listActivityAdapter;
 import com.example.yuzishun.clearservice.base.BaseMvpFragment;
+import com.example.yuzishun.clearservice.base.Content;
 import com.example.yuzishun.clearservice.model.DataBean;
+import com.example.yuzishun.clearservice.model.HomepagerRecommend;
+import com.example.yuzishun.clearservice.model.classificationBean;
 import com.example.yuzishun.clearservice.model.classificationvideoBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
 import com.example.yuzishun.clearservice.utils.OnEvent;
@@ -86,11 +92,28 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
     ImageView image_message;
     @BindView(R.id.layout_loction)
     RelativeLayout layout_loction;
+    @BindView(R.id.layout_chaduo)
+    RelativeLayout layout_chaduo;
+    @BindView(R.id.look_low)
+    Button look_low;
+    @BindView(R.id.layout_emty_one)
+    LinearLayout layout_emty_one;
+    @BindView(R.id.layout_tablayout)
+    LinearLayout layout_tablayout;
+    @BindView(R.id.layout_viewpager)
+    LinearLayout layout_viewpager;
     @BindView(R.id.text_s)
     TextView text_s;
+    @BindView(R.id.button_pin)
+    Button button_pin;
+    @BindView(R.id.layout_tiao)
+    LinearLayout layout_tiao;
+    private String idone,idtwo,idthree,idfour;
+    @BindView(R.id.iamge_one_home) ImageView imageone;@BindView(R.id.iamge_two_home) ImageView image_two;@BindView(R.id.iamge_three_home) ImageView image_three;@BindView(R.id.iamge_four_home) ImageView image_four;
+    @BindView(R.id.text_renmenone)TextView text_renmenone;@BindView(R.id.text_renmentwo)TextView text_renmentwo;@BindView(R.id.text_renmenthree)TextView text_renmenthree;@BindView(R.id.text_renmenfour)TextView text_renmenfour;
     private TextView begin_id;
     private listActivityAdapter listActivityAdapter;
-    private List<String> datas = new ArrayList<String>();//页卡标题集合
+    private List<HomepagerRecommend.DataBean> datas = new ArrayList<>();//页卡标题集合
     private List<Fragment> fragments;
     private loctionUtils loctionUtils;
     private List<classificationvideoBean.DataBean.ListBean> listBeans = new ArrayList<>();
@@ -104,19 +127,202 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
     @Override
     protected void setUpView() {
         mainPresenter = new HomePagerPresenterImpl();
+        button_pin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //选择卡片
+                startActivity(new Intent(getMContext(), ChooseCrdeActivity.class));
+
+            }
+        });
+        look_low.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //更多列表
+                Toast.makeText(getContext(), "暂时没有更多", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+        newTel();
+        recommend();
+    }
+
+    private void recommend() {
+        HashMap<String,String> hashMap = new HashMap<>();
+        hashMap.put("user_access_token", Content.Token);
+
+        Observer<HomepagerRecommend> observer = new Observer<HomepagerRecommend>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(HomepagerRecommend homepagerRecommend) {
+
+                if (homepagerRecommend.getCode() == 200) {
+
+
+                        datas = homepagerRecommend.getData();
+                        initview();
+                    for (int i = 0; i <homepagerRecommend.getData().size() ; i++) {
+
+                        if(homepagerRecommend.getData().get(i).getServiceList().size()==0){
+                            layout_tiao.setVisibility(View.GONE);
+
+                        }
+
+                    }
+
+                } else {
+                    Toast.makeText(getMContext(), homepagerRecommend.getMsg() + "", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            Log.e("YZS",e.getMessage());
+                initview();
+                for (int i = 0; i <datas.size() ; i++) {
+
+                    if(datas.get(i).getServiceList().size()==0){
+                        layout_tiao.setVisibility(View.GONE);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        ApiMethods.getHomePageReco(observer,hashMap);
+        Log.e("YZS",hashMap.toString());
+
+    }
+
+    private void newTel() {
+        HashMap<String,String> hashMap = new HashMap<>();
+        hashMap.put("page","0");
+        hashMap.put("size","4");
+        hashMap.put("classify_branch_id","");
+        hashMap.put("classify_type","1");
+
+        //网络请求
+        Observer<classificationBean> observer = new Observer<classificationBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(classificationBean classificationBean) {
+                Log.e("YZS",classificationBean.getData().getList().size()+"");
+                if(classificationBean.getCode()==200){
+
+                    if(classificationBean.getData()!=null){
+                        try {
+
+
+                        for (int i = 0; i < classificationBean.getData().getList().size(); i++) {
+                            if(classificationBean.getData().getList().size()==1){
+                                idone = classificationBean.getData().getList().get(0).get_id();
+                                text_renmenone.setText(classificationBean.getData().getList().get(0).getClassify_name());
+
+//                                Glide.with(getContext()).load(R.mipmap.familtwork).into(imageone);
+
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(0).getClassify_logo()).into(imageone);
+
+
+                            }else if(classificationBean.getData().getList().size()==2){
+                                idone = classificationBean.getData().getList().get(0).get_id();
+                                text_renmenone.setText(classificationBean.getData().getList().get(0).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.familtwork).into(imageone);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(0).getClassify_logo()).into(imageone);
+                                idtwo = classificationBean.getData().getList().get(1).get_id();
+                                text_renmentwo.setText(classificationBean.getData().getList().get(1).getClassify_name());
+
+//                                Glide.with(getContext()).load(R.mipmap.clear).into(image_two);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(1).getClassify_logo()).into(image_two);
+
+
+                            }else if(classificationBean.getData().getList().size()==3){
+                                idone = classificationBean.getData().getList().get(0).get_id();
+                                text_renmenone.setText(classificationBean.getData().getList().get(0).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.familtwork).into(imageone);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(0).getClassify_logo()).into(imageone);
+                                idtwo = classificationBean.getData().getList().get(1).get_id();
+                                text_renmentwo.setText(classificationBean.getData().getList().get(1).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.clear).into(image_two);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(1).getClassify_logo()).into(image_two);
+                                idthree = classificationBean.getData().getList().get(2).get_id();
+                                text_renmenfour.setText(classificationBean.getData().getList().get(2).getClassify_name());
+
+//                                Glide.with(getContext()).load(R.mipmap.jiaju).into(image_three);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(2).getClassify_logo()).into(image_three);
+
+                            }else {
+                                idone = classificationBean.getData().getList().get(0).get_id();
+                                text_renmenone.setText(classificationBean.getData().getList().get(0).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.familtwork).into(imageone);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(0).getClassify_logo()).into(imageone);
+                                idtwo = classificationBean.getData().getList().get(1).get_id();
+                                text_renmentwo.setText(classificationBean.getData().getList().get(1).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.clear).into(image_two);
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(1).getClassify_logo()).into(image_two);
+                                idthree = classificationBean.getData().getList().get(2).get_id();
+                                text_renmenfour.setText(classificationBean.getData().getList().get(2).getClassify_name());
+//                                Glide.with(getContext()).load(R.mipmap.jiaju).into(image_three);
+
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(2).getClassify_logo()).into(image_three);
+                                idfour = classificationBean.getData().getList().get(3).get_id();
+
+                                text_renmenthree.setText(classificationBean.getData().getList().get(3).getClassify_name());
+
+//                                Glide.with(getContext()).load(R.mipmap.clearcar).into(image_four);
+
+                                Glide.with(getContext()).load(classificationBean.getData().getList().get(3).getClassify_logo()).into(image_four);
+
+                            }
+                        }
+
+                        }catch (Exception e){
+
+                        }
+                    }
+                }else {
+
+                    Toast.makeText(getContext(), classificationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("YZS",e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+        ApiMethods.getclassifiction(observer,hashMap);
 
 
     }
 
     @Override
     protected void setUpData() {
+        //注册EventBus
         EventBus.getDefault().register(this);
 
         loctionUtils = new loctionUtils(getMContext(),text_s);
-        initview();
         onclick();
         newTelRecycle();
-        //注册EventBus
+
         dw();
     }
 
@@ -130,6 +336,7 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
     @Override
     public void onResume() {
         super.onResume();
+        recommend();
     }
 
     @Override
@@ -165,6 +372,8 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
                     listBeans = classificationvideoBean.getData().getList();
                     initRecyclerview();
 
+                }else {
+                    Toast.makeText(getContext(), classificationvideoBean.getMsg()+"", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -173,7 +382,6 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage());
-                Toast.makeText(getMContext(), "参数错误", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -207,44 +415,48 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
 
     public void initview(){
 
-        datas.add("冰箱清洁");
-        datas.add("空调清洗");
 
-        fragments = new ArrayList<>();
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        for (int i = 0; i < datas.size(); i++) {
-            ContentFragmenthome fragment = ContentFragmenthome.newInstance(datas.get(i));
-            fragments.add(fragment);
-        }
-        for (int i = 0; i < datas.size(); i++) {
-
-            tabLayout.addTab(tabLayout.newTab().setText(datas.get(i)));//添加tab选项
-
-        }
-        //fragment的适配器
-        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return fragments.get(position);
+        if(datas.size()==0){
+            layout_chaduo.setVisibility(View.GONE);
+            layout_emty_one.setVisibility(View.VISIBLE);
+            layout_tablayout.setVisibility(View.GONE);
+            layout_viewpager.setVisibility(View.GONE);
+        }else {
+            fragments = new ArrayList<>();
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+            for (int i = 0; i < datas.size(); i++) {
+                ContentFragmenthome fragment = ContentFragmenthome.newInstance();
+                fragments.add(fragment);
             }
+            for (int i = 0; i < datas.size(); i++) {
 
-            @Override
-            public int getCount() {
-                return fragments.size();
+                tabLayout.addTab(tabLayout.newTab().setText(datas.get(i).getClassify_name()));//添加tab选项
+
             }
+            //fragment的适配器
+            FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
+                @Override
+                public Fragment getItem(int position) {
+                    return fragments.get(position);
+                }
 
-            //ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return datas.get(position);
-            }
-        };
+                @Override
+                public int getCount() {
+                    return fragments.size();
+                }
 
-        viewPager.setAdapter(mAdapter);
-        tabLayout.setupWithViewPager(viewPager);//将TabLayout和ViewPager关联起来。
+                //ViewPager与TabLayout绑定后，这里获取到PageTitle就是Tab的Text
+                @Override
+                public CharSequence getPageTitle(int position) {
+                    return datas.get(position).getClassify_name();
+                }
+            };
+
+            viewPager.setAdapter(mAdapter);
+            tabLayout.setupWithViewPager(viewPager);//将TabLayout和ViewPager关联起来。
 //        quotation_tab.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
 //        datas.clear();
-
+        }
 
     };
     private void initRecyclerview() {
@@ -277,7 +489,7 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
 
     @Override
     public void onItemClick(int position) {
-        startActivity(new Intent(getContext(),DetailsActivity.class));
+//        startActivity(new Intent(getContext(),DetailsActivity.class));
 
 
     }
@@ -287,31 +499,47 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
         switch (v.getId()){
             case R.id.layout_richang:
 
-                tiao();
+                Intent intent = new Intent(getMContext(), listActivity.class);
+                intent.putExtra("textname",text_renmenone.getText().toString().trim());
+                intent.putExtra("_id",idone);
+                startActivity(intent);
+
 
                 break;
 
             case R.id.layout_clear:
-                tiao();
+                Intent intent1 = new Intent(getMContext(), listActivity.class);
+                intent1.putExtra("textname",text_renmentwo.getText().toString().trim());
+                intent1.putExtra("_id",idtwo);
+
+                startActivity(intent1);
 
 
                 break;
             case R.id.layout_huli:
 
-                tiao();
+                Intent intent2 = new Intent(getMContext(), listActivity.class);
+                intent2.putExtra("textname",text_renmenthree.getText().toString().trim());
+                intent2.putExtra("_id",idthree);
+
+                startActivity(intent2);
 
                 break;
             case R.id.layout_youyan:
 
-                tiao();
+                Intent intent3 = new Intent(getMContext(), listActivity.class);
+                intent3.putExtra("textname",text_renmenfour.getText().toString().trim());
+                intent3.putExtra("_id",idfour);
+
+                startActivity(intent3);
                 break;
             case R.id.image_message:
                 startActivity(new Intent(getMContext(), MessageActivity.class));
                 break;
 
             case R.id.layout_loction:
-                Intent intent = new Intent(getMContext(),HomeseachActivity.class);
-                startActivity(intent);
+                Intent intent4 = new Intent(getMContext(),HomeseachActivity.class);
+                startActivity(intent4);
                 break;
         }
 
@@ -345,7 +573,15 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
 
 
             }else {
-                Toast.makeText(getMContext(), "6.0以下不需要开启权限", Toast.LENGTH_SHORT).show();
+                if (ContextCompat.checkSelfPermission(getMContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(getMContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    //请求权限
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+                } else {
+                    loctionUtils.loction();
+
+                }
             }
 
         }else {
@@ -368,9 +604,11 @@ public class HomePagerFragment extends BaseMvpFragment<HomePagerContact.IHomePag
     }
 
     public void tiao(){
-        startActivity(new Intent(getMContext(), listActivity.class));
+
 
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

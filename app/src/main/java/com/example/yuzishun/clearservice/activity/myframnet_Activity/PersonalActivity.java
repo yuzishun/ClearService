@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -17,6 +19,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,17 +28,39 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.yuzishun.clearservice.Custom.ChoosePhotoDialog;
 import com.example.yuzishun.clearservice.Custom.ChoosesexDialog;
-import com.example.yuzishun.clearservice.Custom.CircleImageView;
 import com.example.yuzishun.clearservice.Custom.PermissionHelper;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
+import com.example.yuzishun.clearservice.model.QiNiuBean;
+import com.example.yuzishun.clearservice.model.UserBean;
+import com.example.yuzishun.clearservice.model.UserUpdataBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
 import com.example.yuzishun.clearservice.utils.SpUtil;
+import com.qiniu.android.common.Zone;
+import com.qiniu.android.http.ResponseInfo;
+import com.qiniu.android.storage.Configuration;
+import com.qiniu.android.storage.UpCompletionHandler;
+import com.qiniu.android.storage.UploadManager;
 
 
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,6 +69,9 @@ import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class PersonalActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.image_back)
@@ -66,7 +94,9 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
     TextView sex;
     @BindView(R.id.icon__)
     CircleImageView icon;
-
+    private String ToKen="";
+    private byte[] bytes;
+    private String Reconid;
     private PermissionHelper helper;
     private final static int INTENT_CODE_IMAGE_CAPTURE1 = 0;
     private final static int INTENT_CODE_IMAGE_GALLERY1=1;
@@ -83,7 +113,107 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
         tel_add.setText(R.string.down_id);
         icon = findViewById(R.id.icon__);
         onclickc();
+        newTel();
+        QuToKen();
+    }
 
+    private void QuToKen() {
+        HashMap<String,String> hashMap = new HashMap<>();
+        Observer<QiNiuBean> observer = new Observer<QiNiuBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(QiNiuBean qiNiuBean) {
+                if(qiNiuBean.getCode()==200){
+                    ToKen = qiNiuBean.getData().getToken();
+                }else {
+
+                    Toast.makeText(PersonalActivity.this, qiNiuBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e("YZS",e.getMessage()+"");
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+
+        ApiMethods.getQiniu(observer,hashMap);
+
+    }
+
+    private void newTel() {
+        HashMap<String,String> hashMap = new HashMap();
+        hashMap.put("user_access_token", Content.Token);
+//        hashMap.put("_id",User_id);
+            Observer<UserBean> observer = new Observer<UserBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(UserBean userBean) {
+                    Log.e("YZS",userBean.toString());
+                    if(userBean.getCode()==200){
+                        name_to.setText(userBean.getData().getNickname());
+                        sex.setText(userBean.getData().getSex());
+                        if(TextUtils.isEmpty(userBean.getData().getHeaderimg_url())){
+                            Drawable drawable = getResources().getDrawable(R.mipmap.icon_tx);
+                            BitmapDrawable bd = (BitmapDrawable) drawable;
+                            Bitmap bmm = bd.getBitmap();
+                            bytes = Bitmap2Bytes(bmm);
+                        }else {
+                            Glide.with(PersonalActivity.this).load(userBean.getData().getHeaderimg_url()).asBitmap().into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                    icon.setImageBitmap(resource);
+                                            bytes = Bitmap2Bytes(resource);
+                                    Log.e("YZS",bytes.toString());
+
+                                }
+                            });
+
+
+
+                        }
+
+
+                        if(userBean.getData().getSex().equals("")){
+
+                            sex.setText("请选择");
+
+                        }
+
+
+
+                    }else {
+
+                        Toast.makeText(PersonalActivity.this, userBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e("YZS",e.getMessage());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            };
+            ApiMethods.getUser(observer,hashMap);
     }
 
     private void onclickc() {
@@ -91,16 +221,14 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
         change_icon.setOnClickListener(this);
         change_name.setOnClickListener(this);
         change_sex.setOnClickListener(this);
+        tel_add.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
 
 
-        //设置名字
-        SpUtil spUtil = new SpUtil(PersonalActivity.this, "dat1");
-        String name = spUtil.getString("name", "null");
-        name_to.setText(name);
+
     }
 
     @Override
@@ -124,9 +252,89 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
 
                 changersex();
                 break;
+            case R.id.tel_add:
+
+                //上传配置
+                Configuration config = new Configuration.Builder()
+                        .chunkSize(256 * 1024)  //分片上传时，每片的大小。 默认 256K
+                        .putThreshhold(512 * 1024)  // 启用分片上传阀值。默认 512K
+                        .connectTimeout(10) // 链接超时。默认 10秒
+                        .responseTimeout(60) // 服务器响应超时。默认 60秒
+                        .zone(Zone.zone0) // 设置区域，指默认 Zone.zone0 注：这步是最关键的
+                        .build();
 
 
+                try {
+
+
+//                String data = String.valueOf(uri);
+                String key = "images/"+Reconid+"1.jpg";
+                String token = ToKen.toString().trim();
+                UploadManager uploadManager = new UploadManager(config);
+                                Log.e("YZS",ToKen.toString());
+                                Log.e("YZS",bytes.toString());
+                                Log.e("YZS",key+"");
+                uploadManager.put(bytes, key, token,
+                        new UpCompletionHandler() {
+                            @Override
+                            public void complete(String key, ResponseInfo info, JSONObject response) {
+                                if(info.isOK()) {
+
+                                    Log.e("YZS", "Upload Success");
+                                } else {
+                                    Log.e("YZS", "Upload Fail");
+                                    Log.e("YZS",info.toString()+"");
+                                }
+                            }
+                        }, null);
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("user_access_token", Content.Token);
+                hashMap.put("headerimg_url", Content.domain+key);
+                hashMap.put("sex", sex.getText().toString().trim());
+                hashMap.put("nickname", name_to.getText().toString().trim());
+
+                Observer<UserUpdataBean> observer = new Observer<UserUpdataBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(UserUpdataBean userUpdataBean) {
+                        Log.e("YZS", userUpdataBean.toString());
+                        if (userUpdataBean.getCode() == 200) {
+
+                            Toast.makeText(PersonalActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
+                            finish();
+
+                        } else {
+                            Toast.makeText(PersonalActivity.this, userUpdataBean.getMsg() + "", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("YZS", e.getMessage());
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                };
+                ApiMethods.getUserUpdata(observer, hashMap);
+                Log.e("YZS",hashMap.toString());
+
+                break;
+
+                }catch (Exception e){
+
+                }
         }
+
     }
 
     @Override
@@ -226,7 +434,9 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
                     if (pBundle != null) {
                         Bitmap pBitmap = (Bitmap) pBundle.get("data");
                         if (pBitmap != null) {
+                            Reconid = getPicNameFromPath(data.getData().getPath());
                             icon.setImageBitmap(pBitmap);
+                            bytes = Bitmap2Bytes(pBitmap);
                         }
                     }
                 }
@@ -246,12 +456,13 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
                         icon.setBackgroundResource(R.mipmap.icon_tx);
 
                     }else {
+//                        uri = data.getData();
+                        Reconid = getPicNameFromPath(data.getData().getPath());
                         InputStream inputStream = resolver.openInputStream(data.getData());
 
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-
                         icon.setImageBitmap(bitmap);
+                        bytes = Bitmap2Bytes(bitmap);
                     }
                     }
                 } catch (FileNotFoundException e) {
@@ -275,6 +486,26 @@ public class PersonalActivity extends BaseActivity implements View.OnClickListen
         }
 
     }
+
+    /**
+     * 把Bitmap转Byte
+     * @Author HEH
+     * @EditTime 2010-07-19 上午11:45:56
+     */
+    public static byte[] Bitmap2Bytes(Bitmap bm){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        return baos.toByteArray();
+    }
+    public static String getPicNameFromPath(String picturePath){
+        String temp[] = picturePath.replaceAll("\\\\","/").split("/");
+        String fileName = "";
+        if(temp.length > 1){
+            fileName = temp[temp.length - 1];
+        }
+        return fileName;
+    }
+
 
 
 }

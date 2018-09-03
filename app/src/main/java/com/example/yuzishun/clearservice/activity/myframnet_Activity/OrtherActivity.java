@@ -13,7 +13,13 @@ import android.widget.TextView;
 
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.ContentFragment;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.orderfragments.fragment_finish;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.orderfragments.fragment_servicez;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.orderfragments.fragment_tuan;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.orderfragments.fragmnet_service;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.orderfragments.framgnet_paid;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +34,7 @@ public class OrtherActivity extends BaseActivity implements View.OnClickListener
     LinearLayout image_back;
     @BindView(R.id.tab_orther)
     TabLayout tabLayout;
-
+    private String index;
     @BindView(R.id.viewPager_orther)
     ViewPager viewPager;
     private List<String> datas = new ArrayList<String>();//页卡标题集合
@@ -41,6 +47,8 @@ public class OrtherActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        index = intent.getStringExtra("index");
 
         title_text.setText("我的订单");
         onclick();
@@ -67,12 +75,19 @@ public class OrtherActivity extends BaseActivity implements View.OnClickListener
             tabLayout.addTab(tabLayout.newTab().setText(datas.get(i)));//添加tab选项
 
         }
+
         //tablayout 转换模式
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        for (int i = 0; i < datas.size(); i++) {
-            ContentFragmentOrther fragment = ContentFragmentOrther.newInstance(datas.get(i));
-            fragments.add(fragment);
-        }
+//        for (int i = 0; i < datas.size(); i++) {
+//
+//            fragments.add(fragment);
+//        }
+        fragments.add(new ContentFragmentOrther());
+        fragments.add(new framgnet_paid());
+        fragments.add(new fragment_tuan());
+        fragments.add(new fragmnet_service());
+        fragments.add(new fragment_servicez());
+        fragments.add(new fragment_finish());
 
 
         initview();
@@ -95,10 +110,16 @@ public class OrtherActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = getIntent();
-        int index = intent.getIntExtra("index", 0);
+        try {
+
 //        tabLayout.getTabAt(index).select();
-        viewPager.setCurrentItem(index);
+            viewPager.setCurrentItem(Integer.parseInt(index));
+            index="";
+        }catch (Exception e){
+
+
+        }
+
     }
 
     private void initview() {

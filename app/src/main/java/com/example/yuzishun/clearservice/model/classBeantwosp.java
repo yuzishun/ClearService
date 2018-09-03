@@ -566,4 +566,13 @@ public class classBeantwosp {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "classBeantwosp{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

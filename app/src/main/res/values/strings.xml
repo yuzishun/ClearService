@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">惠服务</string>
+    <string name="app_name">阿拉丁</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -8,7 +8,7 @@
     <string name="Verification_Ru">获取验证码</string>
     <string name="back_id">返回</string>
     <string name="skip_id">跳过5</string>
-    <string name="Wecome_id">欢迎登录惠服务</string>
+    <string name="Wecome_id">欢迎登录阿拉丁</string>
     <string name="tel_id">请输入手机号</string>
     <string name="password_id">请输入密码</string>
     <string name="newUSer_id">新用户注册</string>
@@ -21,7 +21,7 @@
     <string name="id_86">+86</string>
     <string name="repeat">重新获取</string>
     <string name="send_success">验证码已发送至</string>
-    <string name="Resign_id">欢迎注册惠服务</string>
+    <string name="Resign_id">欢迎注册阿拉丁</string>
     <string name="w2PassWord_id">忘记密码？</string>
     <string name="accton_id">请输入你要找回密码的账号</string>
     <string name="next_id">下一步</string>
@@ -33,7 +33,7 @@
     <string name="repeat_password">请重新设置密码</string>
     <string name="sure_id">确定</string>
     <string name="setup_id">请设置密码</string>
-    <string name="Service_hui">惠服务</string>
+    <string name="Service_hui">阿拉丁</string>
     <string name="sodexho_id">索迪斯</string>
     <string name="my_id">我的</string>
     <string name="man_id">男</string>

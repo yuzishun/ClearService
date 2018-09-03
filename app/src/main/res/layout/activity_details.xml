@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
 
     tools:context="com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsActivity">
@@ -293,7 +292,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-
+        android:layout_marginTop="@dimen/d20"
         android:id="@+id/layout_Alpha"
         android:background="@color/white"
         android:layout_width="match_parent"

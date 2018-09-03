@@ -24,6 +24,20 @@ public class telfjAdapter extends RecyclerView.Adapter<telfjAdapter.ViewHolder> 
         this.context = context;
         this.data = data;
     }
+    // 采用接口回调的方式实现RecyclerView的ItemClick
+    public listActivityAdapter.OnRecyclerViewListener mOnRecyclerViewListener;
+
+
+    // 接口回调第一步: 定义接口和接口中的方法
+    public interface OnRecyclerViewListener {
+
+        void onItemClick(int position);
+
+    }
+    // 接口回调第二步: 初始化接口的引用
+    public void setOnRecyclerViewListener(listActivityAdapter.OnRecyclerViewListener l) {
+        this.mOnRecyclerViewListener = l;
+    }
 
     @Override
     public telfjAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,8 +45,16 @@ public class telfjAdapter extends RecyclerView.Adapter<telfjAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(telfjAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(telfjAdapter.ViewHolder holder, final int position) {
         holder.name.setText(data.get(position).getAddress());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnRecyclerViewListener != null) {
+                    mOnRecyclerViewListener.onItemClick(position);
+                }
+            }
+        });
     }
 
     @Override

@@ -80,8 +80,8 @@ public class ServiceinfocationBean implements Serializable{
         private int ping_begin_time;
         private int ping_end_time;
         private String service_video_url;
-        private int service_original_money;
-        private int service_money;
+        private float service_original_money;
+        private float service_money;
         private int service_address_radius;
         private int ping_number;
         private int have_ping_number;
@@ -131,19 +131,19 @@ public class ServiceinfocationBean implements Serializable{
             this.service_video_url = service_video_url;
         }
 
-        public int getService_original_money() {
+        public float getService_original_money() {
             return service_original_money;
         }
 
-        public void setService_original_money(int service_original_money) {
+        public void setService_original_money(float service_original_money) {
             this.service_original_money = service_original_money;
         }
 
-        public int getService_money() {
+        public float getService_money() {
             return service_money;
         }
 
-        public void setService_money(int service_money) {
+        public void setService_money(float service_money) {
             this.service_money = service_money;
         }
 
@@ -373,5 +373,14 @@ public class ServiceinfocationBean implements Serializable{
                     ", service_address_point=" + service_address_point +
                     '}';
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceinfocationBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

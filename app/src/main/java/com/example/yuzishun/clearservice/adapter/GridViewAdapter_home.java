@@ -31,8 +31,9 @@ public class GridViewAdapter_home extends BaseAdapter {
     private int[] lists = new int[]{R.mipmap.familtwork,R.mipmap.clear,R.mipmap.jiaju,R.mipmap.clearcar
     ,R.mipmap.anmo,R.mipmap.meirong,R.mipmap.baomu,R.mipmap.jiadian,R.mipmap.jiadian
     };
-    private String[] listsname = new String[]{"家庭保洁","家电清洗","家居养护","上门洗车","上门按摩","美容美妆","保姆月嫂","家电维修"
-    };
+    //自己的集合
+//    private String[] listsname = new String[]{"家庭保洁","家电清洗","家居养护","上门洗车","上门按摩","美容美妆","保姆月嫂","家电维修"
+//    };
     private Context context;
     public static int item_grid_num = 8;//每一页中GridView中item的数量
     public static int number_columns = 4;//gridview一行展示的数目
@@ -84,9 +85,9 @@ public class GridViewAdapter_home extends BaseAdapter {
         if (listBean != null) {
 //            mHolder.iv_img.setImageResource(R.mipmap.icon_woman_false);
 //            mHolder.tv_text.setText(bean.name);
-            Glide.with(context).load(lists[i]).into(mHolder.iv_img);
+//            Glide.with(context).load(lists[i]).into(mHolder.iv_img);
 
-//            Glide.with(context).load(listBean.getClassify_logo()).into(mHolder.iv_img);
+            Glide.with(context).load(listBean.getClassify_logo()).into(mHolder.iv_img);
             mHolder.tv_text.setText(listBean.getClassify_name());
         }
         return itemView;

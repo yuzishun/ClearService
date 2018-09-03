@@ -178,4 +178,13 @@ public class LoginBean {
             this.user_select_tag = user_select_tag;
         }
     }
+
+    @Override
+    public String toString() {
+        return "LoginBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

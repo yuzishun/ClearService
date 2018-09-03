@@ -60,10 +60,9 @@
                     android:layout_height="@dimen/d18" />
             </RelativeLayout>
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/icon_mytx"
-
-                android:src="@mipmap/icon_woman_false"
+                android:src="@mipmap/logo"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_width="@dimen/d60"
@@ -83,6 +82,8 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/layout_one"
+            android:background="@color/white"
             android:layout_weight="5"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -328,6 +329,7 @@
         android:background="@color/everoneActivity"
         android:layout_height="@dimen/d10" />
     <LinearLayout
+        android:id="@+id/layout_two"
         android:background="@color/white"
 
         android:layout_weight="1.1"
@@ -535,7 +537,6 @@
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
-            android:background="@color/everoneActivity"
             android:layout_weight="1.2"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -590,6 +591,7 @@
                 android:background="@color/everoneActivity"
                 android:layout_height="@dimen/d10" />
             <LinearLayout
+                android:id="@+id/chooseCrde"
                 android:layout_weight="1.2"
                 android:background="@color/white"
                 android:layout_width="match_parent"
@@ -632,6 +634,7 @@
             </LinearLayout>
 
                 <LinearLayout
+                    android:background="@color/everoneActivity"
                     android:layout_weight="1.1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"></LinearLayout>

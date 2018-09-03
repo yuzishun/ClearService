@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:background="@mipmap/fenlei"
-                android:layout_margin="@dimen/d8"
+                android:id="@+id/icon_image"
+                android:layout_margin="@dimen/d7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/name_text"
                     android:text="家庭保洁1小时"
                     android:textSize="@dimen/f12"
                     android:layout_marginLeft="@dimen/d8"
@@ -46,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
                <TextView
+                   android:id="@+id/time_text"
                    android:text="剩余时间：12:32:24"
                    android:textSize="@dimen/f10"
                    android:layout_marginLeft="@dimen/d8"
@@ -91,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/tuan"
                     android:text="参加人员8人，还差两人开团"
                     android:textSize="@dimen/f10"
                     android:layout_marginLeft="@dimen/d8"

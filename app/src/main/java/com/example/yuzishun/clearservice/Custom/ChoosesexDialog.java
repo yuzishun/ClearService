@@ -40,7 +40,9 @@ public abstract class ChoosesexDialog extends Dialog implements View.OnClickList
         cancelButton = (TextView) findViewById(R.id.button_cancel);
         mPhoto.setText(R.string.man_id);
         mCamera.setText(R.string.icon_woman);
-
+        mCamera.setBackgroundColor(getContext().getResources().getColor(R.color.white));
+        mPhoto.setBackgroundColor(getContext().getResources().getColor(R.color.white));
+        cancelButton.setBackgroundColor(getContext().getResources().getColor(R.color.white));
         mPhoto.setOnClickListener(this);
         mCamera.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
@@ -90,6 +92,8 @@ public abstract class ChoosesexDialog extends Dialog implements View.OnClickList
 
     }
     protected abstract void openCream();
+
+
 
 }
 

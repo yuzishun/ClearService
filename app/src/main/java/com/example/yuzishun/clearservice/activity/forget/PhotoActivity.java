@@ -123,7 +123,7 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
                                     finish();
 
                                 }else {
-
+                                    Toast.makeText(PhotoActivity.this, codebean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                                 }
 
@@ -135,7 +135,7 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
                             public void onError(Throwable e) {
                                 Log.e("YZS",e.getMessage());
 
-                                Toast.makeText(PhotoActivity.this, "发送失败，可能是网络原因，或者是手机号不正确", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(PhotoActivity.this, "发送失败，可能是网络原因，或者是手机号不正确", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override

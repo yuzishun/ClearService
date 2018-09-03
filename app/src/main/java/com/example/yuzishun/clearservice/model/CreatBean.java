@@ -73,10 +73,19 @@ public class CreatBean {
         private int service_time;
         private String service_id;
         private String user_id;
-        private int order_money;
-        private int order_pay_money;
+        private float order_money;
+        private int over_order_time;
+        private float order_pay_money;
         private int order_time;
         private int __v;
+
+        public int getOver_order_time() {
+            return over_order_time;
+        }
+
+        public void setOver_order_time(int over_order_time) {
+            this.over_order_time = over_order_time;
+        }
 
         public int getPing_time() {
             return ping_time;
@@ -174,19 +183,19 @@ public class CreatBean {
             this.user_id = user_id;
         }
 
-        public int getOrder_money() {
+        public float getOrder_money() {
             return order_money;
         }
 
-        public void setOrder_money(int order_money) {
+        public void setOrder_money(float order_money) {
             this.order_money = order_money;
         }
 
-        public int getOrder_pay_money() {
+        public float getOrder_pay_money() {
             return order_pay_money;
         }
 
-        public void setOrder_pay_money(int order_pay_money) {
+        public void setOrder_pay_money(float order_pay_money) {
             this.order_pay_money = order_pay_money;
         }
 
@@ -205,5 +214,14 @@ public class CreatBean {
         public void set__v(int __v) {
             this.__v = __v;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "CreatBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by yuzishun on 2018/8/16.
  */
 
-public class addressBean implements Serializable{
+public  class addressBean implements Serializable{
 
 
     /**
@@ -243,6 +243,26 @@ public class addressBean implements Serializable{
                         ", address_point=" + address_point +
                         '}';
             }
+
+
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "page=" + page +
+                    ", totalNumber=" + totalNumber +
+                    ", list=" + list +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "addressBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

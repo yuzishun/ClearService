@@ -202,4 +202,13 @@ public class classificationBean {
 
         }
     }
+
+    @Override
+    public String toString() {
+        return "classificationBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -20,6 +20,10 @@ import com.example.yuzishun.clearservice.model.DefaultaddressBean;
 import com.example.yuzishun.clearservice.model.ServiceinfocationBean;
 import com.example.yuzishun.clearservice.model.addressBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.OnEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -64,10 +68,12 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
     @BindView(R.id.visibility_text)
     TextView visibility_text;
     private String id;
+    public static SubmissionActivity intentsat;
+
     private ServiceinfocationBean serviceinfocationBean;
     private int time=0;
     private String tel_id;
-    private List<List<addressBean.DataBean.ListBean>> listYse = new ArrayList();
+    private List<addressBean.DataBean.ListBean> listYse = new ArrayList();
     @Override
     public int intiLayout() {
         return R.layout.activity_submission;
@@ -76,6 +82,7 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        intentsat = this;
         title_text.setText(R.string.commint_mission);
         image_back.setOnClickListener(this);
         layout_chosse.setOnClickListener(this);
@@ -104,6 +111,7 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
         time= Integer.parseInt(Content.chooseTime);
             Service_time.setText("服务时间："+com.example.yuzishun.clearservice.utils.TimeUtils.getFeture(time));
     }
+
 
     }
 
@@ -141,12 +149,12 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
                             public void onClick(View v) {
                                 Intent intent = new Intent(SubmissionActivity.this,ChoosetelActivity.class);
                                 intent.putExtra("_id",id);
-                                startActivity(intent);
+                                startActivityForResult(intent,30);
 
                             }
                         });
                     }else {
-                        Toast.makeText(SubmissionActivity.this, "请求失败,请看报错信息", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SubmissionActivity.this, defaultaddressBean.getMsg()+"", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -155,7 +163,7 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
                 @Override
                 public void onError(Throwable e) {
                     Log.e("YZS",e.getMessage());
-                    Toast.makeText(SubmissionActivity.this, "请求失败,请看报错信息", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SubmissionActivity.this, "请求失败,请看报错信息", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -170,6 +178,9 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
 
     }
 
+
+//
+
     private void settingDate() {
         for (int i = 0; i <serviceinfocationBean.getData().getService_banner_img().size() ; i++) {
             Glide.with(this).load(serviceinfocationBean.getData().getService_banner_img().get(0)).into(service_image);
@@ -177,6 +188,12 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
         text_work.setText(serviceinfocationBean.getData().getService_name());
         money_text.setText("¥:"+serviceinfocationBean.getData().getService_money()+"");
         money_text2.setText("¥:"+serviceinfocationBean.getData().getService_money()+"");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 
     @Override
@@ -207,12 +224,14 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
                     public void onNext(CreatBean creatBean) {
                         if(creatBean.getCode()==200){
                             Intent intent = new Intent(SubmissionActivity.this,PayActivity.class);
-                            intent.putExtra("_id",creatBean.getData().get_id());
-
-
+                            Content.OrderId = creatBean.getData().get_id();
+                            Content.OrderMoney = creatBean.getData().getOrder_pay_money();
+                            intent.putExtra("_time",creatBean.getData().getOver_order_time());
                             startActivity(intent);
 
                         }else {
+                            Toast.makeText(SubmissionActivity.this, creatBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+
                         }
 
                     }
@@ -220,7 +239,6 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void onError(Throwable e) {
                         Log.e("YZS",e.getMessage()+"");
-                        Toast.makeText(SubmissionActivity.this, "参数错误", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -253,43 +271,24 @@ public class SubmissionActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1){
-
-        if(resultCode==22){
-
-           Bundle bundle =  data.getExtras();
-            Log.e("YZS",bundle.toString());
-            int position = bundle.getInt("position");
-            addressBean addressBean = (com.example.yuzishun.clearservice.model.addressBean) bundle.getSerializable("addressBean");
-
-            for (int i = 0; i <addressBean.getData().getList().size() ; i++) {
-                if(addressBean.getData().getList().get(i).getIs_filter()==1){
-
-                    listYse.add(addressBean.getData().getList());
-
-
-                }
-                if(listYse.size()==0){
-
-                }else {
-                    Log.e("YZS",listYse.toString()+"list");
-                    for (int j = 0; j <listYse.size() ; j++) {
-
-                        //这里写选择地址的逻辑
-//                        listYse.get(position).get(i).getIs_filter()
-                        name.setText(listYse.get(position).get(i).getUser_name());
-                        phone.setText(listYse.get(position).get(i).getMobile_phone() + "");
-                        tel_xx.setText(listYse.get(position).get(i).getAddress_city() + "" + listYse.get(position).get(i).getAddress_name() + "" + listYse.get(position).get(i).getAddress_info());
-                        tel_id = listYse.get(position).get(i).get_id();
-                    }
-                }
-
-
-            }
-        }
-
+        if(requestCode==30&&resultCode==30){
+            visibility_text.setVisibility(View.GONE);
+            name.setVisibility(View.VISIBLE);
+            phone.setVisibility(View.VISIBLE);
+            tel_xx.setVisibility(View.VISIBLE);
+            Bundle bundle = data.getExtras().getBundle("bundle");
+            name.setText(bundle.getString("name"));
+                phone.setText(bundle.getString("phone")+"");
+                tel_xx.setText(bundle.getString("city")+bundle.getString("addressname")+bundle.getString("info"));
+                tel_id = bundle.getString("id");
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }

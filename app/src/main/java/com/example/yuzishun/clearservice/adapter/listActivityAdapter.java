@@ -69,10 +69,16 @@ public class listActivityAdapter extends RecyclerView.Adapter<listActivityAdapte
         long current = System.currentTimeMillis()/1000;
         if(ping_end<current){
             holder.time.setText("已结束");
-            holder.button_pin.setText("不可拼团");
 
         }else {
             new CountDownUtils(ping_end - current,holder.time).startCount();
+        }
+        if(list.get(position).getService_status()==1){
+
+            holder.button_pin.setText("待开团");
+        }else {
+
+            holder.button_pin.setText("立即拼团");
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override

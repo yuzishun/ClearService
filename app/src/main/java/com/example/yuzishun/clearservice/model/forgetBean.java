@@ -158,4 +158,13 @@ public class forgetBean {
             this.user_select_tag = user_select_tag;
         }
     }
+
+    @Override
+    public String toString() {
+        return "forgetBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

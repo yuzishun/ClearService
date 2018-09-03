@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -32,6 +33,7 @@ import com.amap.api.services.poisearch.PoiSearch;
 import com.example.yuzishun.clearservice.Custom.ClearEditText;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.adapter.SeachAddressAdapter;
+import com.example.yuzishun.clearservice.adapter.listActivityAdapter;
 import com.example.yuzishun.clearservice.adapter.telfjAdapter;
 import com.example.yuzishun.clearservice.base.BaseActivity;
 import com.example.yuzishun.clearservice.base.MyApplication;
@@ -64,7 +66,8 @@ public class searchActivity extends BaseActivity implements View.OnClickListener
     LinearLayout layout_dq;
     @BindView(R.id.seach_edit)
     ClearEditText seach_edit;
-
+    @BindView(R.id.city)
+    TextView city;
     @BindView(R.id.lv_address)
     ListView lv_address;
     private PoiSearch.Query query;
@@ -83,7 +86,7 @@ public class searchActivity extends BaseActivity implements View.OnClickListener
         title_text.setText(R.string.search_tel);
         image_back.setOnClickListener(this);
 
-        loctionUtils= new loctionUtils(this,loction_text,telfujin_recyclerView,layout_fj,0);
+        loctionUtils= new loctionUtils(this,loction_text,telfujin_recyclerView,layout_fj,0,city,searchActivity.this);
         text_repeat.setOnClickListener(this);
         Log.e("YZS",loctionUtils.isLocationEnabled()+"");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -107,13 +110,29 @@ public class searchActivity extends BaseActivity implements View.OnClickListener
                     layout_dq.setVisibility(View.GONE);
                     layout_fj.setVisibility(View.GONE);
                     lv_address.setVisibility(View.VISIBLE);
+                    lv_address.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Intent intent = new Intent();
+
+                            intent.putExtra("city",city.getText().toString().trim());
+                            intent.putExtra("loction_text",data.get(position).getText());
+                            intent.putExtra("loction_jw",data.get(position).getLongitude()+","+data.get(position).getLatitude());
+
+                            setResult(50,intent);
+//
+                            finish();
+
+                        }
+                    });
                     String str=seach_edit.getText().toString();
                     if(str.length()>0){
                         seach(str);
 
                     }
                 }else {
-                                        layout_dq.setVisibility(View.VISIBLE);
+                    layout_dq.setVisibility(View.VISIBLE);
                     layout_fj.setVisibility(View.VISIBLE);
                     lv_address.setVisibility(View.GONE);
 
@@ -275,7 +294,7 @@ public class searchActivity extends BaseActivity implements View.OnClickListener
         //keyWord表示搜索字符串，
         //第二个参数表示POI搜索类型，二者选填其一，选用POI搜索类型时建议填写类型代码，码表可以参考下方（而非文字）
         //cityCode表示POI搜索区域，可以是城市编码也可以是城市名称，也可以传空字符串，空字符串代表全国在全国范围内进行搜索
-        query=new PoiSearch.Query(address,"", "");
+        query=new PoiSearch.Query(address,"", city.getText().toString().trim()+"");
         query.setPageSize(300);// 设置每页最多返回多少条poiitem
         query.setPageNum(page);//设置查询页码
 

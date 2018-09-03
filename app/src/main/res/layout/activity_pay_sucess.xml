@@ -14,6 +14,7 @@
         android:layout_height="@dimen/d40">
         <TextView
             android:text="完成"
+            android:id="@+id/finish"
             android:textColor="@color/blue2"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -93,6 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/money_text"
                         android:text="¥30:00"
                         android:layout_centerVertical="true"
                         android:textColor="@color/blue2"
@@ -113,6 +115,7 @@
 
             <Button
                 android:text="查看订单"
+                android:id="@+id/look_order"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/blue2"
                 android:textSize="@dimen/f14"

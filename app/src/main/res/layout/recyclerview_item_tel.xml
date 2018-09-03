@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/tel_text"
                 android:text="@string/tel_tel"
                 android:textSize="@dimen/f14"
                 android:textColor="@color/black_shou"
@@ -41,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tel_phone"
                 android:text="@string/telphone_id"
                 android:layout_marginLeft="@dimen/d70"
                 android:textSize="@dimen/f14"

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.example.yuzishun.clearservice.activity.myframnet_Activity.ServicePeopleActivity">
+
+    <include layout="@layout/title_text"></include>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/everoneActivity"
+        android:layout_height="@dimen/d10" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1.4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/everoneActivity"
+            android:layout_height="@dimen/d10" />
+
+        <LinearLayout
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="姓名"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="钱一二"
+
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/d25"
+                android:background="@color/gray_line"
+                android:layout_height="0.1dp" />
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="年龄"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="41岁"
+
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/d25"
+                android:background="@color/gray_line"
+                android:layout_height="0.1dp" />
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="籍贯"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="上海浦东"
+
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/d25"
+                android:background="@color/gray_line"
+                android:layout_height="0.1dp" />
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="身份证"
+                    android:id="@+id/ID_crde"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="341222199209147971"
+                    android:layout_toRightOf="@+id/ID_crde"
+                    android:textColor="@color/black_shou"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="已认证"
+                    android:textColor="@color/gray___"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@color/everoneActivity"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@mipmap/right"
+
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15" />
+
+                    <TextView
+                        android:text="身份校验成功"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/green2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d15" />
+
+                    <TextView
+                        android:text="身份校验失败"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/red_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="请拨打电话：15264527438进行处理"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:text="确认身份"
+                        android:layout_margin="@dimen/d20"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:background="@drawable/login_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <Button
+                        android:text="身份错误"
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/d20"
+                        android:textColor="@color/gray_text"
+                        android:background="@drawable/service_people_cuo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="请在服务人员上门后，认证核对服务人员信息，确保服务人员身份无误，点击'确认身份'按钮，确认服务人员身份，若上门服务人员与订单服务人员的身份不符，请点击身份错误按钮"
+                        android:textSize="@dimen/f12"
+                        android:layout_marginLeft="@dimen/d20"
+                        android:layout_marginRight="@dimen/d20"
+                        android:textColor="@color/gray_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

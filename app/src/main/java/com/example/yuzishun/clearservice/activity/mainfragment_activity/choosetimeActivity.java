@@ -107,7 +107,7 @@ public class choosetimeActivity extends BaseActivity implements View.OnClickList
 
                    }
 
-                   tabLayout.setTabMode(TabLayout.MODE_FIXED);
+                   tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
                    for (int i = 0; i < datas.size(); i++) {
                        ContentFragmentchoose fragment = ContentFragmentchoose.newInstance(datas,id);
                        fragments.add(fragment);
@@ -142,6 +142,7 @@ public class choosetimeActivity extends BaseActivity implements View.OnClickList
                    });
 
                }else {
+                   Toast.makeText(choosetimeActivity.this, serviceinfocationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                }
 

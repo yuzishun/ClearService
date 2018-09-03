@@ -188,7 +188,7 @@ public class ServiceFragment extends BaseMvpFragment implements View.OnClickList
                         }
                 }
             }else {
-
+                    Toast.makeText(getContext(), classificationvideoBean.getMsg()+"", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -196,7 +196,7 @@ public class ServiceFragment extends BaseMvpFragment implements View.OnClickList
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage()+"");
-                Toast.makeText(getMContext(), "暂无数据", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getMContext(), "暂无数据", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -229,17 +229,23 @@ public class ServiceFragment extends BaseMvpFragment implements View.OnClickList
 
             @Override
             public void onNext(classificationBean classificationBean) {
+                if(classificationBean.getCode()==200){
+
                 if(classificationBean.getData()!=null){
                     dataList = classificationBean.getData().getList();
                     initDatas();
 
                 }
+                }else {
+
+                    Toast.makeText(getContext(), classificationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage());
-                Toast.makeText(getMContext(), "请求有误,请看具体原因", Toast.LENGTH_SHORT).show();
             }
 
             @Override

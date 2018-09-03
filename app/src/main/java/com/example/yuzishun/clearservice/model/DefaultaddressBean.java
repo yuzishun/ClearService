@@ -188,4 +188,13 @@ public class DefaultaddressBean {
             this.address_point = address_point;
         }
     }
+
+    @Override
+    public String toString() {
+        return "DefaultaddressBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

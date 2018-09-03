@@ -37,40 +37,40 @@ public class ContentFragmentchoose extends Fragment {
     private GridViewAdapterr gridViewAdapter;
     private List<List<Integer>> data = new ArrayList<List<Integer>>();
     private List<String> datafu= new ArrayList<>();
+    private View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.choose_item,null);
-        gridView = view.findViewById(R.id.gridview);
-        List<String> list = new ArrayList<>();
+        if(view==null) {
+            view = View.inflate(getActivity(), R.layout.choose_item, null);
+            gridView = view.findViewById(R.id.gridview);
+            List<String> list = new ArrayList<>();
 //        for (int i = 0; i < datas.length; i++) {
 //            list.add(datas[i]);
 //        }
-        Bundle arguments = getArguments();
-        datafu = arguments.getStringArrayList("xiaobiao");
-        String id = arguments.getString("id");
+            Bundle arguments = getArguments();
+            datafu = arguments.getStringArrayList("xiaobiao");
+            String id = arguments.getString("id");
 
 
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("_id", id);
 
+            Observer<ServiceinfocationBean> observer = new Observer<ServiceinfocationBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
 
-        HashMap<String,String> hashMap = new HashMap<>();
-        hashMap.put("_id",id);
+                }
 
-        Observer<ServiceinfocationBean> observer = new Observer<ServiceinfocationBean>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+                @Override
+                public void onNext(ServiceinfocationBean serviceinfocationBean) {
+                    Log.e("YZS", serviceinfocationBean.getData().toString());
+                    if (serviceinfocationBean.getCode() == 200) {
+                        serviceinfocationBean.getData().getService_detail_time();
+                        for (int i = 0; i < datafu.size(); i++) {
+                            data = serviceinfocationBean.getData().getService_detail_time();
 
-            }
-
-            @Override
-            public void onNext(ServiceinfocationBean serviceinfocationBean) {
-                Log.e("YZS",serviceinfocationBean.getData().toString());
-                if(serviceinfocationBean.getCode()==200){
-                    serviceinfocationBean.getData().getService_detail_time();
-                    for (int i = 0; i <datafu.size() ; i++) {
-                        data = serviceinfocationBean.getData().getService_detail_time();
-
-                    }
+                        }
 //                    Log.e("YZS",datas.size()+"");
 //                    for (int i = 0; i <datas.size() ; i++) {
 ////                       if(datas2.size()>5){
@@ -84,45 +84,59 @@ public class ContentFragmentchoose extends Fragment {
 //                    Log.e("YZS",datas.size()+""+datas.toString());
 
 
-                    gridViewAdapter = new GridViewAdapterr(data,getContext(),datafu);
+                        gridViewAdapter = new GridViewAdapterr(data, getContext(), datafu);
 
-                    gridView.setAdapter(gridViewAdapter);
-                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            TextView textView = view.findViewById(R.id.textview);
+                        gridView.setAdapter(gridViewAdapter);
+                        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                TextView textView = view.findViewById(R.id.textview);
 
-                            Content.chooseTime = textView.getText().toString().trim();
-                            Log.e("YZS",Content.chooseTime+"");
-                            gridViewAdapter.clearSelection(position);
-                            gridViewAdapter.notifyDataSetChanged();
-                        }
-                    });
+                                Content.chooseTime = textView.getText().toString().trim();
+                                Log.e("YZS", Content.chooseTime + "");
+                                gridViewAdapter.clearSelection(position);
+                                gridViewAdapter.notifyDataSetChanged();
+                            }
+                        });
 
 
-                }else {
+                    } else {
+                        Toast.makeText(getContext(), serviceinfocationBean.getMsg() + "", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
 
+                @Override
+                public void onError(Throwable e) {
+//                Toast.makeText(getContext(), "服务人员id有误", Toast.LENGTH_SHORT).show();
 
-            }
+                }
 
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(getContext(), "服务人员id有误", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onComplete() {
 
-            }
+                }
+            };
 
-            @Override
-            public void onComplete() {
-
-            }
-        };
-
-        ApiMethods.getServiceinfo(observer,hashMap);
-
+            ApiMethods.getServiceinfo(observer, hashMap);
+        }
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            if (view != null) {
+                ((ViewGroup) view.getParent()).removeView(view);
+            }
+        }catch (Exception e){
+
+        }
+
+
     }
     /**
      * fragment静态传值

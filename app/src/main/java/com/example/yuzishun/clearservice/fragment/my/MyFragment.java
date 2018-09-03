@@ -1,6 +1,7 @@
 package com.example.yuzishun.clearservice.fragment.my;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,8 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import de.hdodenhof.circleimageview.CircleImageView;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.main.MainPresenterImpl;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.ChooseCrdeActivity;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.OrderdetailsActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.OrtherActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.PersonalActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.ReleaseserviceActivity;
@@ -30,7 +35,10 @@ import com.example.yuzishun.clearservice.model.regiserBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
 import com.example.yuzishun.clearservice.present.MvpPresenter;
 import com.example.yuzishun.clearservice.present.MvpPresenterFragment;
+import com.example.yuzishun.clearservice.utils.OnEvent;
 import com.example.yuzishun.clearservice.utils.SpUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
@@ -64,12 +72,18 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
     @BindView(R.id.setting_id)
     ImageView setting_id;
     @BindView(R.id.icon_mytx)
-    ImageView icon_mytx;
+    CircleImageView icon_mytx;
     @BindView(R.id.name_id)
     TextView name_id;
+    @BindView(R.id.layout_one)
+    LinearLayout layout_one;
+    @BindView(R.id.layout_two)
+    LinearLayout layout_two;
     @BindView(R.id.layout_everOrder)
     LinearLayout layout_everOrder;
-    private int i=0;
+    @BindView(R.id.chooseCrde)
+    LinearLayout chooseCrde;
+    private String i="";
     private String User_id;
     @Override
     protected int setLayoutResourceID() {
@@ -100,56 +114,13 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
         icon_mytx.setOnClickListener(this);
         name_id.setOnClickListener(this);
         layout_everOrder.setOnClickListener(this);
-
+        chooseCrde.setOnClickListener(this);
 
     }
 
     @Override
     protected void setUpData() {
-        SpUtil spUtil1 = new SpUtil(getContext(),"Userid");
-        User_id = spUtil1.getString("User_id","null");
-        Log.e("YZS", User_id);
 
-        HashMap<String,String> hashMap = new HashMap();
-        hashMap.put("user_access_token",Content.Token);
-        hashMap.put("_id",User_id);
-        if(!User_id.equals("")){
-            Observer<UserBean> observer = new Observer<UserBean>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-
-                }
-
-                @Override
-                public void onNext(UserBean userBean) {
-                    Log.e("YZS",userBean.toString());
-                    if(userBean.getCode()==200){
-                        name_id.setText(userBean.getData().getNickname());
-
-                    }else {
-
-                        Toast.makeText(getMContext(), "请求用户信息错误", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    Log.e("YZS",e.getMessage());
-                    Toast.makeText(getMContext(), "请求用户信息错误", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            };
-            ApiMethods.getUser(observer,hashMap);
-
-
-        }else {
-            Toast.makeText(getContext(), "User_id为空", Toast.LENGTH_SHORT).show();
-        }
 
 
     }
@@ -164,42 +135,47 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
         switch (v.getId()){
             case R.id.waitmoney_layout:
                 Intent intent = new Intent(getMContext(), OrtherActivity.class);
-                i=1;
+
+                i="1";
                 intent.putExtra("index",i);
                 startActivity(intent);
                 break;
 
             case R.id.waitteam_layout:
                 Intent intent2 = new Intent(getMContext(), OrtherActivity.class);
-                i=2;
+                i="2";
+
                 intent2.putExtra("index",i);
                 startActivity(intent2);
                 break;
             case R.id.waitService_layout:
                 Intent intent3 = new Intent(getMContext(), OrtherActivity.class);
-                i=3;
+                i="2";
+
                 intent3.putExtra("index",i);
                 startActivity(intent3);
                 break;
             case R.id.coffee_layout:
                 Intent intent4 = new Intent(getMContext(), OrtherActivity.class);
-                i=4;
+                i="4";
+
                 intent4.putExtra("index",i);
                 startActivity(intent4);
                 break;
             case R.id.success_layout:
                 Intent intent5 = new Intent(getMContext(), OrtherActivity.class);
-                i=5;
+                i="5";
+
                 intent5.putExtra("index",i);
                 startActivity(intent5);
                 break;
             case R.id.integral_layout:
-                Toast.makeText(getContext(), "111", Toast.LENGTH_SHORT).show();
+                //第三方弹出的dialog 暂时不用
+//                new AlertView("清楚缓存","您确定要清楚所有本地缓存吗?","取消",new String[]{"确定"},null,getContext(),AlertView.Style.Alert,null).show();
                 break;
             case R.id.demand_layout:
 
                 startActivity(new Intent(getMContext(), ReleaseserviceActivity.class));
-
                 break;
             case R.id.evaluate_layout:
                 startActivity(new Intent(getMContext(), RewardonActivity.class));
@@ -227,8 +203,14 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
                 startActivity(intent8);
                 break;
             case R.id.layout_everOrder:
+                Intent intent9  = new Intent(getMContext(), OrtherActivity.class);
+                i="0";
 
-                startActivity(new Intent(getMContext(), OrtherActivity.class));
+                intent9.putExtra("index",i);
+                startActivity(intent9);
+                break;
+            case R.id.chooseCrde:
+                startActivity(new Intent(getMContext(), ChooseCrdeActivity.class));
                 break;
 
         }
@@ -239,4 +221,70 @@ public class MyFragment extends BaseMvpFragment implements View.OnClickListener 
         super.onDestroy();
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        User_xinxi();
+        layout_one.setBackgroundColor(getResources().getColor(R.color.white));
+        layout_two.setBackgroundColor(getResources().getColor(R.color.white));
+    }
+
+    public void User_xinxi(){
+//        SpUtil spUtil1 = new SpUtil(getContext(),"Userid");
+//        User_id = spUtil1.getString("User_id","null");
+//        Log.e("YZS", User_id);
+
+        HashMap<String,String> hashMap = new HashMap();
+        hashMap.put("user_access_token",Content.Token);
+//        hashMap.put("_id",User_id);
+            Observer<UserBean> observer = new Observer<UserBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(UserBean userBean) {
+                    Log.e("YZS",userBean.toString());
+                    if(userBean.getCode()==200){
+                        name_id.setText(userBean.getData().getNickname());
+
+                    try {
+
+
+
+                        if(userBean.getData().getHeaderimg_url().equals("")){
+
+                            Glide.with(getMContext()).load(getResources().getDrawable(R.mipmap.logo)).into(icon_mytx);
+
+                        }else {
+                            Glide.with(getMContext()).load(userBean.getData().getHeaderimg_url()).into(icon_mytx);
+
+                        }
+                    }catch (Exception e){
+
+                    }
+                    }else {
+
+                        Toast.makeText(getMContext(), userBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e("YZS",e.getMessage());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            };
+            ApiMethods.getUser(observer,hashMap);
+
+
+    }
+
 }

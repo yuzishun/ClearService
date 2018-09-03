@@ -40,6 +40,9 @@ public abstract class ChoosePhotoDialog extends Dialog implements View.OnClickLi
         mPhoto = (TextView) findViewById(R.id.button_photo);
         mCamera = (TextView) findViewById(R.id.button_camera);
         cancelButton = (TextView) findViewById(R.id.button_cancel);
+        mCamera.setBackgroundColor(getContext().getResources().getColor(R.color.white));
+        mPhoto.setBackgroundColor(getContext().getResources().getColor(R.color.white));
+        cancelButton.setBackgroundColor(getContext().getResources().getColor(R.color.white));
         mPhoto.setOnClickListener(this);
         mCamera.setOnClickListener(this);
         cancelButton.setOnClickListener(this);

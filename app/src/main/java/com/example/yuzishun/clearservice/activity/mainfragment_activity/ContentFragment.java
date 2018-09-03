@@ -37,75 +37,86 @@ public class ContentFragment extends Fragment implements listActivityAdapter.OnR
     private RecyclerView RecyclerView;
     private listActivityAdapter listActivityAdapter;
     private String _idone,_idtwo;
+    private View view;
     private List<classificationvideoBean.DataBean.ListBean> listBeans = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.listactivityadapter_item,null);
-        RecyclerView = view.findViewById(R.id.RecyclerView);
-        RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if(view==null) {
+            view = View.inflate(getActivity(), R.layout.listactivityadapter_item, null);
+            RecyclerView = view.findViewById(R.id.RecyclerView);
+            RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        HashMap<String,String> hashMap = new HashMap<>();
+            HashMap<String, String> hashMap = new HashMap<>();
 
-        Bundle idlist = getArguments();
-        _idone = idlist.getString("_idone");
-        _idtwo = idlist.getString("_idtwo");
+            Bundle idlist = getArguments();
+            _idone = idlist.getString("_idone");
+            _idtwo = idlist.getString("_idtwo");
 
-        hashMap.put("page","0");
-        hashMap.put("size","10");
-        hashMap.put("classify_branch_id",_idone);
-        hashMap.put("classify_chlid_id",_idtwo);
-        hashMap.put("order_by","1");
+            hashMap.put("page", "0");
+            hashMap.put("size", "10");
+            hashMap.put("classify_branch_id", _idone);
+            hashMap.put("classify_chlid_id", _idtwo);
+            hashMap.put("order_by", "1");
 
-        Observer<classificationvideoBean> observer = new Observer<classificationvideoBean>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+            Observer<classificationvideoBean> observer = new Observer<classificationvideoBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
 
-            }
+                }
 
-            @Override
-            public void onNext(classificationvideoBean classificationvideobean) {
+                @Override
+                public void onNext(classificationvideoBean classificationvideobean) {
 
-                if(classificationvideobean.getCode()==200){
+                    if (classificationvideobean.getCode() == 200) {
 
-                    listBeans = classificationvideobean.getData().getList();
+                        listBeans = classificationvideobean.getData().getList();
 
 
+                        listActivityAdapter = new listActivityAdapter(getContext(), listBeans);
+                        RecyclerView.setAdapter(listActivityAdapter);
 
-                    listActivityAdapter = new listActivityAdapter(getContext(),listBeans);
-                    RecyclerView.setAdapter(listActivityAdapter);
+
+                    } else {
+                        Toast.makeText(getContext(), classificationvideobean.getMsg() + "", Toast.LENGTH_SHORT).show();
+                    }
 
 
                 }
 
+                @Override
+                public void onError(Throwable e) {
+                    Log.e("YZS", e.getMessage());
 
 
+                }
 
-            }
+                @Override
+                public void onComplete() {
 
-            @Override
-            public void onError(Throwable e) {
-                Log.e("YZS",e.getMessage());
-                Toast.makeText(getContext(), "参数错误,或者网络不稳定", Toast.LENGTH_SHORT).show();
+                }
+            };
+            ApiMethods.getclassificationvideo(observer, hashMap);
 
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        ApiMethods.getclassificationvideo(observer,hashMap);
-
-        Log.e("YZS",hashMap.toString());
+            Log.e("YZS", hashMap.toString());
 
 
-
-
-
-
+        }
 
         return view;
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            if (view != null) {
+                ((ViewGroup) view.getParent()).removeView(view);
+            }
+        }catch (Exception e){
+
+        }
+
+
     }
     /**
      * fragment静态传值

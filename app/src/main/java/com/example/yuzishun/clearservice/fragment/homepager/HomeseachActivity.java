@@ -45,6 +45,7 @@ import com.example.yuzishun.clearservice.model.AddressseachBean;
 import com.example.yuzishun.clearservice.model.DefaultaddressBean;
 import com.example.yuzishun.clearservice.model.addressBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.OnEvent;
 import com.example.yuzishun.clearservice.utils.loctionUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -87,6 +88,8 @@ public class HomeseachActivity extends BaseActivity implements View.OnClickListe
     LinearLayout layout_fuwu;
     private PoiSearch.Query query;
     private int page=0;
+    @BindView(R.id.city)
+    TextView city;
     private PoiSearch poiSearch;
     private SeachAddressAdapter adapter;
     private ArrayList<AddressseachBean> data = new ArrayList<AddressseachBean>();
@@ -102,13 +105,20 @@ public class HomeseachActivity extends BaseActivity implements View.OnClickListe
         title_text.setText(R.string.search_tel);
         image_back.setOnClickListener(this);
 
-        loctionUtils= new loctionUtils(this,loction_text,telfujin_recyclerView,layout_fj,1);
+        loctionUtils= new loctionUtils(this,loction_text,telfujin_recyclerView,layout_fj,1,city,HomeseachActivity.this);
         text_repeat.setOnClickListener(this);
         Log.e("YZS",loctionUtils.isLocationEnabled()+"");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         adapter = new SeachAddressAdapter(this,data);
         lv_address.setAdapter(adapter);
-
+        lv_address.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                EventBus.getDefault().post(
+                        new OnEvent(data.get(position).getAddress()+""));
+                finish();
+            }
+        });
         telnew();
         setOnclick();
     }
@@ -143,13 +153,24 @@ public class HomeseachActivity extends BaseActivity implements View.OnClickListe
                     };
                     telfuwu_recyclerView.setLayoutManager(linearLayoutManager);
                     telfuwu_recyclerView.setAdapter(telAdapterbeyond);
+                    telAdapterbeyond.setOnRecyclerViewListener(new listActivityAdapter.OnRecyclerViewListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            EventBus.getDefault().post(
+                                    new OnEvent(listYse.get(position).getAddress_city()+listYse.get(position).getAddress_name()+listYse.get(position).getAddress_info()+""));
+                            finish();
+
+                        }
+                    });
+                }else {
+                    Toast.makeText(HomeseachActivity.this, addressBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage());
-                Toast.makeText(HomeseachActivity.this, "请求失败,请看具体信息", Toast.LENGTH_SHORT).show();
 
             }
 

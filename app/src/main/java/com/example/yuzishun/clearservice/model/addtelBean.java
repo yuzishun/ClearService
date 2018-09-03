@@ -178,4 +178,13 @@ public class addtelBean {
             this.address_point = address_point;
         }
     }
+
+    @Override
+    public String toString() {
+        return "addtelBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

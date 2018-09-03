@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.yuzishun.clearservice">
-
+    <!-- 37c24615eebf155218b9be8138ae5d81-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,6 +23,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
 
     <application
         android:name=".base.MyApplication"
@@ -58,13 +59,15 @@
         <activity android:name=".tools.CountryActivity" />
         <activity android:name=".activity.myframnet_Activity.langerActivity" />
         <activity android:name=".activity.mainfragment_activity.AddtelActivity" />
-        <activity android:name=".activity.mainfragment_activity.SubmissionActivity" />
+        <activity
+            android:name=".activity.mainfragment_activity.SubmissionActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.mainfragment_activity.searchActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".activity.mainfragment_activity.DetailsActivity"></activity>
+        <activity android:name=".activity.mainfragment_activity.DetailsActivity" />
         <activity android:name=".activity.mainfragment_activity.ChoosetelActivity" />
         <activity android:name=".activity.mainfragment_activity.listActivity" />
         <activity android:name=".activity.mainfragment_activity.PayActivity" />
@@ -79,14 +82,34 @@
         <activity android:name=".activity.myframnet_Activity.OrtherActivity" />
         <activity android:name=".activity.myframnet_Activity.OrderdetailsActivity" />
         <activity android:name=".activity.mainfragment_activity.choosetimeActivity" />
-
+        <!--支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <!--wx pay-->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="61d60482c42038e9426902b30b64085d" />
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".fragment.homepager.HomeseachActivity"></activity>
+        <activity android:name=".fragment.homepager.HomeseachActivity" />
+        <activity android:name=".activity.myframnet_Activity.ChooseCrdeActivity" />
+        <activity android:name=".activity.myframnet_Activity.ServicePeopleActivity"></activity>
     </application>
+
 
 </manifest>

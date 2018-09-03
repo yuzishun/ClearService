@@ -17,9 +17,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
-import com.dou361.ijkplayer.widget.IjkVideoView;
-import com.example.yuzishun.clearservice.BuildConfig;
-import com.example.yuzishun.clearservice.MainActivity;
+
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.AddtelActivity;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.DetailsActivity;
@@ -34,10 +32,7 @@ import java.util.List;
 
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
-import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 /**
  * Created by yuzishun on 2018/8/6.
@@ -72,16 +67,24 @@ public class HP_ReAdapter extends RecyclerView.Adapter<HP_ReAdapter.ViewHolder> 
         int ping_end_time = list.get(position).getPing_end_time();
         long ping_end = (int)ping_end_time;
         long current = System.currentTimeMillis()/1000;
+
         if(ping_end<current){
             holder.time_.setText("已结束");
-            holder.pin_button.setText("不可拼团");
+
             holder.shengyu.setVisibility(View.GONE);
 
         }else {
             new CountDownUtils(ping_end - current,holder.time_).startCount();
         }
+        if(list.get(position).getService_status()==1){
 
-        String pin_end = TimeUtils.milliseconds2String(ping_end*1000);
+            holder.pin_button.setText("待开团");
+        }else {
+
+            holder.pin_button.setText("立即拼团");
+        }
+
+//        String pin_end = TimeUtils.milliseconds2String(ping_end*1000);
 
 
 

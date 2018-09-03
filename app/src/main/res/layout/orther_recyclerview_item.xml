@@ -28,6 +28,7 @@
 
                 <TextView
                     android:text="剩余时间:00:23:42"
+                    android:id="@+id/text_time"
                     android:layout_toRightOf="@+id/orther_hao"
                     android:layout_centerVertical="true"
                     android:textColor="@color/blue2"
@@ -39,6 +40,7 @@
 
             <TextView
                 android:text="待支付"
+                android:id="@+id/text_state"
                 android:layout_marginRight="@dimen/d15"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -60,7 +62,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:background="@mipmap/cehsi"
+                    android:id="@+id/image_order"
                     android:layout_marginLeft="@dimen/d25"
                     android:layout_marginTop="@dimen/d10"
                     android:layout_marginBottom="@dimen/d10"
@@ -79,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/text_name"
                         android:text="家庭保洁一小时"
                         android:layout_centerVertical="true"
                         android:textColor="@color/black_shou"
@@ -86,6 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/text_money"
                         android:text="¥30.00"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/d15"
@@ -102,6 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/text_service_time"
                         android:text="服务时间：2018-08-15 10：00"
                         android:layout_centerVertical="true"
                         android:textColor="@color/gray_text"
@@ -127,7 +132,6 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="拼团订单"
-                android:id="@+id/text"
                 android:textSize="@dimen/f12"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/d15"
@@ -164,41 +168,205 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <Button
-                    android:text="删除订单"
-                    android:id="@+id/deledte_orther"
-                    android:layout_margin="@dimen/d5"
-                    android:textSize="@dimen/f12"
-                    android:layout_toLeftOf="@+id/dashang"
-                    android:background="@drawable/home_button"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
-                <Button
-                    android:text="打赏"
-                    android:id="@+id/dashang"
-                    android:textSize="@dimen/f12"
-                    android:layout_toLeftOf="@+id/pinglun"
-                    android:textColor="@color/blue2"
-                    android:layout_margin="@dimen/d5"
-                    android:background="@drawable/home_button"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:text="发表评论"
-                    android:id="@+id/pinglun"
-                    android:layout_alignParentRight="true"
-                    android:textSize="@dimen/f12"
-                    android:textColor="@color/blue2"
-                    android:layout_margin="@dimen/d5"
-                    android:background="@drawable/home_button"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <RelativeLayout
+                    android:id="@+id/layout_ddxq"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            </RelativeLayout>
+                    <Button
+                        android:text="取消订单"
+                        android:id="@+id/cancel_order"
+                        android:layout_toLeftOf="@+id/gopay"
+
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:text="去支付"
+                        android:id="@+id/gopay"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/blue2"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button_bule"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_delete"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:text="删除订单"
+                        android:id="@+id/delete_ordertwo"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_xx"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/xiangqing_button"
+                        android:text="订单详情"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_shenfen"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/Service_peopleone"
+                        android:text="校验服务人员身份"
+                        android:padding="@dimen/d5"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/blue2"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button_bule"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_chakan"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/Service_peopletwo"
+                        android:padding="@dimen/d5"
+                        android:text="校验服务人员身份"
+                        android:layout_toLeftOf="@+id/xiangqing_button2"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/blue2"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button_bule"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="订单详情"
+                        android:id="@+id/xiangqing_button2"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_begin"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:text="确认开始"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_end"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:text="确认完成"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_finish"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:text="删除订单"
+                        android:id="@+id/deledte_ortherone"
+                        android:layout_margin="@dimen/d5"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/gray_text"
+                        android:layout_toLeftOf="@+id/dashang"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="打赏"
+                        android:id="@+id/dashang"
+                        android:textSize="@dimen/f12"
+                        android:layout_toLeftOf="@+id/pinglun"
+                        android:textColor="@color/blue2"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button_bule"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:text="发表评论"
+                        android:id="@+id/pinglun"
+                        android:layout_alignParentRight="true"
+                        android:textSize="@dimen/f12"
+                        android:textColor="@color/blue2"
+                        android:layout_margin="@dimen/d5"
+                        android:background="@drawable/deilete_button"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+                </RelativeLayout>
+
         </LinearLayout>
     </LinearLayout>
 

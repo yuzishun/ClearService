@@ -56,4 +56,13 @@ public class VerificationBean {
             this._id = _id;
         }
     }
+
+    @Override
+    public String toString() {
+        return "VerificationBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -22,9 +22,10 @@
                 android:layout_height="@dimen/d10" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_lineone"
                 android:layout_centerHorizontal="true"
                 android:background="@color/blue2"
-                android:layout_below="@+id/iamge_one"
+                android:layout_below="@+id/image_one"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -35,14 +36,15 @@
             <TextView
                 android:text="付款成功"
                 android:textSize="@dimen/f12"
-                android:textColor="@color/gray_text"
+                android:id="@+id/text_one"
+                android:textColor="@color/black_shou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_one"
                 android:textSize="@dimen/f12"
-                android:textColor="@color/gray_text"
+                android:textColor="@color/black_shou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -66,8 +68,7 @@
             android:layout_height="match_parent">
             <ImageView
                 android:layout_marginTop="@dimen/d4"
-
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_two"
                 android:layout_centerHorizontal="true"
 
@@ -75,9 +76,9 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_linetwo"
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
-                android:layout_below="@+id/iamge_one"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -88,12 +89,14 @@
             <TextView
                 android:text="拼团成功"
                 android:textSize="@dimen/f12"
+                android:id="@+id/text_two"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_two"
+                android:visibility="gone"
                 android:textSize="@dimen/f12"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
@@ -119,7 +122,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/d4"
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_three"
                 android:layout_centerHorizontal="true"
 
@@ -127,8 +130,10 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_linethree"
+
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -139,12 +144,15 @@
             <TextView
                 android:text="服务人员上门"
                 android:textSize="@dimen/f12"
+                android:id="@+id/text_three"
+
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_three"
+                android:visibility="gone"
                 android:textSize="@dimen/f12"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
@@ -170,7 +178,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/d4"
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_four"
                 android:layout_centerHorizontal="true"
 
@@ -178,8 +186,10 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_linefour"
+
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -190,23 +200,29 @@
             <TextView
                 android:text="校验服务人员身份"
                 android:textSize="@dimen/f12"
+                android:id="@+id/text_four"
+
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_four"
                 android:textSize="@dimen/f12"
+                android:visibility="gone"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1.2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
+                android:id="@+id/lauyout_visibity_one"
+                android:visibility="gone"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -227,6 +243,27 @@
                     android:textSize="@dimen/f12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/lauyout_visibity2_one"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button_one_deilts"
+                    android:layout_alignParentRight="true"
+                    android:enabled="false"
+                    android:layout_marginRight="@dimen/d15"
+                    android:text="校验服务人员身份"
+                    android:textSize="@dimen/f10"
+                    android:padding="@dimen/d5"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/deilts_select_button"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp" />
+
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -242,7 +279,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/d4"
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_frie"
                 android:layout_centerHorizontal="true"
 
@@ -250,8 +287,10 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_linefrie"
+
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -262,23 +301,29 @@
             <TextView
                 android:text="确定服务人员上门"
                 android:textSize="@dimen/f12"
+                android:id="@+id/text_frie"
+
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_frie"
                 android:textSize="@dimen/f12"
+                android:visibility="gone"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1.2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
+                android:id="@+id/lauyout_visibity_two"
+                android:visibility="gone"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -300,6 +345,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/lauyout_visibity2_two"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button_two_deilts"
+                    android:text="确认上门"
+                    android:textSize="@dimen/f10"
+                    android:enabled="false"
+                    android:padding="@dimen/d5"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/deilts_select_button"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp" />
+
+            </RelativeLayout>
         </LinearLayout>
 </LinearLayout>
     <LinearLayout
@@ -314,7 +378,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/d4"
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_six"
                 android:layout_centerHorizontal="true"
 
@@ -322,8 +386,10 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_linesix"
+
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -334,23 +400,29 @@
             <TextView
                 android:text="开始服务"
                 android:textSize="@dimen/f12"
+                android:id="@+id/text_six"
+
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_six"
                 android:textSize="@dimen/f12"
+                android:visibility="gone"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1.2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/lauyout_visibity_three"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -372,6 +444,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/lauyout_visibity2_three"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button_three_deilts"
+
+                    android:text="确认开始服务"
+                    android:enabled="false"
+                    android:textSize="@dimen/f10"
+                    android:padding="@dimen/d5"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/deilts_select_button"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp" />
+
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -386,7 +478,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/d4"
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_seven"
                 android:layout_centerHorizontal="true"
 
@@ -394,8 +486,10 @@
                 android:layout_height="@dimen/d8" />
             <TextView
                 android:layout_width="1dp"
+                android:id="@+id/image_lineseven"
+
                 android:layout_centerHorizontal="true"
-                android:background="@color/blue2"
+                android:background="@color/gray_text"
                 android:layout_height="match_parent" />
         </RelativeLayout>
         <LinearLayout
@@ -405,13 +499,15 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="服务人员已经完成服务,待确认"
+                android:id="@+id/text_seven"
                 android:textSize="@dimen/f12"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_seven"
+                android:visibility="gone"
                 android:textSize="@dimen/f12"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
@@ -419,19 +515,22 @@
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1.2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
+                android:id="@+id/lauyout_visibity_four"
+                android:visibility="gone"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
+
                     android:layout_toLeftOf="@+id/image1"
                     android:layout_marginRight="@dimen/d4"
-
                     android:src="@mipmap/right"
                     android:layout_width="@dimen/d15"
                     android:layout_height="@dimen/d15" />
@@ -446,7 +545,26 @@
                     android:layout_height="wrap_content" />
 
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/lauyout_visibity2_four"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:text="确认完成"
+                    android:id="@+id/button_four_deilts"
 
+                    android:textSize="@dimen/f10"
+                    android:padding="@dimen/d5"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/d15"
+                    android:layout_centerHorizontal="true"
+                    android:enabled="false"
+                    android:textColor="@color/gray_text"
+                    android:background="@drawable/deilts_select_button"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp" />
+
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -462,7 +580,7 @@
             android:layout_height="match_parent">
             <ImageView
 
-                android:background="@mipmap/big_yuan"
+                android:background="@mipmap/gray_yuan"
                 android:id="@+id/image_ten"
                 android:layout_centerHorizontal="true"
 
@@ -477,14 +595,17 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="服务完成"
+                android:id="@+id/text_ant"
+
                 android:textSize="@dimen/f12"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="2018 6-29 20:29:12"
-
+                android:id="@+id/time_ant"
                 android:textSize="@dimen/f12"
+                android:visibility="gone"
                 android:textColor="@color/gray_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

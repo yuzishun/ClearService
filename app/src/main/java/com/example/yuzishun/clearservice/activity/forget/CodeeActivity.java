@@ -83,6 +83,7 @@ public class CodeeActivity extends BaseActivity implements View.OnClickListener 
 
                         }else {
 
+                            Toast.makeText(CodeeActivity.this, verificationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -92,7 +93,7 @@ public class CodeeActivity extends BaseActivity implements View.OnClickListener 
                     public void onError(Throwable e) {
                         Log.e("YZS",e.getMessage());
 
-                        Toast.makeText(CodeeActivity.this, "验证码错误,请重新输入", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(CodeeActivity.this, "验证码错误,请重新输入", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiStrategy {
     //暂时是测试服务器url
-    public static String baseUrl = "http://192.168.0.178:7071/ald/v1/";
+    public static String baseUrl = "http://192.168.0.103:7071/ald/v1/";
     //读超时长，单位：毫秒
     public static final int READ_TIME_OUT = 7676;
     //连接时长，单位：毫秒

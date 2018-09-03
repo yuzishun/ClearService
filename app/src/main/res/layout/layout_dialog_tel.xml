@@ -4,9 +4,11 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginLeft="@dimen/d25"
+        android:layout_marginRight="@dimen/d25"
         android:background="@drawable/layout_border"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="180dp">
 
         <LinearLayout
             android:layout_weight="1.7"
@@ -15,8 +17,8 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="定位服务未开启"
-                android:textSize="@dimen/f16"
-                android:textColor="@color/blue2"
+                android:textSize="@dimen/f14"
+                android:textColor="@color/black_shou"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -27,10 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="请您在设置>隐私>定位服务中开启定位服务，惠服务需要知道您的位置才能提供更好的服务哦～"
+                android:text="请您在设置>隐私>定位服务中开启定位服务，阿拉丁需要知道您的位置才能提供更好的服务哦～"
                 android:layout_marginLeft="@dimen/d25"
                 android:textColor="@color/black_shou"
-                android:textSize="@dimen/f16"
+                android:textSize="@dimen/f14"
                 android:layout_marginRight="@dimen/d25"
                 android:lineSpacingExtra="@dimen/d4"
                 android:layout_width="wrap_content"
@@ -56,23 +58,27 @@
                 <TextView
                     android:text="手动搜索地址"
                     android:textColor="@color/blue2"
-                    android:textSize="@dimen/f18"
+                    android:textSize="@dimen/f14"
                     android:id="@+id/seach_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+            <TextView
+                android:layout_width="0.1dp"
+                android:background="@color/blue2"
+                android:layout_height="match_parent" />
             <LinearLayout
                 android:layout_weight="1"
-                android:background="@color/blue2"
+                android:background="@color/white"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:text="去开启"
                     android:id="@+id/begin_id"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/f18"
+                    android:textColor="@color/blue2"
+                    android:textSize="@dimen/f14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

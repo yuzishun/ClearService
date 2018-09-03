@@ -11,6 +11,7 @@ import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.base.BaseMvpFragment;
 import com.example.yuzishun.clearservice.fragment.homepager.HomePagerPresenterImpl;
 import com.example.yuzishun.clearservice.present.MvpPresenterFragment;
+import com.jaeger.library.StatusBarUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +26,6 @@ public class WebViewFragment extends BaseMvpFragment {
 
     @Override
     protected void setUpView() {
-
     }
 
     @Override

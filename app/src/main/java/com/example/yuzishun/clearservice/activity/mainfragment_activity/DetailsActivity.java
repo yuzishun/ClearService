@@ -45,9 +45,10 @@ import com.example.yuzishun.clearservice.base.BaseActivity;
 import com.example.yuzishun.clearservice.model.BannerModel;
 import com.example.yuzishun.clearservice.model.ServiceinfocationBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.StatusBarUtil;
 import com.example.yuzishun.clearservice.utils.TimeUtils;
 
-import com.loonggg.rvbanner.lib.RecyclerViewBanner;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -93,7 +94,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     LinearLayout mLinearLayout;         //底部圆点布局
     private int mSize;                          //圆点数量
     private List<ImageView> mDotView;           //圆点容器
-
     private String id;
     private List<String> image ;
     private File imageCacheFile;
@@ -102,9 +102,6 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     private BannerViewAdapter mAdapter;
     private int autoCurrIndex = 0;//设置当前 第几个图片 被选中
     private HashMap<String,String> hashMap = new HashMap<>();
-    //定时轮播图片，需要在主线程里面修改 UI
-
-
     @Override
     public int intiLayout() {
 
@@ -116,13 +113,13 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void initView() {
         ButterKnife.bind(this);
+        com.jaeger.library.StatusBarUtil.setTranslucentForImageView(this,100,null);
+
         can.setOnClickListener(this);
         backer.setOnClickListener(this);
         newTel();
         layout_Alpha.getBackground().setAlpha(0);
         scrollview.setScrolListener(this);
-        setWindowImmersiveState(this);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
     private void newTel() {
@@ -204,13 +201,17 @@ public class DetailsActivity extends BaseActivity implements View.OnClickListene
 
 
 
+                }else {
+                    Toast.makeText(DetailsActivity.this, serviceinfocationBean.getMsg()+"", Toast.LENGTH_SHORT).show();
+
                 }
+
             }
 
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage());
-                Toast.makeText(DetailsActivity.this, "请求有误,请看具体原因", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DetailsActivity.this, "请求有误,请看具体原因", Toast.LENGTH_SHORT).show();
             }
 
             @Override

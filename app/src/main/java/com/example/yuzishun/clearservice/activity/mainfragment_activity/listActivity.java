@@ -84,7 +84,7 @@ public class listActivity extends BaseActivity implements View.OnClickListener {
                     fragments = new ArrayList<>();
                     initview();
                 }else {
-                    Toast.makeText(listActivity.this, "请求参数有误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(listActivity.this, classBeantwo.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                 }
 

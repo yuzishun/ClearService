@@ -1,6 +1,7 @@
 package com.example.yuzishun.clearservice.utils;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +30,7 @@ import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.example.yuzishun.clearservice.activity.mainfragment_activity.searchActivity;
+import com.example.yuzishun.clearservice.adapter.listActivityAdapter;
 import com.example.yuzishun.clearservice.adapter.telfjAdapter;
 import com.example.yuzishun.clearservice.model.LocationInfo;
 
@@ -57,13 +60,19 @@ public class loctionUtils{
     private RecyclerView recyclerView;
     private LinearLayout layout_fj;
     private int i;
+    private String qu;
+    private TextView city;
+    private Activity activity;
+    private double latitude,longitude;
     private RecyclerView telfuwu_recyclerView;
-    public loctionUtils(Context context, TextView textView, RecyclerView recyclerView, LinearLayout layout_fj,int i) {
+    public loctionUtils(Context context, TextView textView, RecyclerView recyclerView, LinearLayout layout_fj,int i,TextView city,Activity Activity) {
         this.context = context;
         this.textView = textView;
         this.recyclerView = recyclerView;
         this.layout_fj = layout_fj;
         this.i = i;
+        this.city = city;
+        this.activity = Activity;
     }
 
 
@@ -130,6 +139,22 @@ public class loctionUtils{
 
         telfjAdapter = new telfjAdapter(context,mList);
         recyclerView.setAdapter(telfjAdapter);
+        telfjAdapter.setOnRecyclerViewListener(new listActivityAdapter.OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(int position) {
+
+                Intent intent = new Intent();
+                intent.putExtra("city",city.getText().toString().trim());
+                intent.putExtra("loction_text",textView.getText().toString().trim());
+                intent.putExtra("loction_jw",longitude+","+latitude);
+                EventBus.getDefault().post(
+                        new OnEvent(city.getText().toString().trim()+""));
+                activity.setResult(50,intent);
+                activity.finish();
+
+
+            }
+        });
     }
 
     public void inittelRe(){
@@ -145,14 +170,16 @@ public class loctionUtils{
             if (aMapLocation != null) {
                 if (aMapLocation.getErrorCode() == 0) {
                     textView.setText(aMapLocation.getAddress());
+//                    qu = aMapLocation.getCity()+""+aMapLocation.getAdCode();
                     Log.e("YZS", aMapLocation.getAddress());
+                    city.setText(aMapLocation.getCity());
                     Toast.makeText(context, "定位成功", Toast.LENGTH_SHORT).show();
                     EventBus.getDefault().post(
                             new OnEvent(aMapLocation.getAddress()+""));
                     //定位成功回调信息，设置相关消息
                     aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
-                    double latitude = aMapLocation.getLatitude();//获取纬度
-                    double longitude = aMapLocation.getLongitude();//获取经度
+                    latitude = aMapLocation.getLatitude();//获取纬度
+                    longitude = aMapLocation.getLongitude();//获取经度
                     aMapLocation.getAccuracy();//获取精度信息
                     Log.d("haha", aMapLocation.getAddress());
                     LocationInfo locationInfo = new LocationInfo();
@@ -177,6 +204,7 @@ public class loctionUtils{
                     Log.e("YZS", "location Error, ErrCode:"
                             + aMapLocation.getErrorCode() + ", errInfo:"
                             + aMapLocation.getErrorInfo());
+                    city.setText("定位失败");
                     if (aMapLocation.getErrorCode() == 12) {
                         Toast.makeText(context, "app没有定位权限", Toast.LENGTH_SHORT).show();
                         layout_fj.setVisibility(View.GONE);

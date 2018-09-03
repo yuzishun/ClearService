@@ -26,6 +26,8 @@ import com.example.yuzishun.clearservice.tools.CountryActivity;
 import com.example.yuzishun.clearservice.utils.RegexUtils;
 import com.example.yuzishun.clearservice.utils.SpUtil;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +36,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.ResponseBody;
+import retrofit2.HttpException;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.text_back)
@@ -76,7 +80,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     if (isHasContent) {
 //                    if(regexUtils.isPassWord(password)==true && regexUtils.isPhone(user)==true){
                         if(i==1&&!mPhoto_number.getText().toString().trim().equals("")){
-
+                            mButton_getResule.setEnabled(true);
                         }else {
                             mButton_getResule.setEnabled(false);
 
@@ -147,6 +151,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                             @Override
                             public void onNext(codeBean codebean) {
+                                Log.e("YZS",codebean.getCode()+"");
+                                Log.e("YZS",codebean.getMsg()+"");
+
                                 if(codebean.getCode()==200){
                                     Intent intent = new Intent(RegisterActivity.this, CodeActivity.class);
                                     intent.putExtra("number", number);
@@ -154,6 +161,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                                     finish();
 
                                 }else {
+                                    Toast.makeText(RegisterActivity.this, codebean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                                 }
 
@@ -163,8 +171,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                             @Override
                             public void onError(Throwable e) {
-                                Log.e("YZS",e.getMessage());
-                                Toast.makeText(RegisterActivity.this, "发送失败，可能是网络原因，或者是手机号不正确", Toast.LENGTH_SHORT).show();
+
+//                                ResponseBody responseBody = ((HttpException) e).response().errorBody();
+//                                try {
+//                                    if(responseBody!=null){
+//
+//                                        Log.e("YZS",responseBody.string().toString());
+//                                    }
+//
+//                                }catch (Exception e1){
+//
+//                                }
+//
+//                                Toast.makeText(RegisterActivity.this, "发送失败，可能是网络原因，或者是手机号不正确", Toast.LENGTH_SHORT).show();
 
                             }
 

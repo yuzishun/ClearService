@@ -12,18 +12,28 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yuzishun.clearservice.Custom.CEditText;
 import com.example.yuzishun.clearservice.Custom.CheckEditForButton;
 import com.example.yuzishun.clearservice.Custom.EditTextChangeListener;
 import com.example.yuzishun.clearservice.R;
 import com.example.yuzishun.clearservice.activity.login.LoginActivity;
+import com.example.yuzishun.clearservice.activity.myframnet_Activity.ChooseCrdeActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.SettingActivity;
 import com.example.yuzishun.clearservice.activity.myframnet_Activity.langerActivity;
 import com.example.yuzishun.clearservice.base.BaseActivity;
+import com.example.yuzishun.clearservice.base.Content;
+import com.example.yuzishun.clearservice.model.UserUpdataBean;
+import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.MD5Util;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -40,6 +50,7 @@ public class changepswActivity extends BaseActivity implements View.OnClickListe
     Button sure_button;
     @BindView(R.id.cbDisplayPassword)
     CheckBox cbDisplayPassword;
+    private String newpsd;
     @Override
     public int intiLayout() {
         return R.layout.activity_changepsw;
@@ -58,7 +69,7 @@ public class changepswActivity extends BaseActivity implements View.OnClickListe
 
     private void PassWord() {
         String yuanpsd=yuan_psw_ed.getText().toString().trim();
-        String newpsd=new_psd_ed.getText().toString().trim();
+        newpsd=new_psd_ed.getText().toString().trim();
         CheckEditForButton checkEditForButton = new CheckEditForButton(sure_button);
         checkEditForButton.addEditText(yuan_psw_ed, new_psd_ed);
         //3.根据接口回调的方法,分别进行操作
@@ -96,6 +107,7 @@ public class changepswActivity extends BaseActivity implements View.OnClickListe
 
     private void onclickc() {
         image_back.setOnClickListener(this);
+        sure_button.setOnClickListener(this);
     }
 
     @Override
@@ -108,8 +120,48 @@ public class changepswActivity extends BaseActivity implements View.OnClickListe
         switch (v.getId()){
 
         case R.id.image_back:
-        finish();
-        break;
+             finish();
+             break;
+        case R.id.sure_button:
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("user_access_token", Content.Token);
+            hashMap.put("password", MD5Util.encrypt(newpsd));
+            Observer<UserUpdataBean> observer = new Observer<UserUpdataBean>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(UserUpdataBean userUpdataBean) {
+                    Log.e("YZS", userUpdataBean.toString());
+                    if (userUpdataBean.getCode() == 200) {
+
+                        Toast.makeText(changepswActivity.this, "修改密码成功", Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    } else {
+                        Toast.makeText(changepswActivity.this, userUpdataBean.getMsg() + "", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e("YZS", e.getMessage());
+
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            };
+            ApiMethods.getUserUpdata(observer, hashMap);
+            Log.e("YZS",hashMap.toString());
+
+             break;
         }
 
     }

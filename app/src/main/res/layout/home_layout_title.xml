@@ -18,7 +18,7 @@
             android:layout_marginLeft="@dimen/d10"
             android:layout_height="@dimen/d18" />
         <TextView
-            android:text="加州水郡"
+            android:text="定位失败,请重新定位"
             android:textSize="@dimen/f14"
             android:maxEms="7"
             android:maxLines="1"

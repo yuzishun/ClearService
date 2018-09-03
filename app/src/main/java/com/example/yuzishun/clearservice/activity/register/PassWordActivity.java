@@ -144,9 +144,9 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
                             if(regiserbean.getCode()==200){
 
                                 Toast.makeText(PassWordActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                                int logining = 1;
                                 SpUtil spUtil = new SpUtil(PassWordActivity.this, "file");
-                                spUtil.putInt("logining", logining);
+                                Content.Token = regiserbean.getData().getToken();
+                                spUtil.putString("login", regiserbean.getData().getToken());
                                 Intent intent = new Intent(PassWordActivity.this, MainActivity.class);
                                 SpUtil spUtil1 = new SpUtil(PassWordActivity.this,"Userid");
                                 spUtil1.putString("User_id",regiserbean.getData().get_id());
@@ -155,6 +155,7 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
                                 finish();
                             }else {
 
+                                Toast.makeText(PassWordActivity.this, regiserbean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -165,7 +166,6 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
                         @Override
                         public void onError(Throwable e) {
                             Log.e("YZS",e.getMessage());
-                            Toast.makeText(PassWordActivity.this, "注册失败，可能是网络原因，或者是手机号不正确，密码不规范", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override

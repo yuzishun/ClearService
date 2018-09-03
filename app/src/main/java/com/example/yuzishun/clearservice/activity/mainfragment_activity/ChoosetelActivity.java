@@ -18,7 +18,10 @@ import com.example.yuzishun.clearservice.base.BaseActivity;
 import com.example.yuzishun.clearservice.base.Content;
 import com.example.yuzishun.clearservice.model.addressBean;
 import com.example.yuzishun.clearservice.net.ApiMethods;
+import com.example.yuzishun.clearservice.utils.OnEvent;
 import com.example.yuzishun.clearservice.utils.SpUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +46,8 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
     RecyclerView nobeyondRV;
     @BindView(R.id.beyondRV)
     RecyclerView beyondRV;
+    @BindView(R.id.chaochu)
+    TextView chaochu;
     private telAdapterbeyond telAdapterbeyond;
     private telAdapternobeyond telAdapternobeyond;
     private List<String> list = new ArrayList<String>();
@@ -111,29 +116,49 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
                         nobeyondRV.setAdapter(telAdapterbeyond);
                     }
                     if(listNo.size()==0){
-
+                        chaochu.setVisibility(View.GONE);
                     }else {
+                        chaochu.setVisibility(View.VISIBLE);
+
                         telAdapternobeyond = new telAdapternobeyond(ChoosetelActivity.this,listNo);
                         beyondRV.setLayoutManager(new LinearLayoutManager(ChoosetelActivity.this));
                         beyondRV.setAdapter(telAdapternobeyond);
                     }
+                    try {
+
+
 
                     telAdapterbeyond.setOnRecyclerViewListener(new listActivityAdapter.OnRecyclerViewListener() {
                         @Override
                         public void onItemClick(int position) {
+                            ;
+                            Intent intent1 = new Intent();
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("addressBean",addressBean);
-                            bundle.putInt("position",position);
-                            Intent intent=new Intent();
-                            intent.putExtra("bundle",bundle);
+                            bundle.putString("name",listYse.get(position).getUser_name());
+                            bundle.putString("phone",listYse.get(position).getMobile_phone()+"");
+                            bundle.putString("id",listYse.get(position).get_id());
+                            bundle.putString("city",listYse.get(position).getAddress_city());
+                            bundle.putString("addressname",listYse.get(position).getAddress_name());
 
-                            setResult(22,intent);
+                            bundle.putString("info",listYse.get(position).getAddress_info());
+
+
+                            intent1.putExtra("bundle",bundle);
+                            setResult(30,intent1);
+
+
                             finish();
 
                         }
                     });
+                    }catch (Exception e){
+
+                    }
 
 
+
+                }else {
+                    Toast.makeText(ChoosetelActivity.this, addressBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -142,7 +167,6 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onError(Throwable e) {
                 Log.e("YZS",e.getMessage());
-                Toast.makeText(ChoosetelActivity.this, "请求失败,请看具体信息", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -174,9 +198,9 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.right_text:
-
-                startActivity(new Intent(this,AddtelActivity.class));
-
+                Intent intent = new Intent(this,AddtelActivity.class);
+                Content.choosetel=0;
+                startActivity(intent);
                 break;
         }
     }
@@ -184,7 +208,7 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        if(listYse.size()==0){
+        if(listYse.size()<0){
 
 
 
@@ -198,6 +222,7 @@ public class ChoosetelActivity extends BaseActivity implements View.OnClickListe
 
 
     }
+
 
 
 }

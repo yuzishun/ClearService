@@ -45,6 +45,7 @@
                 android:background="@color/everoneActivity"
                 android:layout_height="@dimen/d10" />
             <TextView
+                android:id="@+id/chaochu"
                 android:layout_width="match_parent"
                 android:text="以下地址超出范围"
                 android:textColor="@color/black_shou"

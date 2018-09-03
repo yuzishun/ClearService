@@ -1,12 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+    android:orientation="vertical" android:layout_height="match_parent">
+
+
     <android.support.v7.widget.RecyclerView
+        android:visibility="visible"
         android:id="@+id/RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
     </android.support.v7.widget.RecyclerView>
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_visit"
+        android:background="@color/everoneActivity"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/emty_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/emty"
+                android:text="一个订单都没有哦~"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_shou"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/f16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="去逛下吧"
+                android:textColor="@color/gray_text"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/f14"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button_pin"
+                android:textColor="@drawable/button_color_login_rigsg"
+                android:background="@drawable/login_select"
+                android:text="立即拼团"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/d20"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d25" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

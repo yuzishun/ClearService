@@ -100,7 +100,6 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginContact.ILoginView
 
                          if(regexUtils.isPassWord(passwordid)==true){
                              String encrypt = MD5Util.encrypt(passwordid);
-                             //接口逻辑,如果已经登录成功存logining为1，没登录存0，判断服务器上面有没有该用户的信息，账号和密码是否正确
                              SpUtil spUtil = new SpUtil(loginActivity,"country_number");
                              String country_number = spUtil.getString("countryNumber", "null");
                              HashMap<String,String> hashMap = new HashMap<>();
@@ -119,9 +118,9 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginContact.ILoginView
                                      Log.e("YZS",loginBean.toString());
                                      if(loginBean.getCode()==200){
                                          Toast.makeText(loginActivity, "登录成功", Toast.LENGTH_SHORT).show();
-                                         logining=1;
                                          SpUtil spUtil = new SpUtil(loginActivity, "file");
-                                         spUtil.putInt("logining", logining);
+                                         Content.Token = loginBean.getData().getToken();
+                                         spUtil.putString("login", loginBean.getData().getToken());
                                          SpUtil spUtil1 = new SpUtil(loginActivity,"Userid");
                                          spUtil1.putString("User_id",loginBean.getData().get_id());
                                          Intent intent = new Intent(loginActivity, MainActivity.class);
@@ -130,6 +129,7 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginContact.ILoginView
                                          loginActivity.finish();
 
                                      }else {
+                                         Toast.makeText(loginActivity, loginBean.getMsg()+"", Toast.LENGTH_SHORT).show();
 
                                      }
 
@@ -141,7 +141,6 @@ public class LoginPresenterImpl extends BaseMvpPresenter<LoginContact.ILoginView
                                  public void onError(Throwable e) {
 
                                      Log.e("YZS",e.getMessage());
-                                     Toast.makeText(loginActivity, "登录失败，请检查您输入的账号和密码", Toast.LENGTH_SHORT).show();
 
                                  }
 

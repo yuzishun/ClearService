@@ -178,5 +178,12 @@ public class UserBean {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
