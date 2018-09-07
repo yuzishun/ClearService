@@ -28,10 +28,7 @@ import org.greenrobot.eventbus.ThreadMode;
  */
 //所有Activity 的 基类
 public abstract class BaseActivity extends AppCompatActivity {
-    /***是否显示标题栏*/
-    private  boolean isshowtitle = true;
-    /***是否显示标题栏*/
-    private  boolean isshowstate = true;
+
     /***封装toast对象**/
     private static Toast toast;
     /***获取TAG的activity名称**/
@@ -49,7 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.setContentView(this.intiLayout());
         //设置布局
         setContentView(intiLayout());
-        Content content = new Content();
 
         //初始化控件
         initView();
@@ -74,22 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void initData();
 
-    /**
-     * 是否设置标题栏
-     *
-     * @return
-     */
-    public void setTitle(boolean ishow) {
-        isshowtitle=ishow;
-    }
-
-    /**
-     * 设置是否显示状态栏
-     * @param ishow
-     */
-    public void setState(boolean ishow) {
-        isshowstate=ishow;
-    }
 
     /**
      * 显示长toast
